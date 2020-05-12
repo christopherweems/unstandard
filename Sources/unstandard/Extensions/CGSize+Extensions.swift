@@ -17,6 +17,17 @@ public extension CGSize {
     static func *(size: CGSize, multiplier: CGFloat) -> CGSize {
         return CGSize(width: size.width * multiplier, height: size.height * multiplier)
     }
+    
+}
+
+public extension CGSize {
+    static func -(lhs: CGSize, rhs: CGSize) -> Self {
+        .init(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
+    }
+    
+    func asCGPoint() -> CGPoint {
+        .init(x: width, y: height)
+    }
 }
 
 #endif
