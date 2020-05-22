@@ -17,3 +17,14 @@ public extension ExpressibleByBooleanLiteral {
     }
     
 }
+
+public extension ExpressibleByBooleanLiteral {
+    static func any(_ value: Bool, @SingleElementBuilder<Bool> _ builder: () -> Bool) -> Bool {
+        builder() == value
+    }
+    
+    static func any(_ value: Bool, @SimpleArrayBuilder<Bool> _ builder: () -> [Bool]) -> Bool {
+        builder().contains { $0 == value }
+    }
+    
+}
