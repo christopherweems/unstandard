@@ -96,3 +96,19 @@ public extension Array {
     }
 }
 
+// MARK: - Appending elements
+
+public extension Array {
+    func appending(@SimpleArrayBuilder<Element> _ element: () -> Element) -> Self {
+        var new = self
+        new.append(element())
+        return new
+    }
+    
+    func appending(@SimpleArrayBuilder<Element> _ elements: () -> [Element]) -> Self {
+        var new = self
+        new += elements()
+        return new
+    }
+}
+
