@@ -112,3 +112,15 @@ public extension Array {
     }
 }
 
+// MARK: - Function Builder initializers
+
+public extension Array {
+    init(@SimpleArrayBuilder<Element> _ builder: () -> [Element]) {
+        self = builder()
+    }
+    
+    init(@SingleElementBuilder<Element> _ builder: () -> Element) {
+        self = [builder()]
+    }
+}
+
