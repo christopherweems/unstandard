@@ -17,3 +17,14 @@ public extension FixedWidthInteger {
     }
     
 }
+
+public extension FixedWidthInteger {
+    func bounded(within range: PartialRangeUpTo<Self>) -> Self {
+        self.bounded(within: (.min)...range.upperBound)
+    }
+    
+    mutating func bound(within range: PartialRangeUpTo<Self>) {
+        self.bound(within: (.min)...range.upperBound)
+    }
+    
+}
