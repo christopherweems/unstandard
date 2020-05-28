@@ -28,6 +28,10 @@ public extension BinaryInteger {
 
 public extension BinaryInteger {
     func isBounded(within range: ClosedRange<Self>) -> Bool {
-        self.bounded(within: range) == self
+        range.contains(self)
+    }
+    
+    func isBounded(within range: Range<Self>) -> Bool {
+        range.contains(self)
     }
 }
