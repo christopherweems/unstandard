@@ -19,12 +19,16 @@ public extension FixedWidthInteger {
 }
 
 public extension FixedWidthInteger {
+    /*
+     2.bounded(within: ..<4) == 2
+     4.bounded(within: ..<4) == 3
+     */
     func bounded(within range: PartialRangeUpTo<Self>) -> Self {
-        self.bounded(within: (.min)...range.upperBound)
+        self.bounded(within: (.min)...(range.upperBound - 1))
     }
     
     mutating func bound(within range: PartialRangeUpTo<Self>) {
-        self.bound(within: (.min)...range.upperBound)
+        self.bound(within: (.min)...(range.upperBound - 1))
     }
     
 }
