@@ -17,3 +17,13 @@ public extension StringProtocol {
         return .init(self)
     }
 }
+
+
+public extension StringProtocol {
+    func filtered(by filterSet: CharacterSet) -> String {
+        self.unicodeScalars
+            .filter(filterSet.contains)
+            .map { String($0) }
+            .joined()
+    }
+}
