@@ -32,3 +32,9 @@ public extension FixedWidthInteger {
     }
     
 }
+
+public extension FixedWidthInteger {
+    func asDouble() -> Double {
+        .init(self)
+    }
+}
