@@ -12,3 +12,9 @@ public extension String {
         Int(self)
     }
 }
+
+public extension Int {
+    init?(_ character: Character) {
+        self.init(String(character))
+    }
+}
