@@ -49,7 +49,13 @@ public extension Array {
 
 public extension Array where Element: Hashable {
     func asSet() -> Set<Element> {
-        Set(self)
+        .init(self)
+    }
+}
+
+public extension ArraySlice where Element : Hashable {
+    func asSet() -> Set<Element> {
+        .init(self)
     }
 }
 
