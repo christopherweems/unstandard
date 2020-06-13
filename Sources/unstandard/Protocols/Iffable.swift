@@ -26,6 +26,7 @@ public extension Optional where Wrapped: Iffable {
 /// MARK: - See Wrappable when updating
 
 extension Array : Iffable { }
+extension ArraySlice : Iffable { }
 extension Bool : Iffable { }
 extension Character : Iffable { }
 extension Dictionary : Iffable { }
