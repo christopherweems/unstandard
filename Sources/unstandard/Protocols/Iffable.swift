@@ -42,3 +42,11 @@ extension Substring : Iffable { }
 extension CFMutableString: Iffable { }
 
 #endif
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+
+extension CGFloat: Iffable { }
+
+#endif
+

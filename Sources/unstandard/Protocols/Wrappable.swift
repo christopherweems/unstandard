@@ -34,3 +34,10 @@ extension Substring : Wrappable { }
 extension CFMutableString: Wrappable { }
 
 #endif
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+
+extension CGFloat: Wrappable { }
+
+#endif
