@@ -1,5 +1,5 @@
 //
-//  Bindings+CGPoint.swift
+//  Binding+CGPoint.swift
 //  
 //
 //  Created by Christopher Weems on 6/16/20.
