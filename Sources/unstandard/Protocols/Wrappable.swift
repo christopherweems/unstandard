@@ -18,11 +18,12 @@ public extension Wrappable {
 /// MARK: - See Iffable when updating
 
 extension Array : Wrappable { }
+extension ArraySlice : Wrappable { }
 extension Bool : Wrappable { }
 extension Character : Wrappable { }
 extension Dictionary : Wrappable { }
 extension NSObject : Wrappable { }
-extension Optional: Wrappable where Wrapped: Wrappable { }
+extension Optional: Wrappable where Wrapped : Wrappable { }
 extension Set : Wrappable { }
 extension String : Wrappable { }
 extension String.Index : Wrappable { }
