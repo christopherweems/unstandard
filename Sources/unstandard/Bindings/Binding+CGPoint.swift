@@ -22,4 +22,9 @@ public extension Binding where Value == CGPoint? {
     }
 }
 
+public extension Binding where Value == CGPoint? {
+    var isNil: Bool { wrappedValue == nil }
+    
+}
+
 #endif
