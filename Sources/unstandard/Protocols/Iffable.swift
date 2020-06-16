@@ -47,6 +47,7 @@ extension CFMutableString: Iffable { }
 import CoreGraphics
 
 extension CGFloat: Iffable { }
+extension CGPoint: Iffable { }
 
 #endif
 

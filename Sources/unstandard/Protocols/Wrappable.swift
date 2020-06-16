@@ -39,5 +39,6 @@ extension CFMutableString: Wrappable { }
 import CoreGraphics
 
 extension CGFloat: Wrappable { }
+extension CGPoint: Wrappable { }
 
 #endif
