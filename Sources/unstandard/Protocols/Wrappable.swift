@@ -22,6 +22,7 @@ extension ArraySlice : Wrappable { }
 extension Bool : Wrappable { }
 extension Character : Wrappable { }
 extension Dictionary : Wrappable { }
+extension Double : Wrappable { }
 extension NSObject : Wrappable { }
 extension Optional: Wrappable where Wrapped : Wrappable { }
 extension Set : Wrappable { }

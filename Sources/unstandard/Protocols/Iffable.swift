@@ -30,6 +30,7 @@ extension ArraySlice : Iffable { }
 extension Bool : Iffable { }
 extension Character : Iffable { }
 extension Dictionary : Iffable { }
+extension Double : Iffable { }
 extension NSObject : Iffable { }
 extension Optional: Iffable where Wrapped: Iffable { }
 extension Set : Iffable { }
