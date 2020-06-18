@@ -30,4 +30,13 @@ public extension CGSize {
     }
 }
 
+public extension CGSize {
+    func rounded(displayScale: CGFloat) -> Self {
+        let width = (self.width * displayScale).rounded(.toNearestOrAwayFromZero)
+        let height = (self.height * displayScale).rounded(.toNearestOrAwayFromZero)
+        return .init(width: width, height: height) / displayScale
+    }
+}
+
+
 #endif
