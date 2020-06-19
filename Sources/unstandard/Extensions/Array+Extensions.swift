@@ -36,6 +36,23 @@ public extension Array {
     }
 }
 
+public extension Array {
+    typealias AdjacentPair = (Element, Element)
+    
+    var adjacentPairs: [AdjacentPair] {
+        var pairs = [AdjacentPair]()
+        var lowerIndex = startIndex
+        
+        while (lowerIndex + 1) != endIndex {
+            let pair = (self[lowerIndex], self[lowerIndex + 1])
+            pairs.append(pair)
+            lowerIndex += 1
+        }
+        
+        return pairs
+    }
+}
+
 
 // MARK: - Non Empty
 
