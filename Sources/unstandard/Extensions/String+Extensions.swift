@@ -68,10 +68,11 @@ internal extension String {
     func ranges<SP>(of substring: SP) -> [Range<Index>] where SP : StringProtocol {
         var ranges = [Range<String.Index>]()
         
-        let lastEndIndex = startIndex
+        var lastEndIndex = startIndex
         
         while let nextRange = range(of: substring, range: rangeToEnd(startIndex: lastEndIndex)) {
             ranges.append(nextRange)
+            lastEndIndex = nextRange.upperBound
             
         }
         
