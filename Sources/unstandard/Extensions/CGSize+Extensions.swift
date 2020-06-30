@@ -31,6 +31,13 @@ public extension CGSize {
 }
 
 public extension CGSize {
+    var aspectRatio: CGFloat {
+        guard height.isFinite && height != .zero else { return .nan }
+        return width / height
+    }
+}
+
+public extension CGSize {
     func rounded(displayScale: CGFloat) -> Self {
         let width = (self.width * displayScale).rounded(.toNearestOrAwayFromZero)
         let height = (self.height * displayScale).rounded(.toNearestOrAwayFromZero)
