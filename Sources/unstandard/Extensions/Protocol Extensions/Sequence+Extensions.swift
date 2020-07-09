@@ -38,3 +38,9 @@ public extension Sequence {
             .map { $0.element }
     }
 }
+
+public extension Sequence where Element : Comparable {
+    func stableSorted() -> [Element] {
+        self.stableSorted(by: { $0 < $1 })
+    }
+}
