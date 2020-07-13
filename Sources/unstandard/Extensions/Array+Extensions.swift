@@ -122,11 +122,14 @@ public extension Array {
 // MARK: - Appending elements
 
 public extension Array {
+    /*
+     // not necessary in 5.3+
     func appending(@SimpleArrayBuilder<Element> _ element: () -> Element) -> Self {
         var new = self
         new.append(element())
         return new
     }
+     */
     
     func appending(@SimpleArrayBuilder<Element> _ elements: () -> [Element]) -> Self {
         var new = self
