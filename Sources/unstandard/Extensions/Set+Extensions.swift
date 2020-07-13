@@ -7,8 +7,10 @@
 
 import Foundation
 
+/*
 public extension Set {
     init(_ elements: Element...) {
         self = .init(elements)
     }
 }
+*/
