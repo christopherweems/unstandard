@@ -25,7 +25,7 @@ public struct SimpleArrayBuilder<Element> {
         second
     }
     
-    public static func buildIf(_ singleElement: Element?) -> Array<Element> {
+    public static func buildOptional(_ singleElement: Element?) -> Array<Element> {
         guard let element = singleElement else { return [] }
         return [element]
     }
