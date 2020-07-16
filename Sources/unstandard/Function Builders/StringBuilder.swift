@@ -47,3 +47,21 @@ public struct StringBuilder<Join> where Join : StringBuilderJoinSeparator {
         second
     }
 }
+
+/*
+ // write SIPs to make these work
+ 
+extension String {
+    @StringBuilder<Join> static func joining<Join>( _ joinType: Join.Type) -> String
+    where Join : StringBuilderJoinSeparator {
+        fatalError()
+    }
+}
+
+extension StringBuilderJoinSeparator {
+    @StringBuilder<Self> static func joining() -> String {
+        
+    }
+}
+*/
+
