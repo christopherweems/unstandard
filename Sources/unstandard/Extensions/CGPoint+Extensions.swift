@@ -19,6 +19,10 @@ public extension CGPoint {
     static func -(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
         .init(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
     }
+    
+    static prefix func -(_ point: CGPoint) -> CGPoint {
+        .init(x: -point.x, y: -point.y)
+    }
 }
 
 
