@@ -145,8 +145,11 @@ public extension Array {
         self = builder()
     }
     
+    /*
+    // not necessary in 5.3+
     init(@SingleElementBuilder<Element> _ builder: () -> Element) {
         self = [builder()]
     }
+    */
 }
 
