@@ -19,3 +19,9 @@ public extension BinaryFloatingPoint {
         pow(Double(base), exponent)
     }
 }
+
+public extension BinaryFloatingPoint {
+    mutating func bound(within range: PartialRangeFrom<Self>) {
+        self.bound(within: range.lowerBound...(.infinity))
+    }
+}
