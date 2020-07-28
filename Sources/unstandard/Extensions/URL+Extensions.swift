@@ -12,3 +12,9 @@ public extension URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
     }
 }
+
+extension URL: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        self = URL(string: value) ?? URL("")
+    }
+}
