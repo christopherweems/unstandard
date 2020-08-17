@@ -29,8 +29,10 @@ extension Array : Iffable { }
 extension ArraySlice : Iffable { }
 extension Bool : Iffable { }
 extension Character : Iffable { }
+extension DateComponents: Iffable { }
 extension Dictionary : Iffable { }
 extension Double : Iffable { }
+extension Int : Iffable { }
 extension NSObject : Iffable { }
 extension Optional: Iffable where Wrapped: Iffable { }
 extension Set : Iffable { }
