@@ -138,6 +138,19 @@ public extension Array {
     }
 }
 
+
+// MARK: - Count of elements matching predicate
+
+public extension Array {
+    /// [3, 0, -5].count(\.isZero) == 1
+    func count(_ predicate: (Element) -> Bool) -> Int {
+        self.filter(predicate)
+            .count
+    }
+    
+}
+
+
 // MARK: - Function Builder initializers
 
 public extension Array {
