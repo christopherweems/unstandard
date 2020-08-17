@@ -25,3 +25,14 @@ public extension BinaryFloatingPoint {
         self.bound(within: range.lowerBound...(.infinity))
     }
 }
+
+public extension BinaryFloatingPoint {
+    func bounded(within boundingRange: PartialRangeFrom<Self>) -> Self {
+        self < boundingRange.lowerBound ? boundingRange.lowerBound : self
+    }
+    
+    func bounded(within boundingRange: PartialRangeUpTo<Self>) -> Self {
+        self < boundingRange.upperBound ? self : boundingRange.upperBound
+    }
+    
+}
