@@ -29,6 +29,8 @@ extension Array : Iffable { }
 extension ArraySlice : Iffable { }
 extension Bool : Iffable { }
 extension Character : Iffable { }
+extension CollectionDifference: Iffable { }
+extension CollectionDifference.Change: Iffable { }
 extension DateComponents: Iffable { }
 extension Dictionary : Iffable { }
 extension Double : Iffable { }
