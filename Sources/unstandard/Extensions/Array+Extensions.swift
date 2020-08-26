@@ -77,6 +77,21 @@ public extension ArraySlice where Element : Hashable {
 }
 
 
+// MARK: - Last Index
+
+public extension Array {
+    var lastIndex: Index {
+        index(before: endIndex)
+    }
+}
+
+public extension ArraySlice {
+    var lastIndex: Index {
+        index(before: endIndex)
+    }
+}
+
+
 // MARK: - Splitting into groups
 
 public enum CollectionSplittingStrategy: Equatable {
