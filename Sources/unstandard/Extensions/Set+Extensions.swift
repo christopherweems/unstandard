@@ -23,3 +23,14 @@ public extension Set {
         self = self.filter { !predicate($0) }
     }
 }
+
+
+// MARK: - Insertion
+
+public extension Set {
+    func inserting(_ newMember: Element) -> Set {
+        var new = self
+        new.insert(newMember)
+        return new
+    }
+}
