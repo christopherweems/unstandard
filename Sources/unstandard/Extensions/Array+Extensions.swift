@@ -81,13 +81,15 @@ public extension ArraySlice where Element : Hashable {
 
 public extension Array {
     var lastIndex: Index {
-        index(before: endIndex)
+        guard !isEmpty else { return startIndex }
+        return index(before: endIndex)
     }
 }
 
 public extension ArraySlice {
     var lastIndex: Index {
-        index(before: endIndex)
+        guard !isEmpty else { return startIndex }
+        return index(before: endIndex)
     }
 }
 
