@@ -29,6 +29,7 @@ extension Double : Wrappable { }
 extension Int : Wrappable { }
 extension NSObject : Wrappable { }
 extension Optional: Wrappable where Wrapped : Wrappable { }
+extension Range: Wrappable { }
 extension Set : Wrappable { }
 extension String : Wrappable { }
 extension String.Index : Wrappable { }

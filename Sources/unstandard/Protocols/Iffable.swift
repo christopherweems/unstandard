@@ -37,6 +37,7 @@ extension Double : Iffable { }
 extension Int : Iffable { }
 extension NSObject : Iffable { }
 extension Optional: Iffable where Wrapped: Iffable { }
+extension Range: Iffable { }
 extension Set : Iffable { }
 extension String : Iffable { }
 extension String.Index : Iffable { }
