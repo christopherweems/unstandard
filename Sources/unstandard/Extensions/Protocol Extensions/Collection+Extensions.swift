@@ -38,3 +38,23 @@ public extension Collection {
     }
     
 }
+
+
+// MARK: - Collection.IndexPosition
+
+public enum CollectionIndexPosition {
+    case endIndex
+    
+}
+
+public extension Collection {
+    typealias IndexPosition = CollectionIndexPosition
+    
+    func index(at indexPosition: IndexPosition) -> Index {
+        switch indexPosition {
+        case .endIndex:
+            return endIndex
+            
+        }
+    }
+}
