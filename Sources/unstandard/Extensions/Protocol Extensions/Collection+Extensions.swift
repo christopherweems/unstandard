@@ -58,3 +58,13 @@ public extension Collection {
         }
     }
 }
+
+public extension Collection {
+    func range(at position: IndexPosition) -> Range<Index> {
+        switch position {
+        case .endIndex:
+            return self.endIndex..<self.endIndex
+            
+        }
+    }
+}
