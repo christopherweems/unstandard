@@ -29,12 +29,25 @@ public extension Array {
     }
 }
 
+// MARK: - .at(..)
+
 public extension Array {
     func at(_ index: Array.Index) -> Element? {
         guard (startIndex..<endIndex).contains(index) else { return nil }
         return self[index]
     }
 }
+
+public extension ArraySlice {
+    func at(_ index: Index) -> Element? {
+        guard index < endIndex else { return nil }
+        guard startIndex <= index else { return nil }
+        return self[index]
+    }
+}
+
+
+// MARK: - Adjacent pairs
 
 public extension Array {
     typealias AdjacentPair = (Element, Element)
