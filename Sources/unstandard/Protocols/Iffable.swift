@@ -29,10 +29,15 @@ extension Array : Iffable { }
 extension ArraySlice : Iffable { }
 extension Bool : Iffable { }
 extension Character : Iffable { }
+extension CollectionDifference: Iffable { }
+extension CollectionDifference.Change: Iffable { }
+extension DateComponents: Iffable { }
 extension Dictionary : Iffable { }
 extension Double : Iffable { }
+extension Int : Iffable { }
 extension NSObject : Iffable { }
 extension Optional: Iffable where Wrapped: Iffable { }
+extension Range: Iffable { }
 extension Set : Iffable { }
 extension String : Iffable { }
 extension String.Index : Iffable { }

@@ -22,6 +22,11 @@ public struct NewLine: StringBuilderJoinSeparator {
     
 }
 
+public struct EmptyJoin: StringBuilderJoinSeparator {
+    public static var separator: String { "" }
+    
+}
+
 
 // MARK: - StringBuilder
 

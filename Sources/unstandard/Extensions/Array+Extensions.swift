@@ -29,12 +29,25 @@ public extension Array {
     }
 }
 
+// MARK: - .at(..)
+
 public extension Array {
     func at(_ index: Array.Index) -> Element? {
         guard (startIndex..<endIndex).contains(index) else { return nil }
         return self[index]
     }
 }
+
+public extension ArraySlice {
+    func at(_ index: Index) -> Element? {
+        guard index < endIndex else { return nil }
+        guard startIndex <= index else { return nil }
+        return self[index]
+    }
+}
+
+
+// MARK: - Adjacent pairs
 
 public extension Array {
     typealias AdjacentPair = (Element, Element)
@@ -73,6 +86,23 @@ public extension Array where Element: Hashable {
 public extension ArraySlice where Element : Hashable {
     func asSet() -> Set<Element> {
         .init(self)
+    }
+}
+
+
+// MARK: - Last Index
+
+public extension Array {
+    var lastIndex: Index {
+        guard !isEmpty else { return startIndex }
+        return index(before: endIndex)
+    }
+}
+
+public extension ArraySlice {
+    var lastIndex: Index {
+        guard !isEmpty else { return startIndex }
+        return index(before: endIndex)
     }
 }
 
@@ -137,6 +167,19 @@ public extension Array {
         return new
     }
 }
+
+
+// MARK: - Count of elements matching predicate
+
+public extension Array {
+    /// [3, 0, -5].count(\.isZero) == 1
+    func count(_ predicate: (Element) -> Bool) -> Int {
+        self.filter(predicate)
+            .count
+    }
+    
+}
+
 
 // MARK: - Function Builder initializers
 

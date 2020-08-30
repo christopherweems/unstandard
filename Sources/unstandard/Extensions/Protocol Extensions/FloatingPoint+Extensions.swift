@@ -19,6 +19,14 @@ public extension FloatingPoint {
 }
 
 
+// MARK: - Multiplicative Inverse
+
+public extension FloatingPoint {
+    var multiplicativeInverse: Self { 1 / self }
+    
+}
+
+
 // MARK: - Tau / Circle Methods
 
 public extension FloatingPoint {

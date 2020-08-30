@@ -14,3 +14,23 @@ public extension Set {
     }
 }
 */
+
+
+// MARK: - Removing all / Filtering in place
+
+public extension Set {
+    mutating func removeAll(where predicate: (Element) -> Bool) {
+        self = self.filter { !predicate($0) }
+    }
+}
+
+
+// MARK: - Insertion
+
+public extension Set {
+    func inserting(_ newMember: Element) -> Set {
+        var new = self
+        new.insert(newMember)
+        return new
+    }
+}

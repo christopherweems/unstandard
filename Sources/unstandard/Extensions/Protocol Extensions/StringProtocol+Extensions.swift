@@ -18,6 +18,12 @@ public extension StringProtocol {
     }
 }
 
+public extension StringProtocol {
+    func asDouble() -> Double? {
+        Double(self)
+    }
+}
+
 
 // MARK: - .filtered(by:)
 
