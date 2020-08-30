@@ -63,7 +63,7 @@ public extension StringProtocol {
 public extension StringProtocol {
     func trimmingFromEnd(_ trim: CharacterSet) -> String {
         guard let endIndex = unicodeScalars.lastIndex(where: trim.contains) else { return self.asString() }
-        return self[...endIndex].asString()
+        return self[..<endIndex].asString()
     }
 }
 
