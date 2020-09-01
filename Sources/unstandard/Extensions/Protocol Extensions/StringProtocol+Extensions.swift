@@ -67,3 +67,11 @@ public extension StringProtocol {
     }
 }
 
+
+// MARK: - .uppercased(_:)
+
+public extension StringProtocol {
+    func uppercased(_ uppercased: Bool) -> String {
+        uppercased ? self.uppercased() : self.asString()
+    }
+}
