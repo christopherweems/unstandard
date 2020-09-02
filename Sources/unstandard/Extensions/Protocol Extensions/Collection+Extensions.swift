@@ -39,6 +39,12 @@ public extension Collection {
     
 }
 
+public extension Optional where Wrapped: Collection {
+    var notEmpty: Wrapped? {
+        self?.notEmpty
+    }
+}
+
 
 // MARK: - Collection.IndexPosition
 
