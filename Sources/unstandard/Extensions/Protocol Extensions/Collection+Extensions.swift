@@ -32,6 +32,9 @@ public extension Collection {
 }
 
 
+
+// MARK: - Not Empty
+
 public extension Collection {
     var notEmpty: Self? {
         isEmpty ? nil : self
@@ -43,7 +46,20 @@ public extension Optional where Wrapped: Collection {
     var notEmpty: Wrapped? {
         self?.notEmpty
     }
+    
 }
+
+
+
+// MARK: - Is Empty
+
+public extension Optional where Wrapped : Collection {
+    var isEmpty: Bool {
+        self?.isEmpty ?? true
+    }
+}
+
+
 
 
 // MARK: - Collection.IndexPosition
