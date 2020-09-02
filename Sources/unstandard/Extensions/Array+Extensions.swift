@@ -107,6 +107,18 @@ public extension ArraySlice {
 }
 
 
+// MARK: - Intereleave
+
+public extension Array {
+    func interleave(_ element: Element) -> Self {
+        self.map { [$0, element] }
+            .flatMap { $0 }
+            .dropLast()
+            .wrap { Array($0) }
+    }
+}
+
+
 // MARK: - Splitting into groups
 
 public enum CollectionSplittingStrategy: Equatable {
