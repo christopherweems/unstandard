@@ -58,6 +58,16 @@ public extension StringProtocol {
 }
 
 
+// MARK: - Dropping Suffix
+
+public extension StringProtocol {
+    func droppingSuffix(_ suffix: String) -> String? {
+        guard hasSuffix(suffix) else { return nil }
+        return self.dropLast(suffix.count).asString()
+    }
+}
+
+
 // MARK: - .trimmingFromEnd(charactersIn:)
 
 public extension StringProtocol {
