@@ -29,6 +29,7 @@ public extension Array {
     }
 }
 
+
 // MARK: - .at(..)
 
 public extension Array {
@@ -116,6 +117,30 @@ public extension Array {
             .dropLast()
             .wrap { Array($0) }
     }
+
+}
+
+
+// MARK: - Removing Duplicates
+
+public extension Array where Element : Hashable {
+    
+    /// Returns all unique (by hash value) elements in the array.
+    /// In the case of a collision, only the lower indexed item is returned.
+    ///
+    /// - Returns: Filtered array of unique.
+    ///
+    /// - Complexity: O(n) where n == number of elements in array.
+    func removingDuplicates() -> Self {
+        var seen = Set<Element>()
+        
+        return self.compactMap { proposedElement in
+            guard !seen.contains(proposedElement) else { return nil }
+            seen.insert(proposedElement)
+            return proposedElement
+        }
+    }
+    
 }
 
 
