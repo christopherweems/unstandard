@@ -13,11 +13,10 @@ public extension Collection {
     }
 }
 
+
 public extension Collection {
-    /// usage: `foo.forEach(adjacentPair: { preceding, succeeding in ... })`
-    ///        `notCalled` parameter makes parameter label `adjacentPair` necessary
-    
-    func forEach(adjacentPair pairBody: (Element, Element) -> Void, notCalled: (() -> Void) = { }) {
+    /// usage: `foo._forEach(adjacentPair: { preceding, succeeding in ... })`
+    func _forEach(adjacentPair pairBody: (Element, Element) -> Void) {
         var lastIndex = startIndex
         
         while true {
@@ -29,6 +28,7 @@ public extension Collection {
         }
         
     }
+
 }
 
 
