@@ -14,4 +14,18 @@ public extension CGFloat {
     }
 }
 
+
+// MARK: - Rounding
+
+public extension CGFloat {
+    mutating func round(scale: CGFloat) {
+        self = rounded(scale: scale)
+    }
+    
+    func rounded(scale: CGFloat) -> CGFloat {
+        return (self * scale).rounded() / scale
+    }
+}
+
+
 #endif
