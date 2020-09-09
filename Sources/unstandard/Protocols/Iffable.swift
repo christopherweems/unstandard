@@ -42,6 +42,7 @@ extension Set : Iffable { }
 extension String : Iffable { }
 extension String.Index : Iffable { }
 extension Substring : Iffable { }
+extension URL : Iffable { }
 
 
 #if canImport(CoreFoundation) && !os(Linux)

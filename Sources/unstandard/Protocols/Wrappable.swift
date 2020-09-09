@@ -34,6 +34,7 @@ extension Set : Wrappable { }
 extension String : Wrappable { }
 extension String.Index : Wrappable { }
 extension Substring : Wrappable { }
+extension URL : Wrappable { }
 
 
 #if canImport(CoreFoundation) && !os(Linux)
