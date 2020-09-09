@@ -11,6 +11,7 @@ public extension Collection {
     @inlinable func first(whereOptionalIsTrue predicate: (Element) throws -> Bool?) rethrows -> Element? {
         try self.first(where: { try predicate($0) == true })
     }
+    
 }
 
 
@@ -57,6 +58,7 @@ public extension Optional where Wrapped : Collection {
     var isEmpty: Bool {
         self?.isEmpty ?? true
     }
+    
 }
 
 
@@ -79,6 +81,7 @@ public extension Collection {
             
         }
     }
+    
 }
 
 public extension Collection {
@@ -89,4 +92,5 @@ public extension Collection {
             
         }
     }
+    
 }
