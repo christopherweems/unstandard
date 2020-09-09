@@ -10,9 +10,10 @@ import Foundation
 public protocol Wrappable { }
 
 public extension Wrappable {
-    func wrap<Result>(_ wrapper: (Self) -> Result) -> Result {
-        wrapper(self)
+    func wrap<Result>(_ wrapper: (Self) throws -> Result) rethrows -> Result {
+        try wrapper(self)
     }
+    
 }
 
 /// MARK: - See Iffable when updating
