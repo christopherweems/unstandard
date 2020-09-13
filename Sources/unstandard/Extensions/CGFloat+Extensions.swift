@@ -28,4 +28,30 @@ public extension CGFloat {
 }
 
 
+// MARK: - Optional<CGFloat> `+=` * `-=`
+
+public extension Optional where Wrapped == CGFloat {
+    static func +=(_ lhs: inout Self, _ rhs: Wrapped) {
+        switch lhs {
+        case .some(let wrapped):
+            lhs = wrapped + rhs
+        
+        case .none:
+            return
+        }
+    }
+    
+    static func -=(_ lhs: inout Self, _ rhs: Wrapped) {
+        switch lhs {
+        case .some(let wrapped):
+            lhs = wrapped - rhs
+        
+        case .none:
+            return
+        }
+    }
+    
+}
+
+
 #endif
