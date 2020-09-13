@@ -14,6 +14,15 @@ public extension Collection {
     
 }
 
+public extension Collection {
+    func _compactMap<ElementOfResult>(discardThrowing transform: (Element) throws -> ElementOfResult?) -> [ElementOfResult] {
+        self.compactMap {
+            try? transform($0)
+        }
+    }
+    
+}
+
 
 public extension Collection {
     /// usage: `foo._forEach(adjacentPair: { preceding, succeeding in ... })`
