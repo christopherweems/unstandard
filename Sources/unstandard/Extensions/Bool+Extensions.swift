@@ -13,3 +13,13 @@ public extension Bool {
     }
     
 }
+
+
+// MARK: -
+
+public extension Optional where Wrapped == Bool {
+    var isFalse: Bool { self == false }
+    var isTrue: Bool { self == true }
+    
+}
+
