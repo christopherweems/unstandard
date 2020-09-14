@@ -58,6 +58,16 @@ public extension StringProtocol {
 }
 
 
+// MARK: - Non Empty
+
+public extension StringProtocol {
+    var nonEmpty: Self? {
+        guard !isEmpty else { return nil }
+        return self
+    }
+}
+
+
 // MARK: - Dropping Suffix
 
 public extension StringProtocol {
