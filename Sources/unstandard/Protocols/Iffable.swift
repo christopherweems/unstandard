@@ -35,6 +35,7 @@ extension DateComponents: Iffable { }
 extension Dictionary : Iffable { }
 extension Double : Iffable { }
 extension Int : Iffable { }
+extension Int64 : Iffable { }
 extension NSObject : Iffable { }
 extension Optional: Iffable where Wrapped: Iffable { }
 extension Range: Iffable { }

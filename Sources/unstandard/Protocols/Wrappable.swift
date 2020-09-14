@@ -28,6 +28,7 @@ extension DateComponents: Wrappable { }
 extension Dictionary : Wrappable { }
 extension Double : Wrappable { }
 extension Int : Wrappable { }
+extension Int64 : Wrappable { }
 extension NSObject : Wrappable { }
 extension Optional: Wrappable where Wrapped : Wrappable { }
 extension Range: Wrappable { }
