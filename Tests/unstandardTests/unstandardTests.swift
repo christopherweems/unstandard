@@ -3,13 +3,41 @@ import XCTest
 
 final class unstandardTests: XCTestCase {
     static var allTests = [
-        ("testExample", testExample),
+        ("testStringBuilder", testStringBuilder),
     ]
 }
 
+
+// MARK: - String Builder Tests
+
 extension unstandardTests {
-    func testExample() {
-        XCTAssertTrue(true)
+    fileprivate var content: String? { "feature presentation" }
+    
+    @StringBuilder<NewLine> fileprivate var htmlBody: String {
+        "<h1>Title</h1>"
+        if let content = self.content {
+            "<p>\(content)</p>"
+            
+        } else {
+            #"<p class="no-content">No Content</p>"#
+            
+        }
         
+        "<nav>...</nav>"
+    }
+    
+    @StringBuilder<NewLine> fileprivate func webPage(withBody body: String) -> String {
+        "<html>"
+        "<body>"
+        body
+        "</body>"
+        "</html>"
+    }
+    
+    func testStringBuilder() {
+        let page = webPage(withBody: htmlBody)
+        
+        XCTAssert(page.contains("</body>"))
+        XCTAssert(page.contains(content!))
     }
 }

@@ -18,6 +18,12 @@ public extension StringProtocol {
     }
 }
 
+public extension StringProtocol {
+    func asDouble() -> Double? {
+        Double(self)
+    }
+}
+
 
 // MARK: - .filtered(by:)
 
@@ -48,5 +54,44 @@ public extension StringProtocol {
             return self.asString()
             
         }
+    }
+}
+
+
+// MARK: - Non Empty
+
+public extension StringProtocol {
+    var nonEmpty: Self? {
+        guard !isEmpty else { return nil }
+        return self
+    }
+}
+
+
+// MARK: - Dropping Suffix
+
+public extension StringProtocol {
+    func droppingSuffix(_ suffix: String) -> String? {
+        guard hasSuffix(suffix) else { return nil }
+        return self.dropLast(suffix.count).asString()
+    }
+}
+
+
+// MARK: - .trimmingFromEnd(charactersIn:)
+
+public extension StringProtocol {
+    func trimmingFromEnd(charactersIn trim: CharacterSet) -> String {
+        guard let endIndex = unicodeScalars.lastIndex(where: trim.contains) else { return self.asString() }
+        return self[..<endIndex].asString()
+    }
+}
+
+
+// MARK: - .uppercased(_:)
+
+public extension StringProtocol {
+    func uppercased(_ uppercased: Bool) -> String {
+        uppercased ? self.uppercased() : self.asString()
     }
 }

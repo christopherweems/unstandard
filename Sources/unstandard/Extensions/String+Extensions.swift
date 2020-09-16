@@ -10,6 +10,9 @@ import Foundation
 public extension String {
     enum SpaceType: String {
         case hair = " "
+        case figure = " "
+        case sixPerEm = " "
+        case zeroWidth = "​"
         
     }
     

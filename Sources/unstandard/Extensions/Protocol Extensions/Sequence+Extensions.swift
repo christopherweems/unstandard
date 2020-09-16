@@ -44,3 +44,28 @@ public extension Sequence where Element : Comparable {
         self.stableSorted(by: { $0 < $1 })
     }
 }
+
+
+// MARK: - Dividing into buckets
+
+public extension Sequence {
+    /// bucket[last].count <= itemsPerBucket
+    func bucket(itemsPerBucket: Int) -> [ArraySlice<Element>] {
+        var all = [ArraySlice<Element>]()
+        
+        let elements = Array(self)
+        
+        let totalCount = elements.count
+        var startIndex = 0
+        
+        while startIndex < totalCount {
+            let endIndex = Swift.min(startIndex + itemsPerBucket, totalCount)
+            all.append(elements[startIndex..<endIndex])
+            startIndex = endIndex
+            
+        }
+        
+        return all
+    }
+    
+}

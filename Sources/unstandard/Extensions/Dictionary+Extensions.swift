@@ -12,3 +12,13 @@ public extension Dictionary {
         return first(where: { keyPredicate($0.key) })
     }
 }
+
+
+// MARK: -
+
+public extension Dictionary {
+    init(@SimpleArrayBuilder<Self> _ builder: () -> [Dictionary<Key, Value>]) {
+        let keysAndValues = builder().flatMap { $0.map { ($0.key, $0.value) } }
+        self.init(keysAndValues, uniquingKeysWith: { _, _ in fatalError() })
+    }
+}

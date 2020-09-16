@@ -29,12 +29,26 @@ public extension Array {
     }
 }
 
+
+// MARK: - .at(..)
+
 public extension Array {
     func at(_ index: Array.Index) -> Element? {
         guard (startIndex..<endIndex).contains(index) else { return nil }
         return self[index]
     }
 }
+
+public extension ArraySlice {
+    func at(_ index: Index) -> Element? {
+        guard index < endIndex else { return nil }
+        guard startIndex <= index else { return nil }
+        return self[index]
+    }
+}
+
+
+// MARK: - Adjacent pairs
 
 public extension Array {
     typealias AdjacentPair = (Element, Element)
@@ -74,6 +88,59 @@ public extension ArraySlice where Element : Hashable {
     func asSet() -> Set<Element> {
         .init(self)
     }
+}
+
+
+// MARK: - Last Index
+
+public extension Array {
+    var lastIndex: Index {
+        guard !isEmpty else { return startIndex }
+        return index(before: endIndex)
+    }
+}
+
+public extension ArraySlice {
+    var lastIndex: Index {
+        guard !isEmpty else { return startIndex }
+        return index(before: endIndex)
+    }
+}
+
+
+// MARK: - Intereleave
+
+public extension Array {
+    func interleave(_ element: Element) -> Self {
+        self.map { [$0, element] }
+            .flatMap { $0 }
+            .dropLast()
+            .wrap { Array($0) }
+    }
+
+}
+
+
+// MARK: - Removing Duplicates
+
+public extension Array where Element : Hashable {
+    
+    /// Returns all unique (by hash value) elements in the array.
+    /// In the case of a collision, only the lower indexed item is returned.
+    ///
+    /// - Returns: Filtered array of unique.
+    ///
+    /// - Complexity: O(n) where n == number of elements in array.
+    func removingDuplicates() -> Self {
+        var seen = Set<Element>()
+        
+        return self.compactMap { proposedElement in
+            guard !seen.contains(proposedElement) else { return nil }
+            seen.insert(proposedElement)
+            return proposedElement
+        }
+    }
+    
 }
 
 
@@ -122,11 +189,14 @@ public extension Array {
 // MARK: - Appending elements
 
 public extension Array {
+    /*
+     // not necessary in 5.3+
     func appending(@SimpleArrayBuilder<Element> _ element: () -> Element) -> Self {
         var new = self
         new.append(element())
         return new
     }
+     */
     
     func appending(@SimpleArrayBuilder<Element> _ elements: () -> [Element]) -> Self {
         var new = self
@@ -135,6 +205,19 @@ public extension Array {
     }
 }
 
+
+// MARK: - Count of elements matching predicate
+
+public extension Array {
+    /// [3, 0, -5].count(\.isZero) == 1
+    func count(_ predicate: (Element) -> Bool) -> Int {
+        self.filter(predicate)
+            .count
+    }
+    
+}
+
+
 // MARK: - Function Builder initializers
 
 public extension Array {
@@ -142,8 +225,11 @@ public extension Array {
         self = builder()
     }
     
+    /*
+    // not necessary in 5.3+
     init(@SingleElementBuilder<Element> _ builder: () -> Element) {
         self = [builder()]
     }
+    */
 }
 
