@@ -80,7 +80,7 @@ public extension FloatingPoint {
 
 public extension FloatingPoint {
     init(_ value: Bool) {
-        self.init(boolValue ? 1 : 0)
+        self.init(value ? 1 : 0)
     }
     
 }
