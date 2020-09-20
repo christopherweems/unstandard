@@ -14,4 +14,11 @@ public extension DateFormatter {
         return new
     }
     
+    
+    convenience init(_ configurationHandler: (Self) -> Void) {
+        self.init()
+        configurationHandler(self)
+    
+    }
+    
 }
