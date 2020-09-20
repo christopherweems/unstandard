@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Collection {
-    @inlinable func first(whereOptionalIsTrue predicate: (Element) throws -> Bool?) rethrows -> Element? {
+    @inlinable func _first(whereOptionalIsTrue predicate: (Element) throws -> Bool?) rethrows -> Element? {
         try self.first(where: { try predicate($0) == true })
     }
     
