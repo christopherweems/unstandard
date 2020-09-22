@@ -16,9 +16,14 @@ let package = Package(
         .library(
             name: "unstandard",
             targets: ["unstandard"]),
+        
         .library(
             name: "do_and_throw",
             targets: ["do_and_throw"]),
+        
+        .library(name: "transfer",
+                 targets: ["transfer"]),
+        
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -32,6 +37,9 @@ let package = Package(
             dependencies: []),
         .target(
             name: "do_and_throw",
+            dependencies: ["unstandard"]),
+        .target(
+            name: "transfer",
             dependencies: ["unstandard"]),
         .testTarget(
             name: "unstandardTests",
