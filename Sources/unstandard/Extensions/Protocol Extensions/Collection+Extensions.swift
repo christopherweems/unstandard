@@ -103,3 +103,32 @@ public extension Collection {
     }
     
 }
+
+
+// MARK: - Collection.split(after:)
+
+public extension Collection {
+    func split(after elementTerminatesGroup: (Element) -> Bool) -> [ArraySlice<Self.Element>] {
+        let allElements = Array(self)
+        var groupRanges = [Range<Int>]()
+        
+        var currentRange: Range<Int> = Range(uncheckedBounds: (lower: allElements.startIndex, upper: allElements.startIndex))
+        
+        self.forEach {
+            currentRange = Range(uncheckedBounds: (lower: currentRange.lowerBound, upper: currentRange.upperBound + 1))
+            
+            if elementTerminatesGroup($0) {
+                groupRanges.append(currentRange)
+                currentRange = Range(uncheckedBounds: (lower: currentRange.upperBound, upper: currentRange.upperBound))
+                
+            }
+        }
+        
+        groupRanges.append(currentRange)
+        
+        return groupRanges
+            .map { allElements[$0] }
+            .filter { !$0.isEmpty }
+    }
+    
+}
