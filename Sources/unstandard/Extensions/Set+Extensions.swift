@@ -34,3 +34,13 @@ public extension Set {
         return new
     }
 }
+
+
+// MARK: - Array Builder Set initializer
+
+public extension Set {
+    init(@ArrayBuilder _ elements: () -> Array<Element>) {
+        self = elements().asSet()
+    }
+    
+}
