@@ -56,7 +56,7 @@ extension CGPoint: Wrappable { }
 // MARK: - 
 
 public extension Optional where Wrapped : Wrappable {
-    func wrap<Result>(_ wrapper: (Self) throws -> Result) rethrows -> Optional<Result> {
+    func wrap<Result>(_ wrapper: (Wrapped) throws -> Result) rethrows -> Optional<Result> {
         switch self {
         case .some(let wrapped):
             return try wrapper(wrapped)
