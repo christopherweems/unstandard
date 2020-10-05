@@ -51,20 +51,3 @@ extension CGFloat: Wrappable { }
 extension CGPoint: Wrappable { }
 
 #endif
-
-
-// MARK: - 
-
-public extension Optional where Wrapped : Wrappable {
-    func wrap<Result>(_ wrapper: (Wrapped) throws -> Result) rethrows -> Optional<Result> {
-        switch self {
-        case .some(let wrapped):
-            return try wrapper(wrapped)
-            
-        case .none:
-            return nil
-            
-        }
-    }
-    
-}
