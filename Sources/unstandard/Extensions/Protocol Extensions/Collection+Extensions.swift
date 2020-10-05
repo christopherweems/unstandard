@@ -132,3 +132,13 @@ public extension Collection {
     }
     
 }
+
+
+// MARK: - Has Elements
+
+public extension Collection {
+    var hasElements: Bool {
+        !isEmpty
+    }
+    
+}
