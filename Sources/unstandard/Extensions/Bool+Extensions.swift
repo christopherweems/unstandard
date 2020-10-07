@@ -24,6 +24,10 @@ public extension Optional where Wrapped == Bool {
 }
 
 public extension Optional where Wrapped == Bool {
+    static prefix func !(_ element: Self) -> Bool {
+        element != true
+    }
+    
     static func ||(_ lhs: Self, rhs: Self) -> Bool {
         lhs == true || rhs == true
     }
