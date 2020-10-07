@@ -23,3 +23,9 @@ public extension Optional where Wrapped == Bool {
     
 }
 
+public extension Optional where Wrapped == Bool {
+    static func ||(_ lhs: Self, rhs: Self) -> Bool {
+        lhs == true || rhs == true
+    }
+    
+}
