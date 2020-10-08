@@ -10,13 +10,6 @@ import Foundation
 public protocol Updatable { }
 
 public extension Updatable {
-    /// updating a single value
-    func updating<Value>(_ keyPath: WritableKeyPath<Self, Value>, to value: Value) -> Self {
-        withUpdates {
-            $0[keyPath: keyPath] = value
-        }
-    }
-    
     /// updating multiple values
     func withUpdates(_ update: (inout Self) -> ()) -> Self {
         var new = self
@@ -27,6 +20,12 @@ public extension Updatable {
 }
 
 public extension Updatable {
+    func updating<Value>(_ keyPath: WritableKeyPath<Self, Value>, to value: Value) -> Self {
+        withUpdates {
+            $0[keyPath: keyPath] = value
+        }
+    }
+    
     mutating func update<Value>(_ keyPath: WritableKeyPath<Self, Value>, to value: Value) {
         self = updating(keyPath, to: value)
     }
@@ -34,6 +33,12 @@ public extension Updatable {
 }
 
 public extension Updatable {
+    mutating func updating<Value>(_ keyPath: WritableKeyPath<Self, Value>, byInserting options: Value) -> Self where Value: OptionSet {
+        withUpdates {
+            $0[keyPath: keyPath] = self[keyPath: keyPath].union(options)
+        }
+    }
+    
     mutating func update<Value>(_ keyPath: WritableKeyPath<Self, Value>, insert options: Value) where Value: OptionSet {
         self.update(keyPath, to: self[keyPath: keyPath].union(options))
     }
