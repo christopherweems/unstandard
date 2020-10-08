@@ -33,6 +33,13 @@ public extension Updatable {
     
 }
 
+public extension Updatable {
+    mutating func update<Value>(_ keyPath: WritableKeyPath<Self, Value>, insert options: Value) where Value: OptionSet {
+        self.update(keyPath, to: self[keyPath: keyPath].union(options))
+    }
+    
+}
+
 
 // MARK: - See Iffable & Wrappable when updating
 
