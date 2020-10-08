@@ -10,6 +10,14 @@ import Foundation
 public protocol Updatable { }
 
 public extension Updatable {
+    /// updating a single value
+    func updating<Value>(_ keyPath: WritableKeyPath<Self, Value>, to value: Value) -> Self {
+        withUpdates {
+            $0[keyPath: keyPath] = value
+        }
+    }
+    
+    /// updating multiple values
     func withUpdates(_ update: (inout Self) -> ()) -> Self {
         var new = self
         update(&new)
