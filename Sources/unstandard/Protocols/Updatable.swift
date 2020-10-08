@@ -26,6 +26,13 @@ public extension Updatable {
     
 }
 
+public extension Updatable {
+    mutating func update<Value>(_ keyPath: WritableKeyPath<Self, Value>, to value: Value) {
+        self = updating(keyPath, to: value)
+    }
+    
+}
+
 
 // MARK: - See Iffable & Wrappable when updating
 
