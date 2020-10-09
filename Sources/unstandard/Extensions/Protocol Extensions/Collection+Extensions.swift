@@ -142,3 +142,14 @@ public extension Collection {
     }
     
 }
+
+
+// MARK: - Last Element Index
+
+public extension BidirectionalCollection {
+    var lastElementIndex: Index {
+        index(before: endIndex)
+    }
+    
+}
+
