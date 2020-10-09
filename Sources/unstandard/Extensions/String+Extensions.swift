@@ -64,6 +64,26 @@ internal extension String {
 }
 
 
+//
+
+public extension String {
+    static func compare(_ comparisonResult: ComparisonResult, options: CompareOptions,
+                        @ArrayBuilder strings: () -> [String]) -> Bool {
+        let strings = strings()
+        precondition(!strings.isEmpty)
+        
+        for (lower, upper) in strings.lazy.adjacentPairs {
+            if lower.compare(upper, options: options) != comparisonResult {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+}
+
+
 
 // MARK: -
 
