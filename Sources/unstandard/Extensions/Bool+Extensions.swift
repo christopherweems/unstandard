@@ -33,3 +33,9 @@ public extension Optional where Wrapped == Bool {
     }
     
 }
+
+internal extension Bool {
+    var isTrue: Bool { self == true }
+    var isFalse: Bool { self != true }
+    
+}
