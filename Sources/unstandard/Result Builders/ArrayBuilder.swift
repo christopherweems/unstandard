@@ -13,15 +13,15 @@ public struct ArrayBuilder {
         subarrays.flatMap { $0 }
     }
     
-    static func buildOptional<Element>(_ optional: [Element]?) -> [Element] {
+    public static func buildOptional<Element>(_ optional: [Element]?) -> [Element] {
         optional ?? []
     }
     
-    static func buildEither<Element>(first: [Element]) -> [Element] {
+    public static func buildEither<Element>(first: [Element]) -> [Element] {
         first
     }
 
-    static func buildEither<Element>(second: [Element]) ->[Element] {
+    public static func buildEither<Element>(second: [Element]) ->[Element] {
         second
     }
     
