@@ -8,22 +8,22 @@
 import Foundation
 
 public extension ExpressibleByBooleanLiteral {
-    static func all(_ value: Bool, @SingleElementBuilder<Bool> _ builder: () -> Bool) -> Bool {
+    static func all(_ value: Bool, @SingleResult _ builder: () -> Bool) -> Bool {
         [builder()].allSatisfy { $0 == value }
     }
     
-    static func all(_ value: Bool, @SimpleArrayBuilder<Bool> _ builder: () -> [Bool]) -> Bool {
+    static func all(_ value: Bool, @SingleResult _ builder: () -> [Bool]) -> Bool {
         builder().allSatisfy { $0 == value }
     }
     
 }
 
 public extension ExpressibleByBooleanLiteral {
-    static func any(_ value: Bool, @SingleElementBuilder<Bool> _ builder: () -> Bool) -> Bool {
+    static func any(_ value: Bool, @SingleResult _ builder: () -> Bool) -> Bool {
         builder() == value
     }
     
-    static func any(_ value: Bool, @SimpleArrayBuilder<Bool> _ builder: () -> [Bool]) -> Bool {
+    static func any(_ value: Bool, @SingleResult _ builder: () -> [Bool]) -> Bool {
         builder().contains { $0 == value }
     }
     
