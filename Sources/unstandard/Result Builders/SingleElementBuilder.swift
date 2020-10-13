@@ -7,9 +7,11 @@
 
 import Foundation
 
+@available(*, deprecated)
 @_functionBuilder
 public struct SingleElementBuilder<Element> {
     func buildBlock(_ element: Element) -> Element {
         element
     }
+    
 }
