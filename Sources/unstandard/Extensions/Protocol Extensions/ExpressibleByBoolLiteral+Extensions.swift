@@ -12,7 +12,7 @@ public extension ExpressibleByBooleanLiteral {
         [builder()].allSatisfy { $0 == value }
     }
     
-    static func all(_ value: Bool, @SingleResult _ builder: () -> [Bool]) -> Bool {
+    static func all(_ value: Bool, @ArrayBuilder _ builder: () -> [Bool]) -> Bool {
         builder().allSatisfy { $0 == value }
     }
     
@@ -23,7 +23,7 @@ public extension ExpressibleByBooleanLiteral {
         builder() == value
     }
     
-    static func any(_ value: Bool, @SingleResult _ builder: () -> [Bool]) -> Bool {
+    static func any(_ value: Bool, @ArrayBuilder _ builder: () -> [Bool]) -> Bool {
         builder().contains { $0 == value }
     }
     
