@@ -13,4 +13,12 @@ public struct SingleResult {
         element
     }
     
+    static func buildEither<E>(first: E) -> E {
+        first
+    }
+    
+    static func buildEither<E>(second: E) -> E {
+        second
+    }
+    
 }
