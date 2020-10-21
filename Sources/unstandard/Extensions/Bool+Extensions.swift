@@ -24,6 +24,7 @@ public extension Optional where Wrapped == Bool {
 }
 
 public extension Optional where Wrapped == Bool {
+    /// be aware, !(nil) == true
     static prefix func !(_ element: Self) -> Bool {
         element != true
     }
