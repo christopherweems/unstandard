@@ -42,6 +42,29 @@ public extension Collection {
 }
 
 
+// MARK: .split(..)
+
+public extension Collection {
+    func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+        var trueContent = [Element]()
+        var falseContent = [Element]()
+        
+        self.forEach {
+            if $0[keyPath: keyPath] {
+                trueContent.append($0)
+                
+            } else {
+                falseContent.append($0)
+                
+            }
+        }
+        
+        return [trueContent, falseContent]
+    }
+    
+}
+
+
 
 // MARK: - Not Empty
 
