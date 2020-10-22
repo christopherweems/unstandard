@@ -156,6 +156,15 @@ public extension Collection {
     
 }
 
+// MARK: - Is
+
+public extension Collection {
+    func `is`(where predicate: (Self) -> Bool) -> Bool {
+        predicate(self)
+    }
+    
+}
+
 
 // MARK: - Has Elements
 
