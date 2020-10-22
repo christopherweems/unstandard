@@ -42,10 +42,10 @@ public extension Collection {
 }
 
 
-// MARK: .split(..)
+// MARK: .divide(..)
 
 public extension Collection {
-    func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+    func divide(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
         var trueContent = [Element]()
         var falseContent = [Element]()
         
@@ -60,6 +60,11 @@ public extension Collection {
         }
         
         return [trueContent, falseContent]
+    }
+    
+    @available(*, deprecated)
+    func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+        divide(on: keyPath)
     }
     
 }
