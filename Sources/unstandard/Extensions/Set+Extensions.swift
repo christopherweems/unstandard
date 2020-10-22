@@ -22,6 +22,11 @@ public extension Set {
     mutating func removeAll(where predicate: (Element) -> Bool) {
         self = self.filter { !predicate($0) }
     }
+    
+    mutating func filterInPlace(_ isIncluded: (Element) -> Bool) {
+        self = self.filter { isIncluded($0) }
+    }
+    
 }
 
 
