@@ -70,6 +70,26 @@ public extension Collection {
 }
 
 
+// MARK: - Removing Duplicates
+
+public extension Collection where Element: Hashable {
+    private typealias HashValue = Int
+    
+    func removingDuplicates() -> [Element] {
+        var seen = Set<HashValue>()
+        
+        return compactMap { element in
+            let hashValue = element.hashValue
+            guard !seen.contains(hashValue) else { return nil }
+            seen.insert(hashValue)
+            return element
+        }
+    }
+    
+}
+
+
+
 
 // MARK: - Not Empty
 
