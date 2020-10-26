@@ -42,10 +42,10 @@ public extension Collection {
 }
 
 
-// MARK: .split(..)
+// MARK: .divide(..)
 
 public extension Collection {
-    func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+    func divide(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
         var trueContent = [Element]()
         var falseContent = [Element]()
         
@@ -62,7 +62,32 @@ public extension Collection {
         return [trueContent, falseContent]
     }
     
+    @available(*, deprecated)
+    func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+        divide(on: keyPath)
+    }
+    
 }
+
+
+// MARK: - Removing Duplicates
+
+public extension Collection where Element: Hashable {
+    private typealias HashValue = Int
+    
+    func removingDuplicates() -> [Element] {
+        var seen = Set<HashValue>()
+        
+        return compactMap { element in
+            let hashValue = element.hashValue
+            guard !seen.contains(hashValue) else { return nil }
+            seen.insert(hashValue)
+            return element
+        }
+    }
+    
+}
+
 
 
 
@@ -152,6 +177,15 @@ public extension Collection {
         return groupRanges
             .map { allElements[$0] }
             .filter { !$0.isEmpty }
+    }
+    
+}
+
+// MARK: - Is
+
+public extension Collection {
+    func `is`(where predicate: (Self) -> Bool) -> Bool {
+        predicate(self)
     }
     
 }
