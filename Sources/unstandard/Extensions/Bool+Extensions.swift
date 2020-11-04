@@ -12,6 +12,10 @@ public extension Bool {
         lhs = lhs && rhs
     }
     
+    static func |=(lhs: inout Bool, rhs: Bool) {
+        lhs = lhs || rhs
+    }
+    
 }
 
 
