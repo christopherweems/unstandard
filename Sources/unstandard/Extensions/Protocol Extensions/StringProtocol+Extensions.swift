@@ -71,10 +71,12 @@ public extension StringProtocol {
 // MARK: - Dropping Suffix
 
 public extension StringProtocol {
-    func droppingSuffix(_ suffix: String) -> String? {
-        guard hasSuffix(suffix) else { return nil }
-        return self.dropLast(suffix.count).asString()
+    func droppingSuffix(_ suffixes: String...) -> String? {
+        guard let suffixToRemove = suffixes.first(where: self.hasSuffix) else { return nil }
+        let endIndex = index(self.endIndex, offsetBy: -suffixToRemove.count)
+        return self.prefix(upTo: endIndex).asString()
     }
+    
 }
 
 
