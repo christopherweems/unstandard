@@ -67,7 +67,7 @@ internal extension String {
 //
 
 public extension String {
-    static func compare(_ comparisonResult: ComparisonResult, options: CompareOptions,
+    static func compareList(_ comparisonResult: ComparisonResult, options: CompareOptions,
                         @ArrayBuilder strings: () -> [String]) -> Bool {
         let strings = strings()
         precondition(!strings.isEmpty)
@@ -81,6 +81,11 @@ public extension String {
         return true
     }
     
+    @available(*, deprecated)
+    static func compare(_ comparisonResult: ComparisonResult, options: CompareOptions,
+                        @ArrayBuilder strings: () -> [String]) -> Bool {
+        self.compareList(comparisonResult, options: options, strings: strings)
+    }
 }
 
 
