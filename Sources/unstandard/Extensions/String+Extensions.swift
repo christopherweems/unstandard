@@ -81,6 +81,12 @@ public extension String {
         return true
     }
     
+    static func comparePair(_ comparisonResult: ComparisonResult, options: CompareOptions,
+                        @PairBuilder pair: () -> (String, String)) -> Bool {
+        let strings = pair()
+        return compareList(comparisonResult, options: options, strings: { [strings.0, strings.1] })
+    }
+    
     @available(*, deprecated)
     static func compare(_ comparisonResult: ComparisonResult, options: CompareOptions,
                         @ArrayBuilder strings: () -> [String]) -> Bool {
