@@ -37,4 +37,9 @@ public extension ArrayBuilder {
         [item]
     }
     
+    static func buildExpression<Element>(_ optional: Element?) -> [Element] {
+        guard let optional = optional else { return [] }
+        return [optional]
+    }
+    
 }
