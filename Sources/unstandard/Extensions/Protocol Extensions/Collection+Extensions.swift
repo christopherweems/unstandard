@@ -210,3 +210,14 @@ public extension BidirectionalCollection {
     
 }
 
+
+
+// MARK: - `Collection.sorted(on:)`
+
+public extension Collection {
+    func sorted<V: Comparable>(on keyPath: KeyPath<Element, V>,
+                               comparison: (V, V) -> Bool = { $0 < $1 }) -> [Element] {
+        self.sorted { comparison($0[keyPath: keyPath], $1[keyPath: keyPath]) }
+    }
+    
+}
