@@ -8,6 +8,7 @@
 import Foundation
 
 @_functionBuilder
+//@available(*, deprecated)
 public struct SimpleArrayBuilder<Element> {
     public static func buildBlock(_ contents: Element...) -> Array<Element> {
         contents
@@ -30,6 +31,7 @@ public struct SimpleArrayBuilder<Element> {
     }
 }
 
+//@available(*, deprecated)
 extension SimpleArrayBuilder {
     public static func buildExpression(_ singleElement: Element) -> [Element] {
         [singleElement]

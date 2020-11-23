@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// runs closure throwing any errors, then throws even
+/// runs closure throwing any errors, then throws even if none are through
 public func do_and_throw<T>(_ t: () throws -> T) throws {
     try _ = t()
     throw DoAndThrowError.do_and_throw_error

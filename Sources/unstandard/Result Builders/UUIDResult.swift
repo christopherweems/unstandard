@@ -14,6 +14,14 @@ public struct UUIDResult {
         uuid
     }
     
+    public static func buildEither(first: UUID) -> UUID {
+        first
+    }
+    
+    public static func buildEither(second: UUID) -> UUID {
+        second
+    }
+    
 }
 
 public extension UUIDResult {
