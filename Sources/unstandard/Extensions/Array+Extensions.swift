@@ -201,7 +201,7 @@ public extension Array {
 // MARK: - Function Builder initializers
 
 public extension Array {
-    init(@ArrayBuilder _ builder: () -> [Element]) {
+    init(@ArrayBuilder _ builder: () -> Self) {
         self = builder()
     }
     
