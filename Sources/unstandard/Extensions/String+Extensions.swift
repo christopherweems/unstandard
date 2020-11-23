@@ -32,11 +32,11 @@ public extension String {
         
         // separators
         let separatorRanges = Array {
-            [Range(uncheckedBounds: (startIndex, startIndex))]
+            Range(uncheckedBounds: (startIndex, startIndex))
             ranges(of: separator)
-            [Range(uncheckedBounds: (endIndex, endIndex))]
+            Range(uncheckedBounds: (endIndex, endIndex))
+            
         }
-        .flatMap { $0 }
         
         // our strings lie between the separator ranges
         let splits = separatorRanges.adjacentPairs.map {
