@@ -69,3 +69,21 @@ public extension Sequence {
     }
     
 }
+
+
+// MARK: - Replacing occurrences of elements
+
+public extension Sequence where Element: Hashable {
+    func replacingOccurrences(of matches: Element..., with pattern: Element) -> [Element] {
+        let matches = Set(matches)
+        return self.map { matches.contains($0) ? pattern : $0 }
+    }
+    
+}
+
+public extension Sequence where Element: Equatable {
+    func replacingOccurrences(of match: Element, with pattern: Element) -> [Element] {
+        self.map { match == $0 ? pattern : $0 }
+    }
+    
+}
