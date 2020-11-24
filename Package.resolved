@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Resultto",
+        "repositoryURL": "https://github.com/christopherweems/Resultto.git",
+        "state": {
+          "branch": null,
+          "revision": "33595e626d4cccdf61a375f0863803937e551c6f",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
