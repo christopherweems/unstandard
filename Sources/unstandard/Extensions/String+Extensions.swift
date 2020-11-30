@@ -55,6 +55,16 @@ public extension String {
 }
 
 
+// MARK: -
+
+public extension String {
+    mutating func replaceOccurrences<Target, Replacement>(of target: Target, with replacement: Replacement) where Target: StringProtocol, Replacement: StringProtocol {
+        self = self.replacingOccurrences(of: target, with: replacement)
+    }
+    
+}
+
+
 // MARK: - Range of indexes to end
 
 internal extension String {
