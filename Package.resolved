@@ -9,6 +9,15 @@
           "revision": "33595e626d4cccdf61a375f0863803937e551c6f",
           "version": "0.0.1"
         }
+      },
+      {
+        "package": "triple-q",
+        "repositoryURL": "https://github.com/christopherweems/triple-q.git",
+        "state": {
+          "branch": null,
+          "revision": "f58dac700310b3c240ba7ab69284444fef7b580a",
+          "version": "0.0.1"
+        }
       }
     ]
   },
