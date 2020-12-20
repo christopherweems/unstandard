@@ -221,3 +221,13 @@ public extension Collection {
     }
     
 }
+
+
+// MARK: -
+
+public extension Collection {
+    func asArray() -> Array<Element> {
+        .init(self)
+    }
+    
+}
