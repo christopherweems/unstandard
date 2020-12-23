@@ -7,6 +7,16 @@
 
 import Foundation
 
+
+// MARK: -
+
+public extension StringProtocol {
+    func `as`<Other: ExpressibleByStringLiteral>(_ type: Other.Type) -> Other where Other.StringLiteralType == Self {
+        Other(stringLiteral: self)
+    }
+    
+}
+
 public extension StringProtocol {
     func asString() -> String {
         if let string = self as? String {
