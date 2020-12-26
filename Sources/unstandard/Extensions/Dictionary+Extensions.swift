@@ -17,6 +17,17 @@ public extension Dictionary {
 // MARK: -
 
 public extension Dictionary {
+    init(uniqueValuesWithKeys valuesWithKeys: [(Value, Key)]) {
+        self.init(uniqueKeysWithValues: valuesWithKeys.map { ($0.1, $0.0) })
+        
+    }
+    
+}
+
+
+// MARK: -
+
+public extension Dictionary {
     init(@SimpleArrayBuilder<Self> _ builder: () -> [Dictionary<Key, Value>]) {
         let keysAndValues = builder().flatMap { $0.map { ($0.key, $0.value) } }
         self.init(keysAndValues, uniquingKeysWith: { _, _ in fatalError() })
