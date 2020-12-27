@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 6/9/20.
 //
 
+import Algorithms
 import Foundation
 
 public extension String {
@@ -104,6 +105,17 @@ public extension String {
     }
 }
 
+
+// MARK: -
+
+public extension String {
+    func removeCamelCase(separator: String) -> String {
+        let components = self.chunked { ($0.isUppercase || $1.isLowercase) || ($0.isNumber && $1.isNumber) }
+        guard !components.isEmpty else { return "" }
+        return components[0].capitalized + separator + components.dropFirst().joined(separator: separator)
+    }
+    
+}
 
 
 // MARK: -

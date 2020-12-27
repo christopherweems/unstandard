@@ -4,6 +4,8 @@ import XCTest
 final class unstandardTests: XCTestCase {
     static var allTests = [
         ("testStringBuilder", testStringBuilder),
+        ("testRemoveCamelCase", testRemoveCamelCase),
+        
     ]
 }
 
@@ -40,4 +42,14 @@ extension unstandardTests {
         XCTAssert(page.contains("</body>"))
         XCTAssert(page.contains(content!))
     }
+    
+}
+
+extension unstandardTests {
+    func testRemoveCamelCase() {
+        let camelCaseString = "camelCaseString"
+        let withoutCamelCase = camelCaseString.removeCamelCase(separator: " ")
+        XCTAssertEqual(withoutCamelCase, "Camel Case String")
+    }
+    
 }
