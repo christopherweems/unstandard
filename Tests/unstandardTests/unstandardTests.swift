@@ -50,6 +50,10 @@ extension unstandardTests {
         let camelCaseString = "camelCaseString"
         let withoutCamelCase = camelCaseString.removeCamelCase(separator: " ")
         XCTAssertEqual(withoutCamelCase, "Camel Case String")
+        
+        let other = "Other"
+        let otherWithoutCamelCase = other.removeCamelCase(separator: " ")
+        XCTAssertEqual(otherWithoutCamelCase, "Other")
     }
     
 }

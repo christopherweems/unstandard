@@ -109,10 +109,18 @@ public extension String {
 // MARK: -
 
 public extension String {
-    func removeCamelCase(separator: String) -> String {
+    func removeCamelCase(separator: String, capitalizeFirstComponent: Bool = true) -> String {
         let components = self.chunked { ($0.isUppercase || $1.isLowercase) || ($0.isNumber && $1.isNumber) }
         guard !components.isEmpty else { return "" }
-        return components[0].capitalized + separator + components.dropFirst().joined(separator: separator)
+        
+        let first = capitalizeFirstComponent ? components[0].capitalized : components[0].asString()
+        
+        if components.containsSingleElement {
+            return first
+        
+        } else {
+            return first + separator + components.dropFirst().joined(separator: separator)
+        }
     }
     
 }
