@@ -201,6 +201,16 @@ public extension Collection {
 }
 
 
+// MARK: - Contains Single Element
+
+public extension Collection {
+    var containsSingleElement: Bool {
+        index(after: startIndex) == endIndex
+    }
+    
+}
+
+
 // MARK: - Last Element Index
 
 public extension BidirectionalCollection {
