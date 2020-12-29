@@ -29,7 +29,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-algorithms", .upToNextMajor(from: "0.0.2")),
-        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.0.1")),
+        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.0.2")),
         .package(url: "https://github.com/christopherweems/triple-q.git", .upToNextMajor(from: "0.0.1")),
     ],
     targets: [
