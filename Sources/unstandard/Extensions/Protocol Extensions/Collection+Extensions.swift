@@ -82,6 +82,16 @@ public extension Collection where Element: Hashable {
 }
 
 
+// MARK: - Union
+
+public extension Collection where Element : OptionSet {
+    func union() -> Element {
+        var new = Element()
+        self.forEach { new.formUnion($0) }
+        return new
+    }
+    
+}
 
 
 // MARK: - Not Empty
