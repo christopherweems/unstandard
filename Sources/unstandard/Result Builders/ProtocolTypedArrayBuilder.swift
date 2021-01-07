@@ -1,5 +1,5 @@
 //
-//  SimpleArrayBuilder.swift
+//  ProtocolTypedArrayBuilder.swift
 //  
 //
 //  Created by Christopher Weems on 3/21/20.
@@ -7,9 +7,11 @@
 
 import Foundation
 
+@available(*, deprecated, renamed: "ProtocolTypedArrayBuilder")
+typealias SimpleArrayBuilder = ProtocolTypedArrayBuilder
+
 @_functionBuilder
-//@available(*, deprecated)
-public struct SimpleArrayBuilder<Element> {
+public struct ProtocolTypedArrayBuilder<Element> {
     public static func buildBlock(_ contents: Element...) -> Array<Element> {
         contents
     }
@@ -32,8 +34,7 @@ public struct SimpleArrayBuilder<Element> {
     
 }
 
-//@available(*, deprecated)
-extension SimpleArrayBuilder {
+extension ProtocolTypedArrayBuilder {
     public static func buildExpression(_ singleElement: Element) -> [Element] {
         [singleElement]
     }
