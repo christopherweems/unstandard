@@ -29,6 +29,7 @@ public struct SimpleArrayBuilder<Element> {
     public static func buildOptional(_ subarray: [Element]?) -> Array<Element> {
         subarray ?? []
     }
+    
 }
 
 //@available(*, deprecated)
@@ -36,4 +37,5 @@ extension SimpleArrayBuilder {
     public static func buildExpression(_ singleElement: Element) -> [Element] {
         [singleElement]
     }
+    
 }
