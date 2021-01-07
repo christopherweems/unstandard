@@ -8,7 +8,7 @@
 import Foundation
 
 @available(*, deprecated, renamed: "ProtocolTypedArrayBuilder")
-typealias SimpleArrayBuilder = ProtocolTypedArrayBuilder
+public typealias SimpleArrayBuilder = ProtocolTypedArrayBuilder
 
 @_functionBuilder
 public struct ProtocolTypedArrayBuilder<Element> {
