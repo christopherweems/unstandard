@@ -12,11 +12,7 @@ public typealias SimpleArrayBuilder = ProtocolTypedArrayBuilder
 
 @_functionBuilder
 public struct ProtocolTypedArrayBuilder<Element> {
-    public static func buildBlock(_ contents: Element...) -> Array<Element> {
-        contents
-    }
-    
-    public static func buildBlock(_ subarrays: [Element]...) -> Array<Element> {
+    public static func buildBlock(_ subarrays: [Element]...) -> [Element] {
         subarrays.flatMap { $0 }
     }
         
@@ -28,7 +24,7 @@ public struct ProtocolTypedArrayBuilder<Element> {
         second
     }
     
-    public static func buildOptional(_ subarray: [Element]?) -> Array<Element> {
+    public static func buildOptional(_ subarray: [Element]?) -> [Element] {
         subarray ?? []
     }
     
