@@ -8,17 +8,16 @@
 import Foundation
 
 public extension DateFormatter {
-    static func withConfiguration(_ configurationHandler: (Self) -> Void) -> Self {
-        let new = Self.init()
+    static func withConfiguration(_ configurationHandler: (DateFormatter) -> Void) -> DateFormatter {
+        let new = DateFormatter()
         configurationHandler(new)
         return new
     }
     
-    
-    convenience init(_ configurationHandler: (Self) -> Void) {
+    convenience init(_ configurationHandler: (DateFormatter) -> Void) {
         self.init()
         configurationHandler(self)
-    
+        
     }
     
 }
