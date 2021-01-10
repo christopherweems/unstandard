@@ -9,9 +9,11 @@ import Foundation
 
 public class _ListFormatter {
     public class func localizedString(byJoining strings: [String]) -> String {
+	#if !os(Linux)
         if #available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
             return ListFormatter.localizedString(byJoining: strings)
         }
+	#endif
         
         switch strings.count {
         case 0:
