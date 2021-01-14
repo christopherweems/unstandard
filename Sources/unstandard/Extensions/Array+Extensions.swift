@@ -175,7 +175,12 @@ public extension Array {
         return new
     }
     
+    mutating func append(@ProtocolTypedArrayBuilder<Element> _ elements: () -> Self) {
+        self.append(contentsOf: elements())
+    }
+    
 }
+
 
 
 // MARK: - Count of elements matching predicate
