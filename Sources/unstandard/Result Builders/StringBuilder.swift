@@ -22,6 +22,11 @@ public struct NewLine: StringBuilderJoinSeparator {
     
 }
 
+public struct Semicolon: StringBuilderJoinSeparator {
+    public static var separator: String { ";" }
+    
+}
+
 public struct SingleSpace: StringBuilderJoinSeparator {
     public static var separator: String { " " }
     
