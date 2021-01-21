@@ -12,7 +12,7 @@
       },
       {
         "package": "swift-algorithms",
-        "repositoryURL": "https://github.com/apple/swift-algorithms",
+        "repositoryURL": "https://github.com/apple/swift-algorithms.git",
         "state": {
           "branch": null,
           "revision": "bb3bafeca0e164ece3403a9de646b7d38c07dd49",
