@@ -20,6 +20,7 @@ public extension String {
     static func space(_ spaceType: SpaceType) -> String {
         spaceType.rawValue
     }
+    
 }
 
 
@@ -53,6 +54,7 @@ public extension String {
             
         }
     }
+    
 }
 
 
@@ -72,6 +74,7 @@ internal extension String {
     func rangeToEnd(startIndex: Index) -> Range<Index> {
         .init(uncheckedBounds: (lower: startIndex, upper: endIndex))
     }
+    
 }
 
 
@@ -142,4 +145,5 @@ internal extension String {
         
         return ranges
     }
+    
 }
