@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct PairBuilder {
     public static func buildBlock<E>(_ lhs: E, _ rhs: E) -> (E, E) {
         (lhs, rhs)
