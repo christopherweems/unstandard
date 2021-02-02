@@ -5,6 +5,7 @@ final class unstandardTests: XCTestCase {
     static var allTests = [
         ("testStringBuilder", testStringBuilder),
         ("testRemoveCamelCase", testRemoveCamelCase),
+        ("testStringJoin", testStringJoin),
         
     ]
 }
@@ -43,6 +44,25 @@ extension unstandardTests {
         XCTAssert(page.contains(content!))
     }
     
+}
+
+extension unstandardTests {
+    func testStringJoin() {
+        let joined: String = .joining(separator: Semicolon.self) {
+            "A"
+            "B"
+        }
+        
+        XCTAssertEqual(joined, "A;B")
+        
+        let joined2 = EmptyJoin.joining {
+            "A"
+            "B"
+        }
+        
+        XCTAssertEqual(joined2, "AB")
+    }
+
 }
 
 extension unstandardTests {
