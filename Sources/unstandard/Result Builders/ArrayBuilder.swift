@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct ArrayBuilder {
     public static func buildBlock<Element>(_ subarrays: [Element]...) -> [Element] {
         subarrays.flatMap { $0 }

@@ -40,7 +40,7 @@ public struct EmptyJoin: StringBuilderJoinSeparator {
 
 // MARK: - StringBuilder
 
-@_functionBuilder
+@resultBuilder
 public struct StringBuilder<Join> where Join : StringBuilderJoinSeparator {
     public static func buildBlock() -> String {
         ""

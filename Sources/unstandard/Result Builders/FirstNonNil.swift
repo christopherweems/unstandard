@@ -5,7 +5,7 @@
 //  Created by Christopher Weems on 10/4/20.
 //
 
-@_functionBuilder
+@resultBuilder
 public struct FirstNonNil {
     public static func buildBlock<Result>(_ elements: Result?...) -> Result {
         guard let firstNonNil = elements.first(where: { $0 != nil }) ?? nil else { fatalError() }

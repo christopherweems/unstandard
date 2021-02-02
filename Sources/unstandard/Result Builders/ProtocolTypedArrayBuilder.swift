@@ -10,7 +10,7 @@ import Foundation
 @available(*, deprecated, renamed: "ProtocolTypedArrayBuilder")
 public typealias SimpleArrayBuilder = ProtocolTypedArrayBuilder
 
-@_functionBuilder
+@resultBuilder
 public struct ProtocolTypedArrayBuilder<Element> {
     public static func buildBlock(_ subarrays: [Element]...) -> [Element] {
         subarrays.flatMap { $0 }
