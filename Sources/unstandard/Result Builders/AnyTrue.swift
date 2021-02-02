@@ -7,10 +7,4 @@
 
 import Foundation
 
-@resultBuilder
-public struct AnyTrue {
-    public static func buildBlock(_ elements: Bool...) -> Bool {
-        elements.lazy.contains(where: \.isTrue)
-    }
-    
-}
+@_exported import struct Resultto.AnyTrue
