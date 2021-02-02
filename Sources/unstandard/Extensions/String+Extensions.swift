@@ -108,6 +108,22 @@ public extension String {
     }
 }
 
+// MARK: -
+
+public extension String {
+    static func joining<Join>(separator: Join.Type, @StringBuilder<Join> _ components: () -> String) -> String where Join : StringBuilderJoinSeparator {
+        components()
+    }
+    
+}
+
+public extension StringBuilderJoinSeparator {
+    static func joining(@StringBuilder<Self> _ components: () -> String) -> String {
+        components()
+    }
+    
+}
+
 
 // MARK: -
 
