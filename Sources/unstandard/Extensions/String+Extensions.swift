@@ -81,6 +81,27 @@ internal extension String {
 //
 
 public extension String {
+    subscript<R>(optionalRange optionalRange: Optional<R>) -> Optional<Substring> where R : RangeExpression, R.Bound == Self.Index {
+        guard let range = optionalRange else { return nil }
+        return self[range]
+    }
+    
+}
+
+
+//
+
+public extension StringProtocol {
+    var containsDuplicates: Bool {
+        self.characters.containsDuplicates
+    }
+    
+}
+
+
+//
+
+public extension String {
     static func compareList(_ comparisonResult: ComparisonResult, options: CompareOptions,
                         @ArrayBuilder strings: () -> [String]) -> Bool {
         let strings = strings()
@@ -160,6 +181,13 @@ internal extension String {
         }
         
         return ranges
+    }
+    
+}
+
+fileprivate extension StringProtocol {
+    var characters: [Character] {
+        indices.map { self[$0] }
     }
     
 }
