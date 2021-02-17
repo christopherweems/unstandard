@@ -9,3 +9,10 @@ public extension Character {
     }
     
 }
+
+extension Array where Element == Character {
+    public func asString() -> String {
+        String(self)
+    }
+    
+}
