@@ -123,6 +123,21 @@ public extension Array where Element : Hashable {
     
 }
 
+// MAKR: - Duplicate Checking
+
+public extension Array where Element : Hashable {
+    var containsDuplicates: Bool {
+        var seen = Set<Element>()
+        
+        return !self.allSatisfy {
+            let hasSeen = seen.contains($0)
+            seen.insert($0)
+            return !hasSeen
+        }
+    }
+    
+}
+
 
 // MARK: - Splitting into groups
 
@@ -164,6 +179,7 @@ public extension Array {
         
         return containers
     }
+    
 }
 
 // MARK: - Appending elements
