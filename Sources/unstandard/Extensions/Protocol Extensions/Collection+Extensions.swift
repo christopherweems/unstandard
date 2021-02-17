@@ -121,7 +121,12 @@ public extension Optional where Wrapped : Collection {
     
 }
 
-
+extension Collection {
+    public func count(where isIncluded: (Element) -> Bool) -> Int {
+        self.filter(isIncluded).count
+    }
+    
+}
 
 
 // MARK: - Collection.IndexPosition
