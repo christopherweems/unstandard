@@ -17,3 +17,16 @@ public extension Range where Bound: FloatingPoint {
         (lhs.lowerBound/rhs)..<(lhs.upperBound/rhs)
     }
 }
+
+
+// MARK: - `Range.offset(_:in:)`
+
+public extension Range {
+    mutating func offset<C: Collection>(_ offset: Int, in collection: C) where Bound == C.Index {
+        let newLowerBound = collection.index(lowerBound, offsetBy: offset)
+        let newUpperBound = collection.index(upperBound, offsetBy: offset)
+        
+        self = newLowerBound..<newUpperBound
+    }
+    
+}
