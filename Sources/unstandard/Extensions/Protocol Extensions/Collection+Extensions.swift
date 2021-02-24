@@ -229,6 +229,20 @@ public extension BidirectionalCollection {
 }
 
 
+// MARK: - `Collection.firstIndex(after:)`
+
+extension Collection {
+    public func firstIndex(after element: Element) -> Index? where Element: Equatable {
+        guard let index = firstIndex(of: element) else { return nil }
+        let idx = self.index(after: index)
+        
+        guard idx != self.endIndex else { return nil }
+        return idx
+    }
+    
+}
+
+
 
 // MARK: - `Collection.sorted(on:)`
 
