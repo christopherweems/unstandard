@@ -20,9 +20,13 @@ public struct ArrayBuilder {
     public static func buildEither<Element>(first: [Element]) -> [Element] {
         first
     }
-
+    
     public static func buildEither<Element>(second: [Element]) ->[Element] {
         second
+    }
+    
+    public static func buildArray<Element>(_ components: [[Element]]) -> [Element] {
+        components.flatMap { $0 }
     }
     
 }
