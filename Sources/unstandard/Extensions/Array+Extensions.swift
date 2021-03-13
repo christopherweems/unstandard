@@ -16,6 +16,14 @@ public extension Array {
     func contains(index: Int) -> Bool {
         return (0..<count).contains(index)
     }
+    
+}
+
+public extension Array {
+    subscript(after elementIndex: Index) -> Element {
+        self[self.index(after: elementIndex)]
+    }
+    
 }
 
 public extension Array {
