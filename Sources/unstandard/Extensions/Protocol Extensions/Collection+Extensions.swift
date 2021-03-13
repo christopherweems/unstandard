@@ -255,6 +255,16 @@ public extension Collection {
 }
 
 
+// MARK: - As Dictionary
+
+public extension Collection {
+    func asDictionary<UniqueKey, Value>() -> [UniqueKey: Value] where Element == (UniqueKey, Value) {
+        Dictionary(uniqueKeysWithValues: self)
+    }
+    
+}
+
+
 // MARK: -
 
 public extension Collection {
