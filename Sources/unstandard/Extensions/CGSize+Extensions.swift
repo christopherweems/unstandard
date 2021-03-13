@@ -31,6 +31,13 @@ public extension CGSize {
 }
 
 public extension CGSize {
+    static prefix func -(size: CGSize) -> CGSize {
+        .init(width: -size.width, height: -size.height)
+    }
+    
+}
+
+public extension CGSize {
     var aspectRatio: CGFloat {
         guard height.isFinite && height != .zero else { return .nan }
         return width / height
