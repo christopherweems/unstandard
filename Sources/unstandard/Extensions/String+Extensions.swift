@@ -24,6 +24,17 @@ public extension String {
 }
 
 
+// MARK: - `.as(_ expressibleByStringLiteralType:)`
+
+public extension String {
+    func `as`<Result>(_ type: Result.Type) -> Result where Result : ExpressibleByStringLiteral,
+                                                           Self == Result.StringLiteralType {
+        type.init(stringLiteral: self)
+    }
+    
+}
+
+
 // MARK: - Split by string separators
 
 public extension String {
