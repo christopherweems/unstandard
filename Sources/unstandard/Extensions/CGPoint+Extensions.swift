@@ -25,6 +25,12 @@ public extension CGPoint {
     }
 }
 
+public extension CGPoint {
+    static func *(lhs: Self, rhs: CGFloat) -> Self {
+        .init(x: lhs.x * rhs, y: lhs.y * rhs)
+    }
+    
+}
 
 // MARK: - Magnitude
 
