@@ -17,6 +17,29 @@ public extension Dictionary {
 // MARK: -
 
 public extension Dictionary {
+    subscript(key: Key, initialValue initialValue: @autoclosure () -> Value) -> Value {
+        mutating get {
+            if let existing = self[key] {
+                return existing
+                
+            } else {
+                let initialValue = initialValue()
+                self[key] = initialValue
+                return initialValue
+            }
+        }
+        set {
+            self[key] = newValue
+        }
+    }
+    
+}
+
+
+
+// MARK: -
+
+public extension Dictionary {
     init(uniqueValuesWithKeys valuesWithKeys: [(Value, Key)]) {
         self.init(uniqueKeysWithValues: valuesWithKeys.map { ($0.1, $0.0) })
         
