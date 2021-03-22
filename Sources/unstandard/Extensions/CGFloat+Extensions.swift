@@ -7,6 +7,7 @@
 
 #if canImport(CoreGraphics)
 import struct CoreGraphics.CGFloat
+import func CoreGraphics.pow
 
 public extension CGFloat {
     func asDouble() -> Double {
@@ -53,5 +54,11 @@ public extension Optional where Wrapped == CGFloat {
     
 }
 
+public extension CGFloat {
+    static func **<EXP>(base: CGFloat, exponent: EXP) -> CGFloat where EXP : BinaryInteger {
+        pow(base, CGFloat(exponent))
+    }
+    
+}
 
 #endif
