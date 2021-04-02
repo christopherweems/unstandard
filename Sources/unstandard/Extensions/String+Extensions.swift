@@ -35,6 +35,17 @@ public extension String {
 }
 
 
+// MARK: - `String.index(afterLastIndexOf:)`
+
+public extension String {
+    func index(afterLastIndexOf element: Element) -> Index? {
+        self.lastIndex(of: element)
+            .flatMap { lastIndex in lastIndex != self.endIndex ? self.index(after: lastIndex) : nil }
+    }
+    
+}
+
+
 // MARK: - Split by string separators
 
 public extension String {
