@@ -255,6 +255,17 @@ public extension Collection {
 }
 
 
+// MARK: - `Collection.allUnique(on:)`
+
+public extension Collection {
+    func allUnique<Value>(on valueKeyPath: KeyPath<Element, Value>) -> Bool where Value : Hashable {
+        let uniqued = self.uniqued { $0[keyPath: valueKeyPath] }
+        return elementsEqual(uniqued) { $0[keyPath: valueKeyPath] == $1[keyPath: valueKeyPath] }
+    }
+    
+}
+
+
 // MARK: - As Dictionary
 
 public extension Collection {
