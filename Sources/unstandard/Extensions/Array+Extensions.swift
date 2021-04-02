@@ -162,7 +162,7 @@ public enum CollectionSplittingStrategy: Equatable {
 
 public extension Array {
     func split(intoGroupsOf maxCountPerBucket: Int, splittingStrategy: CollectionSplittingStrategy = .fillBackward) -> Array<[Element]> {
-        assert(splittingStrategy == .fillBackward, "Only .fillBackward strategy implemented")
+        Swift.assert(splittingStrategy == .fillBackward, "Only .fillBackward strategy implemented")
         
         var containers = Array<[Element]>()
         
