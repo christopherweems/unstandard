@@ -24,6 +24,7 @@ extension Bool : Wrappable { }
 extension Character : Wrappable { }
 extension CollectionDifference : Wrappable { }
 extension CollectionDifference.Change : Wrappable { }
+extension Data: Wrappable { }
 extension DateComponents: Wrappable { }
 extension Dictionary : Wrappable { }
 extension Double : Wrappable { }

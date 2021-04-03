@@ -31,6 +31,7 @@ extension Bool : Iffable { }
 extension Character : Iffable { }
 extension CollectionDifference: Iffable { }
 extension CollectionDifference.Change: Iffable { }
+extension Data: Iffable { }
 extension DateComponents: Iffable { }
 extension Dictionary : Iffable { }
 extension Double : Iffable { }

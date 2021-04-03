@@ -54,6 +54,7 @@ extension Bool : Updatable { }
 extension Character : Updatable { }
 extension CollectionDifference: Updatable { }
 extension CollectionDifference.Change: Updatable { }
+extension Data: Updatable { }
 extension DateComponents: Updatable { }
 extension Dictionary : Updatable { }
 extension Double : Updatable { }
