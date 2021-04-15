@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/christopherweems/Resultto.git",
         "state": {
           "branch": null,
-          "revision": "c810a124d6dbfd678ad7df97c07cdd4dce8a1a21",
-          "version": "0.1.0"
+          "revision": "9069c748af9a6ce8a0bbd9d5493a90649fdb94b8",
+          "version": "0.1.1"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-algorithms.git",
         "state": {
           "branch": null,
-          "revision": "bb3bafeca0e164ece3403a9de646b7d38c07dd49",
-          "version": "0.0.2"
+          "revision": "04d91803a2dd58c14db9cf66c7412c6dd4a26fc8",
+          "version": "0.1.1"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/apple/swift-numerics",
         "state": {
           "branch": null,
-          "revision": "6b24333510e9044cf4716a07bed65eeed6bc6393",
-          "version": "0.0.8"
+          "revision": "6583ac70c326c3ee080c1d42d9ca3361dca816cd",
+          "version": "0.1.0"
         }
       },
       {
