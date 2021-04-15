@@ -76,7 +76,7 @@ public extension Collection {
 public extension Collection where Element: Hashable {
     @available(*, deprecated, message: "Use `Collection.uniqued()` instead")
     func removingDuplicates() -> [Element] {
-        uniqued()
+        Array(uniqued())
     }
     
 }
