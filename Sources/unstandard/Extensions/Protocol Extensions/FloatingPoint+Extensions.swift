@@ -84,3 +84,16 @@ public extension FloatingPoint {
     }
     
 }
+
+
+// MARK: - Multiplying by Sign
+
+public func *<FP: FloatingPoint>(_ sign: FloatingPointSign, _ rhs: FP) -> FP {
+    switch sign {
+    case .plus:
+        return rhs
+        
+    case .minus:
+        return -rhs
+    }
+}
