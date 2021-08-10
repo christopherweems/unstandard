@@ -72,3 +72,17 @@ extension unstandardTests {
     }
     
 }
+
+extension unstandardTests {
+    func testOrderedSetResult() {
+        @OrderedSetResult var testSet: OrderedSet<Int> {
+            1
+            2
+            3
+            0
+        }
+        
+        XCTAssertEqual(testSet.elements, [1, 2, 3, 0])
+    }
+    
+}
