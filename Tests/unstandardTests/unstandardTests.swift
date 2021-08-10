@@ -2,12 +2,7 @@ import XCTest
 @testable import unstandard
 
 final class unstandardTests: XCTestCase {
-    static var allTests = [
-        ("testStringBuilder", testStringBuilder),
-        ("testRemoveCamelCase", testRemoveCamelCase),
-        ("testStringJoin", testStringJoin),
-        
-    ]
+    
 }
 
 
