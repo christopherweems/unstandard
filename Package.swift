@@ -28,7 +28,8 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "0.1.1")),
+        .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "0.2.1")),
+        .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "0.0.5")),
         .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.1")),
         .package(url: "https://github.com/christopherweems/triple-q.git", .upToNextMajor(from: "0.0.1")),
     ],
@@ -39,6 +40,7 @@ let package = Package(
             name: "unstandard",
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
+                .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
                 .product(name: "triple-q", package: "triple-q"),
             ]),

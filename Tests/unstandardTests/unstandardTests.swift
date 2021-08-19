@@ -2,12 +2,7 @@ import XCTest
 @testable import unstandard
 
 final class unstandardTests: XCTestCase {
-    static var allTests = [
-        ("testStringBuilder", testStringBuilder),
-        ("testRemoveCamelCase", testRemoveCamelCase),
-        ("testStringJoin", testStringJoin),
-        
-    ]
+    
 }
 
 
@@ -74,6 +69,20 @@ extension unstandardTests {
         let other = "Other"
         let otherWithoutCamelCase = other.removeCamelCase(separator: " ")
         XCTAssertEqual(otherWithoutCamelCase, "Other")
+    }
+    
+}
+
+extension unstandardTests {
+    func testOrderedSetResult() {
+        @OrderedSetResult var testSet: OrderedSet<Int> {
+            1
+            2
+            3
+            0
+        }
+        
+        XCTAssertEqual(testSet.elements, [1, 2, 3, 0])
     }
     
 }
