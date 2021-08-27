@@ -18,3 +18,40 @@ extension URL: ExpressibleByStringLiteral {
         self = URL(string: value) ?? URL("")
     }
 }
+
+
+// MARK: - Operators
+
+extension URL {
+    public static func +(_ url: URL, pathComponent: String) -> URL {
+        var isDirectory: Bool?
+        
+        var pathComponentStartIndex = pathComponent.startIndex
+        var pathComponentEndIndex = pathComponent.endIndex
+        
+        var trimmedPathComponent: String {
+            pathComponent[pathComponentStartIndex..<pathComponentEndIndex].asString()
+        }
+        
+        if pathComponent.hasPrefix("/") {
+            pathComponentStartIndex.increment(in: pathComponent)
+            
+        }
+        
+        if pathComponent.hasSuffix("/") {
+            isDirectory = true
+            pathComponentEndIndex.decrement(in: pathComponent)
+            
+        }
+        
+        switch isDirectory {
+        case true:
+            return url.appendingPathComponent(trimmedPathComponent, isDirectory: true)
+            
+        case _:
+            return url.appendingPathComponent(trimmedPathComponent)
+            
+        }
+    }
+    
+}
