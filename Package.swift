@@ -31,7 +31,6 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "0.2.1")),
         .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "0.0.5")),
         .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.1")),
-        .package(url: "https://github.com/christopherweems/triple-q.git", .upToNextMajor(from: "0.0.1")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -42,7 +41,6 @@ let package = Package(
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
-                .product(name: "triple-q", package: "triple-q"),
             ]),
         .target(
             name: "do_and_throw",
