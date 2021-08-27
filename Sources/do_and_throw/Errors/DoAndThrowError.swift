@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(*, deprecated)
 enum DoAndThrowError: Error {
     case do_and_throw_error
     

@@ -8,6 +8,7 @@
 import Foundation
 
 /// runs closure throwing any errors, then throws even if none are through
+@available(*, deprecated)
 public func do_and_throw<T>(_ t: () throws -> T) throws {
     try _ = t()
     throw DoAndThrowError.do_and_throw_error
@@ -15,6 +16,7 @@ public func do_and_throw<T>(_ t: () throws -> T) throws {
     
 
 /// does nothing
+@available(*, deprecated)
 public func do_not<T>(_ t: () throws -> T) {
     
 }
