@@ -5,7 +5,7 @@
 //  Created by Christopher Weems on 9/7/21.
 //
 
-protocol Operation {
+public protocol Operation {
     func run() throws
     
 }
