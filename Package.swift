@@ -15,6 +15,9 @@ let package = Package(
             name: "do_and_throw",
             targets: ["do_and_throw"]),
         
+        .library(name: "operation",
+                 targets: ["operation"]),
+        
         .library(name: "transfer",
                  targets: ["transfer"]),
         
@@ -36,12 +39,20 @@ let package = Package(
                 .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
             ]),
+        
         .target(
             name: "do_and_throw",
             dependencies: ["unstandard"]),
+        
+        .target(
+            name: "operation",
+            dependencies: []
+        ),
+        
         .target(
             name: "transfer",
             dependencies: ["unstandard"]),
+        
         .testTarget(
             name: "unstandardTests",
             dependencies: ["unstandard"]),
