@@ -22,8 +22,6 @@ extension Array : Wrappable { }
 extension ArraySlice : Wrappable { }
 extension Bool : Wrappable { }
 extension Character : Wrappable { }
-extension CollectionDifference : Wrappable { }
-extension CollectionDifference.Change : Wrappable { }
 extension Data: Wrappable { }
 extension DateComponents: Wrappable { }
 extension Dictionary : Wrappable { }
@@ -38,6 +36,11 @@ extension String : Wrappable { }
 extension String.Index : Wrappable { }
 extension Substring : Wrappable { }
 extension URL : Wrappable { }
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CollectionDifference : Wrappable { }
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CollectionDifference.Change : Wrappable { }
 
 
 #if canImport(CoreFoundation) && !os(Linux)

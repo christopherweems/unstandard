@@ -52,8 +52,6 @@ extension Array : Updatable { }
 extension ArraySlice : Updatable { }
 extension Bool : Updatable { }
 extension Character : Updatable { }
-extension CollectionDifference: Updatable { }
-extension CollectionDifference.Change: Updatable { }
 extension Data: Updatable { }
 extension DateComponents: Updatable { }
 extension Dictionary : Updatable { }
@@ -69,6 +67,10 @@ extension String.Index : Updatable { }
 extension Substring : Updatable { }
 extension URL : Updatable { }
 
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CollectionDifference : Updatable { }
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CollectionDifference.Change : Updatable { }
 
 #if canImport(CoreFoundation) && !os(Linux)
 extension CFMutableString: Updatable { }

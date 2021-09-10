@@ -29,8 +29,6 @@ extension Array : Iffable { }
 extension ArraySlice : Iffable { }
 extension Bool : Iffable { }
 extension Character : Iffable { }
-extension CollectionDifference: Iffable { }
-extension CollectionDifference.Change: Iffable { }
 extension Data: Iffable { }
 extension DateComponents: Iffable { }
 extension Dictionary : Iffable { }
@@ -45,6 +43,11 @@ extension String : Iffable { }
 extension String.Index : Iffable { }
 extension Substring : Iffable { }
 extension URL : Iffable { }
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CollectionDifference : Iffable { }
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CollectionDifference.Change : Iffable { }
 
 
 #if canImport(CoreFoundation) && !os(Linux)
