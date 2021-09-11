@@ -3,12 +3,9 @@ import XCTest
 
 final class unstandardTests: XCTestCase {
     
-}
-
-
-// MARK: - String Builder Tests
-
-extension unstandardTests {
+    
+    // MARK: - String Builder Tests
+    
     fileprivate var content: String? { "feature presentation" }
     
     @StringBuilder<NewLine> fileprivate var htmlBody: String {
@@ -39,9 +36,9 @@ extension unstandardTests {
         XCTAssert(page.contains(content!))
     }
     
-}
-
-extension unstandardTests {
+    
+    // MARK: - String Join
+    
     func testStringJoin() {
         let joined: String = .joining(separator: Semicolon.self) {
             "A"
@@ -58,9 +55,9 @@ extension unstandardTests {
         XCTAssertEqual(joined2, "AB")
     }
 
-}
-
-extension unstandardTests {
+    
+    // MARK: - Remove Camel Case
+    
     func testRemoveCamelCase() {
         let camelCaseString = "camelCaseString"
         let withoutCamelCase = camelCaseString.removeCamelCase(separator: " ")
@@ -71,18 +68,18 @@ extension unstandardTests {
         XCTAssertEqual(otherWithoutCamelCase, "Other")
     }
     
-}
-
-extension unstandardTests {
+    
+    // MARK: - Ordered Set Result
+    
     func testOrderedSetResult() {
         @OrderedSetResult var testSet: OrderedSet<Int> {
             1
-            2
             3
+            2
             0
         }
         
-        XCTAssertEqual(testSet.elements, [1, 2, 3, 0])
+        XCTAssertEqual(testSet.elements, [1, 3, 2, 0])
     }
     
 }
