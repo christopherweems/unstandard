@@ -4,3 +4,4 @@
 /*.xcodeproj
 .swiftpm/xcode/
 xcuserdata/
+Package.resolved
