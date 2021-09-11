@@ -38,11 +38,17 @@ let package = Package(
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
+                "CustomDebugTreeConvertible",
             ]),
         
         .target(
             name: "do_and_throw",
             dependencies: ["unstandard"]),
+        
+        .target(
+            name: "CustomDebugTreeConvertible",
+            path: "Sources/Standard Library Additions/CustomDebugTreeConvertible/"
+        ),
         
         .target(
             name: "operation",
@@ -56,5 +62,10 @@ let package = Package(
         .testTarget(
             name: "unstandardTests",
             dependencies: ["unstandard"]),
+        
+        .testTarget(
+            name: "CustomDebugTreeConvertibleTests",
+            dependencies: ["CustomDebugTreeConvertible"]),
+    
     ]
 )
