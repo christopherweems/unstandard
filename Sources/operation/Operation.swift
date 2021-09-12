@@ -6,6 +6,6 @@
 //
 
 public protocol Operation {
-    func run() throws
+    mutating func run() throws
     
 }
