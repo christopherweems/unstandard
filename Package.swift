@@ -11,10 +11,6 @@ let package = Package(
             name: "unstandard",
             targets: ["unstandard"]),
         
-        .library(
-            name: "do_and_throw",
-            targets: ["do_and_throw"]),
-        
         .library(name: "operation",
                  targets: ["operation"]),
         
@@ -28,6 +24,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.2")),
+        
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -40,10 +37,6 @@ let package = Package(
                 .product(name: "Resultto", package: "Resultto"),
                 "CustomDebugTreeConvertible",
             ]),
-        
-        .target(
-            name: "do_and_throw",
-            dependencies: ["unstandard"]),
         
         .target(
             name: "CustomDebugTreeConvertible",
