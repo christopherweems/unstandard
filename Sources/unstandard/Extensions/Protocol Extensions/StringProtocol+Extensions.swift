@@ -18,6 +18,7 @@ public extension StringProtocol {
 }
 
 public extension StringProtocol {
+    @inlinable
     func asString() -> String {
         if let string = self as? String {
             return string
@@ -26,12 +27,14 @@ public extension StringProtocol {
         
         return .init(self)
     }
+    
 }
 
 public extension StringProtocol {
     func asDouble() -> Double? {
         Double(self)
     }
+    
 }
 
 
@@ -44,6 +47,7 @@ public extension StringProtocol {
             .map { String($0) }
             .joined()
     }
+    
 }
 
 
@@ -65,6 +69,7 @@ public extension StringProtocol {
             
         }
     }
+    
 }
 
 
@@ -75,6 +80,7 @@ public extension StringProtocol {
         guard !isEmpty else { return nil }
         return self
     }
+    
 }
 
 
@@ -97,6 +103,7 @@ public extension StringProtocol {
         guard let endIndex = unicodeScalars.lastIndex(where: trim.contains) else { return self.asString() }
         return self[..<endIndex].asString()
     }
+    
 }
 
 
@@ -106,4 +113,5 @@ public extension StringProtocol {
     func uppercased(_ uppercased: Bool) -> String {
         uppercased ? self.uppercased() : self.asString()
     }
+    
 }
