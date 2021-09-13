@@ -63,7 +63,7 @@ public extension String {
         }
         
         // our strings lie between the separator ranges
-        let splits = separatorRanges.adjacentPairs.map {
+        let splits = separatorRanges.adjacentPairs().map {
             self[$0.upperBound..<$1.lowerBound].asString()
         }
         
@@ -129,7 +129,7 @@ public extension String {
         let strings = strings()
         precondition(!strings.isEmpty)
         
-        for (lower, upper) in strings.lazy.adjacentPairs {
+        for (lower, upper) in strings.lazy.adjacentPairs() {
             if lower.compare(upper, options: options) != comparisonResult {
                 return false
             }
