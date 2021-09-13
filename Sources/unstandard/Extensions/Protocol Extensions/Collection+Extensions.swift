@@ -278,9 +278,25 @@ public extension Collection {
 
 // MARK: -
 
-public extension Collection {
-    func asArray() -> Array<Element> {
+extension Collection {
+    public func asArray() -> Array<Element> {
         .init(self)
+    }
+    
+}
+
+
+// MARK: -
+
+extension Collection {
+    // returns nil if collection contains zero or more than one element
+    public var onlyElement: Element? {
+        guard hasOneElement else { return nil }
+        return self[startIndex]
+    }
+    
+    public var hasOneElement: Bool {
+        !isEmpty && index(after: startIndex) == endIndex
     }
     
 }
