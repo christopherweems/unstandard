@@ -213,3 +213,27 @@ fileprivate extension StringProtocol {
     }
     
 }
+
+
+// MARK: - `String.prefix(truncatedTo:)`
+
+
+extension String {
+    public func prefix(truncatedTo maxLength: Int, ellipsis: String = "...") -> String {
+        guard maxLength < count else { return self }
+        let prefixLength = (maxLength - ellipsis.count).bounded(within: 0...)
+        
+        return self.prefix(prefixLength).appending(ellipsis)
+    }
+    
+}
+
+
+// MARK: - `String.removing(charactersIn:)`
+
+extension String {
+    public func removing(charactersIn removeSet: CharacterSet) -> String {
+        String(self.unicodeScalars.filter { !removeSet.contains($0) })
+    }
+    
+}
