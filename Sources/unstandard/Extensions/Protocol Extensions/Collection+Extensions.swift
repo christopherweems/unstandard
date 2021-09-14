@@ -259,8 +259,9 @@ public extension Collection {
 
 public extension Collection {
     func allUnique<Value>(on valueKeyPath: KeyPath<Element, Value>) -> Bool where Value : Hashable {
+        // TODO: reimplement with a more efficient early-breaking loop
         let uniqued = self.uniqued { $0[keyPath: valueKeyPath] }
-        return elementsEqual(uniqued) { $0[keyPath: valueKeyPath] == $1[keyPath: valueKeyPath] }
+        return self.elementsEqual(uniqued) { $0[keyPath: valueKeyPath] == $1[keyPath: valueKeyPath] }
     }
     
 }
