@@ -10,16 +10,16 @@ import Foundation
 
 // MARK: -
 
-public extension StringProtocol {
-    func `as`<Other: ExpressibleByStringLiteral>(_ type: Other.Type) -> Other where Other.StringLiteralType == Self {
+extension StringProtocol {
+    public func `as`<Other: ExpressibleByStringLiteral>(_ type: Other.Type) -> Other where Other.StringLiteralType == Self {
         Other(stringLiteral: self)
     }
     
 }
 
-public extension StringProtocol {
+extension StringProtocol {
     @inlinable
-    func asString() -> String {
+    public func asString() -> String {
         if let string = self as? String {
             return string
         
@@ -30,8 +30,8 @@ public extension StringProtocol {
     
 }
 
-public extension StringProtocol {
-    func asDouble() -> Double? {
+extension StringProtocol {
+    public func asDouble() -> Double? {
         Double(self)
     }
     
@@ -40,8 +40,8 @@ public extension StringProtocol {
 
 // MARK: - .filtered(by:)
 
-public extension StringProtocol {
-    func filtered(by filterSet: CharacterSet) -> String {
+extension StringProtocol {
+    public func filtered(by filterSet: CharacterSet) -> String {
         self.unicodeScalars
             .filter(filterSet.contains)
             .map { String($0) }

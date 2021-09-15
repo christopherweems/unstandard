@@ -23,7 +23,9 @@ public extension BinaryInteger {
     
     mutating func bound(within range: ClosedRange<Self>) {
         self = self.bounded(within: range)
+        
     }
+    
 }
 
 public extension BinaryInteger {
@@ -34,4 +36,5 @@ public extension BinaryInteger {
     func isBounded(within range: Range<Self>) -> Bool {
         range.contains(self)
     }
+    
 }

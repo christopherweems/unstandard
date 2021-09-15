@@ -3,15 +3,15 @@
 
 import Foundation
 
-public extension ExpressibleByBooleanLiteral {
-    static func all(_ value: Bool, @ArrayBuilder _ builder: () -> [Bool]) -> Bool {
+extension ExpressibleByBooleanLiteral {
+    public static func all(_ value: Bool, @ArrayBuilder _ builder: () -> [Bool]) -> Bool {
         builder().allSatisfy { $0 == value }
     }
     
 }
 
-public extension ExpressibleByBooleanLiteral {
-    static func any(_ value: Bool, @ArrayBuilder _ builder: () -> [Bool]) -> Bool {
+extension ExpressibleByBooleanLiteral {
+    public static func any(_ value: Bool, @ArrayBuilder _ builder: () -> [Bool]) -> Bool {
         builder().contains { $0 == value }
     }
     

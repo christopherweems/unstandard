@@ -10,28 +10,31 @@ import Foundation
 precedencegroup ExponentiationPrecedence {
     associativity: right
     higherThan: MultiplicationPrecedence
+    
 }
 
 infix operator ** : ExponentiationPrecedence
 
-public extension BinaryFloatingPoint {
-    static func **(_ base: Self, exponent: Double) -> Double {
+extension BinaryFloatingPoint {
+    public static func **(_ base: Self, exponent: Double) -> Double {
         pow(Double(base), exponent)
     }
+    
 }
 
-public extension BinaryFloatingPoint {
-    mutating func bound(within range: PartialRangeFrom<Self>) {
+extension BinaryFloatingPoint {
+    public mutating func bound(within range: PartialRangeFrom<Self>) {
         self.bound(within: range.lowerBound...(.infinity))
     }
+    
 }
 
-public extension BinaryFloatingPoint {
-    func bounded(within boundingRange: PartialRangeFrom<Self>) -> Self {
+extension BinaryFloatingPoint {
+    public func bounded(within boundingRange: PartialRangeFrom<Self>) -> Self {
         self < boundingRange.lowerBound ? boundingRange.lowerBound : self
     }
     
-    func bounded(within boundingRange: PartialRangeUpTo<Self>) -> Self {
+    public func bounded(within boundingRange: PartialRangeUpTo<Self>) -> Self {
         self < boundingRange.upperBound ? self : boundingRange.upperBound
     }
     

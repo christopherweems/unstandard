@@ -8,15 +8,16 @@
 import Algorithms
 import Foundation
 
-public extension Collection {
-    @inlinable func _first(whereOptionalIsTrue predicate: (Element) throws -> Bool?) rethrows -> Element? {
+extension Collection {
+    @inlinable
+    public func _first(whereOptionalIsTrue predicate: (Element) throws -> Bool?) rethrows -> Element? {
         try self.first(where: { try predicate($0) == true })
     }
     
 }
 
-public extension Collection {
-    func _compactMap<ElementOfResult>(discardThrowing transform: (Element) throws -> ElementOfResult?) -> [ElementOfResult] {
+extension Collection {
+    public func _compactMap<ElementOfResult>(discardThrowing transform: (Element) throws -> ElementOfResult?) -> [ElementOfResult] {
         self.compactMap {
             try? transform($0)
         }
@@ -25,28 +26,21 @@ public extension Collection {
 }
 
 
-public extension Collection {
+extension Collection {
     /// usage: `foo._forEach(adjacentPair: { preceding, succeeding in ... })`
-    func _forEach(adjacentPair pairBody: (Element, Element) -> Void) {
-        var lastIndex = startIndex
-        
-        while true {
-            let next = self.index(after: lastIndex)
-            guard next != endIndex else { break }
-            pairBody(self[lastIndex], self[next])
-            lastIndex = next
-            
-        }
+    @available(*, deprecated, message: "Use `.adjacentPairs().forEach { .. } instead`")
+    public func _forEach(adjacentPair pairBody: (Element, Element) -> Void) {
+        self.adjacentPairs().forEach(pairBody)
         
     }
-
+    
 }
 
 
 // MARK: .divide(..)
 
-public extension Collection {
-    func divide(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+extension Collection {
+    public func divide(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
         var trueContent = [Element]()
         var falseContent = [Element]()
         
@@ -63,8 +57,8 @@ public extension Collection {
         return [trueContent, falseContent]
     }
     
-    @available(*, deprecated)
-    func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+    @available(*, deprecated, renamed: "divide(on:)")
+    public func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
         divide(on: keyPath)
     }
     
@@ -73,9 +67,9 @@ public extension Collection {
 
 // MARK: - Removing Duplicates
 
-public extension Collection where Element: Hashable {
+extension Collection where Element: Hashable {
     @available(*, deprecated, message: "Use `Collection.uniqued()` instead")
-    func removingDuplicates() -> [Element] {
+    public func removingDuplicates() -> [Element] {
         Array(uniqued())
     }
     
@@ -84,8 +78,8 @@ public extension Collection where Element: Hashable {
 
 // MARK: - Union
 
-public extension Collection where Element : OptionSet {
-    func union() -> Element {
+extension Collection where Element : OptionSet {
+    public func union() -> Element {
         var new = Element()
         self.forEach { new.formUnion($0) }
         return new
@@ -96,15 +90,15 @@ public extension Collection where Element : OptionSet {
 
 // MARK: - Not Empty
 
-public extension Collection {
-    var notEmpty: Self? {
+extension Collection {
+    public var notEmpty: Self? {
         isEmpty ? nil : self
     }
     
 }
 
-public extension Optional where Wrapped: Collection {
-    var notEmpty: Wrapped? {
+extension Optional where Wrapped: Collection {
+    public var notEmpty: Wrapped? {
         self?.notEmpty
     }
     
@@ -114,8 +108,8 @@ public extension Optional where Wrapped: Collection {
 
 // MARK: - Is Empty
 
-public extension Optional where Wrapped : Collection {
-    var isEmpty: Bool {
+extension Optional where Wrapped : Collection {
+    public var isEmpty: Bool {
         self?.isEmpty ?? true
     }
     
@@ -136,10 +130,10 @@ public enum CollectionIndexPosition {
     
 }
 
-public extension Collection {
-    typealias IndexPosition = CollectionIndexPosition
+extension Collection {
+    public typealias IndexPosition = CollectionIndexPosition
     
-    func index(at indexPosition: IndexPosition) -> Index {
+    public func index(at indexPosition: IndexPosition) -> Index {
         switch indexPosition {
         case .endIndex:
             return endIndex
@@ -149,8 +143,8 @@ public extension Collection {
     
 }
 
-public extension Collection {
-    func range(at position: IndexPosition) -> Range<Index> {
+extension Collection {
+    public func range(at position: IndexPosition) -> Range<Index> {
         switch position {
         case .endIndex:
             return self.endIndex..<self.endIndex
@@ -163,8 +157,8 @@ public extension Collection {
 
 // MARK: - Collection.split(after:)
 
-public extension Collection {
-    func split(after elementTerminatesGroup: (Element) -> Bool) -> [ArraySlice<Self.Element>] {
+extension Collection {
+    public func split(after elementTerminatesGroup: (Element) -> Bool) -> [ArraySlice<Self.Element>] {
         let allElements = Array(self)
         var groupRanges = [Range<Int>]()
         
@@ -178,6 +172,7 @@ public extension Collection {
                 currentRange = Range(uncheckedBounds: (lower: currentRange.upperBound, upper: currentRange.upperBound))
                 
             }
+            
         }
         
         groupRanges.append(currentRange)
@@ -191,8 +186,8 @@ public extension Collection {
 
 // MARK: - Is
 
-public extension Collection {
-    func `is`(where predicate: (Self) -> Bool) -> Bool {
+extension Collection {
+    public func `is`(where predicate: (Self) -> Bool) -> Bool {
         predicate(self)
     }
     
@@ -201,8 +196,8 @@ public extension Collection {
 
 // MARK: - Has Elements
 
-public extension Collection {
-    var hasElements: Bool {
+extension Collection {
+    public var hasElements: Bool {
         !isEmpty
     }
     
@@ -211,8 +206,8 @@ public extension Collection {
 
 // MARK: - Contains Single Element
 
-public extension Collection {
-    var containsSingleElement: Bool {
+extension Collection {
+    public var containsSingleElement: Bool {
         index(after: startIndex) == endIndex
     }
     
@@ -221,8 +216,8 @@ public extension Collection {
 
 // MARK: - Last Element Index
 
-public extension BidirectionalCollection {
-    var lastElementIndex: Index {
+extension BidirectionalCollection {
+    public var lastElementIndex: Index {
         index(before: endIndex)
     }
     
@@ -246,9 +241,9 @@ extension Collection {
 
 // MARK: - `Collection.sorted(on:)`
 
-public extension Collection {
-    func sorted<V: Comparable>(on keyPath: KeyPath<Element, V>,
-                               comparison: (V, V) -> Bool = { $0 < $1 }) -> [Element] {
+extension Collection {
+    public func sorted<V: Comparable>(on keyPath: KeyPath<Element, V>,
+                                      comparison: (V, V) -> Bool = { $0 < $1 }) -> [Element] {
         self.sorted { comparison($0[keyPath: keyPath], $1[keyPath: keyPath]) }
     }
     
@@ -257,8 +252,8 @@ public extension Collection {
 
 // MARK: - `Collection.allUnique(on:)`
 
-public extension Collection {
-    func allUnique<Value>(on valueKeyPath: KeyPath<Element, Value>) -> Bool where Value : Hashable {
+extension Collection {
+    public func allUnique<Value>(on valueKeyPath: KeyPath<Element, Value>) -> Bool where Value : Hashable {
         // TODO: reimplement with a more efficient early-breaking loop
         let uniqued = self.uniqued { $0[keyPath: valueKeyPath] }
         return self.elementsEqual(uniqued) { $0[keyPath: valueKeyPath] == $1[keyPath: valueKeyPath] }
@@ -269,8 +264,8 @@ public extension Collection {
 
 // MARK: - As Dictionary
 
-public extension Collection {
-    func asDictionary<UniqueKey, Value>() -> [UniqueKey: Value] where Element == (UniqueKey, Value) {
+extension Collection {
+    public func asDictionary<UniqueKey, Value>() -> [UniqueKey: Value] where Element == (UniqueKey, Value) {
         Dictionary(uniqueKeysWithValues: self)
     }
     

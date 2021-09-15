@@ -8,12 +8,12 @@
 
 // MARK: - Golden Ratio
 
-public extension FloatingPoint {
-    static var phi: Self {
+extension FloatingPoint {
+    public static var phi: Self {
         (Self.init(1) + Self.init(5).squareRoot()) / Self.init(2)
     }
     
-    static var phiInverse: Self {
+    public static var phiInverse: Self {
         Self.init(2) / (Self.init(1) + Self.init(5).squareRoot())
     }
     
@@ -22,21 +22,21 @@ public extension FloatingPoint {
 
 // MARK: - Multiplicative Inverse
 
-public extension FloatingPoint {
-    var multiplicativeInverse: Self { 1 / self }
+extension FloatingPoint {
+    public var multiplicativeInverse: Self { 1 / self }
     
 }
 
 
 // MARK: - Tau / Circle Methods
 
-public extension FloatingPoint {
-    static var tau: Self { .pi * 2 }
+extension FloatingPoint {
+    public static var tau: Self { .pi * 2 }
     
 }
 
-public extension FloatingPoint {
-    func shifted(byClockwiseRotations period: Self) -> Self {
+extension FloatingPoint {
+    public func shifted(byClockwiseRotations period: Self) -> Self {
         self + period * .tau
     }
     
@@ -45,8 +45,8 @@ public extension FloatingPoint {
 
 // MARK: - Bound Within Range
 
-public extension FloatingPoint {
-    func bounded(within range: ClosedRange<Self>) -> Self {
+extension FloatingPoint {
+    public func bounded(within range: ClosedRange<Self>) -> Self {
         switch self {
         case (...range.lowerBound):
             return range.lowerBound
@@ -59,7 +59,7 @@ public extension FloatingPoint {
         }
     }
     
-    mutating func bound(within range: ClosedRange<Self>) {
+    public mutating func bound(within range: ClosedRange<Self>) {
         self = self.bounded(within: range)
     }
     
@@ -68,8 +68,8 @@ public extension FloatingPoint {
 
 // MARK: - Is Within
 
-public extension FloatingPoint {
-    func isWithin(_ range: ClosedRange<Self>) -> Bool {
+extension FloatingPoint {
+    public func isWithin(_ range: ClosedRange<Self>) -> Bool {
         range.lowerBound <= self && self <= range.upperBound
     }
     
@@ -78,8 +78,8 @@ public extension FloatingPoint {
 
 // MARK: - Initialize from Boolean Value
 
-public extension FloatingPoint {
-    init(_ value: Bool) {
+extension FloatingPoint {
+    public init(_ value: Bool) {
         self.init(value ? 1 : 0)
     }
     

@@ -7,8 +7,8 @@
 
 import Foundation
 
-public extension ExpressibleByArrayLiteral {
-    init(@ArrayBuilder _ builder: () -> Self) {
+extension ExpressibleByArrayLiteral {
+    public init(@ArrayBuilder _ builder: () -> Self) {
         self = builder()
         
     }

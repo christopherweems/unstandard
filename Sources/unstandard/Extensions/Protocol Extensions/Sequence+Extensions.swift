@@ -5,8 +5,8 @@
 //  Created by Christopher Weems on 8/25/19.
 //
 
-public extension Sequence {
-    func mapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
+extension Sequence {
+    public func mapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
         for element in self {
             guard let mapped = try transform(element) else { continue }
             return mapped
@@ -15,7 +15,7 @@ public extension Sequence {
         return nil
     }
     
-    func mapLast<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
+    public func mapLast<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
         for element in self.reversed() {
             guard let mapped = try transform(element) else { continue }
             return mapped
@@ -29,8 +29,8 @@ public extension Sequence {
 
 // MARK: - Stable Sort
 
-public extension Sequence {
-    func stableSorted(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> [Element] {
+extension Sequence {
+    public func stableSorted(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> [Element] {
         try enumerated()
             .sorted { a, b -> Bool in
                 try areInIncreasingOrder(a.element, b.element) ||
@@ -41,8 +41,8 @@ public extension Sequence {
     
 }
 
-public extension Sequence where Element : Comparable {
-    func stableSorted() -> [Element] {
+extension Sequence where Element : Comparable {
+    public func stableSorted() -> [Element] {
         self.stableSorted(by: { $0 < $1 })
     }
     
@@ -51,9 +51,9 @@ public extension Sequence where Element : Comparable {
 
 // MARK: - Dividing into buckets
 
-public extension Sequence {
+extension Sequence {
     /// bucket[last].count <= itemsPerBucket
-    func bucket(itemsPerBucket: Int) -> [ArraySlice<Element>] {
+    public func bucket(itemsPerBucket: Int) -> [ArraySlice<Element>] {
         var all = [ArraySlice<Element>]()
         
         let elements = Array(self)
@@ -76,16 +76,16 @@ public extension Sequence {
 
 // MARK: - Replacing occurrences of elements
 
-public extension Sequence where Element: Hashable {
-    func replacingOccurrences(of matches: Element..., with pattern: Element) -> [Element] {
+extension Sequence where Element: Hashable {
+    public func replacingOccurrences(of matches: Element..., with pattern: Element) -> [Element] {
         let matches = Set(matches)
         return self.map { matches.contains($0) ? pattern : $0 }
     }
     
 }
 
-public extension Sequence where Element: Equatable {
-    func replacingOccurrences(of match: Element, with pattern: Element) -> [Element] {
+extension Sequence where Element: Equatable {
+    public func replacingOccurrences(of match: Element, with pattern: Element) -> [Element] {
         self.map { match == $0 ? pattern : $0 }
     }
     
