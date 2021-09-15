@@ -14,4 +14,10 @@ extension ByteCountFormatter {
         
     }
     
+    public convenience init(allowedUnits: ByteCountFormatter.Units...) {
+        self.init()
+        self.allowedUnits = allowedUnits.union()
+        
+    }
+    
 }
