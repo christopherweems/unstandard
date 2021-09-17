@@ -10,9 +10,16 @@
 
 import CoreGraphics
 
-public extension CGRect {
-    var midPoint: CGPoint {
+extension CGRect {
+    public var midPoint: CGPoint {
         .init(x: midX, y: midY)
+    }
+    
+}
+
+extension CGRect {
+    public var maxSize: CGSize {
+        .init(width: maxX, height: maxY)
     }
     
 }
