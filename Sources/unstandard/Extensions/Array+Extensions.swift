@@ -56,6 +56,16 @@ public extension ArraySlice {
 }
 
 
+// MARK: -
+
+extension Array {
+    public subscript(_ index: Index, defaultValue defaultValue: @autoclosure () -> Element) -> Element {
+        self.at(index) ?? defaultValue()
+    }
+    
+}
+
+
 // MARK: - Non Empty
 
 public extension Array {
