@@ -93,6 +93,16 @@ public extension CGSize {
     
 }
 
+// MARK: - Components Ascending
+
+extension CGSize {
+    public func components(ascending: Bool) -> (CGFloat, CGFloat) {
+        let components = [width, height].sorted { ascending ? $0 < $1 : $1 < $0 }
+        return (components[0], components[1])
+    }
+    
+}
+
 
 // MARK: - Creating a CGRect
 
