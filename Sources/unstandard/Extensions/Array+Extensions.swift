@@ -7,31 +7,31 @@
 
 import Foundation
 
-public extension Array {
-    var indexOfLastItem: Int! {
+extension Array {
+    public var indexOfLastItem: Int! {
         guard !isEmpty else { return nil }
         return count - 1
     }
     
-    func contains(index: Int) -> Bool {
+    public func contains(index: Int) -> Bool {
         return (0..<count).contains(index)
     }
     
 }
 
-public extension Array {
-    subscript(after elementIndex: Index) -> Element {
+extension Array {
+    public subscript(after elementIndex: Index) -> Element {
         self[self.index(after: elementIndex)]
     }
     
 }
 
-public extension Array {
-    var chooseOne: Element? {
+extension Array {
+    public var chooseOne: Element? {
         randomElement()
     }
     
-    func choose(_ n: Int) -> [Element]? {
+    public func choose(_ n: Int) -> [Element]? {
         guard n <= self.count else { return nil }
         return Array(shuffled().prefix(n))
     }
@@ -40,19 +40,21 @@ public extension Array {
 
 // MARK: - .at(..)
 
-public extension Array {
-    func at(_ index: Array.Index) -> Element? {
+extension Array {
+    public func at(_ index: Array.Index) -> Element? {
         guard (startIndex..<endIndex).contains(index) else { return nil }
         return self[index]
     }
+    
 }
 
-public extension ArraySlice {
-    func at(_ index: Index) -> Element? {
+extension ArraySlice {
+    public func at(_ index: Index) -> Element? {
         guard index < endIndex else { return nil }
         guard startIndex <= index else { return nil }
         return self[index]
     }
+    
 }
 
 
@@ -68,48 +70,62 @@ extension Array {
 
 // MARK: - Non Empty
 
-public extension Array {
-    var nonEmpty: Array? { isEmpty ? nil : self }
+extension Array {
+    public var nonEmpty: Array? { isEmpty ? nil : self }
     
 }
 
 
 // MARK: - As Set
 
-public extension Array where Element: Hashable {
-    func asSet() -> Set<Element> {
+extension Array where Element: Hashable {
+    public func asSet() -> Set<Element> {
         .init(self)
     }
+    
 }
 
-public extension ArraySlice where Element : Hashable {
-    func asSet() -> Set<Element> {
+extension ArraySlice where Element : Hashable {
+    public func asSet() -> Set<Element> {
         .init(self)
     }
+    
 }
 
 
 // MARK: - Last Index
 
-public extension Array {
-    var lastIndex: Index {
+extension Array {
+    public var lastIndex: Index {
         guard !isEmpty else { return startIndex }
         return index(before: endIndex)
     }
+    
 }
 
-public extension ArraySlice {
-    var lastIndex: Index {
+extension ArraySlice {
+    public var lastIndex: Index {
         guard !isEmpty else { return startIndex }
         return index(before: endIndex)
     }
+    
+}
+
+
+// MARK: - Flat Map
+
+extension Array {
+    public static func flatMap(@SimpleArrayBuilder<[Element]> _ contents: () -> Array<[Element]>) -> [Element] {
+        contents().flatMap { $0 }
+    }
+    
 }
 
 
 // MARK: - Intereleave
 
-public extension Array {
-    func interleave(_ element: Element) -> Self {
+extension Array {
+    public func interleave(_ element: Element) -> Self {
         self.map { [$0, element] }
             .flatMap { $0 }
             .dropLast()
@@ -121,7 +137,7 @@ public extension Array {
 
 // MARK: - Removing Duplicates
 
-public extension Array where Element : Hashable {
+extension Array where Element : Hashable {
     
     /// Returns all unique (by hash value) elements in the array.
     /// In the case of a collision, only the lower indexed item is returned.
@@ -129,7 +145,7 @@ public extension Array where Element : Hashable {
     /// - Returns: Filtered array of unique.
     ///
     /// - Complexity: O(n) where n == number of elements in array.
-    func removingDuplicates() -> Self {
+    public func removingDuplicates() -> Self {
         var seen = Set<Element>()
         
         return self.compactMap { proposedElement in
@@ -143,8 +159,8 @@ public extension Array where Element : Hashable {
 
 // MAKR: - Duplicate Checking
 
-public extension Array where Element : Hashable {
-    var containsDuplicates: Bool {
+extension Array where Element : Hashable {
+    public var containsDuplicates: Bool {
         var seen = Set<Element>()
         
         return !self.allSatisfy {
@@ -170,8 +186,8 @@ public enum CollectionSplittingStrategy: Equatable {
 }
 
 
-public extension Array {
-    func split(intoGroupsOf maxCountPerBucket: Int, splittingStrategy: CollectionSplittingStrategy = .fillBackward) -> Array<[Element]> {
+extension Array {
+    public func split(intoGroupsOf maxCountPerBucket: Int, splittingStrategy: CollectionSplittingStrategy = .fillBackward) -> Array<[Element]> {
         Swift.assert(splittingStrategy == .fillBackward, "Only .fillBackward strategy implemented")
         
         var containers = Array<[Element]>()
@@ -202,14 +218,14 @@ public extension Array {
 
 // MARK: - Appending elements
 
-public extension Array {
-    func appending(@ProtocolTypedArrayBuilder<Element> _ elements: () -> [Element]) -> Self {
+extension Array {
+    public func appending(@ProtocolTypedArrayBuilder<Element> _ elements: () -> [Element]) -> Self {
         var new = self
         new += elements()
         return new
     }
     
-    mutating func append(@ProtocolTypedArrayBuilder<Element> _ elements: () -> Self) {
+    public mutating func append(@ProtocolTypedArrayBuilder<Element> _ elements: () -> Self) {
         self.append(contentsOf: elements())
     }
     
@@ -219,9 +235,9 @@ public extension Array {
 
 // MARK: - Count of elements matching predicate
 
-public extension Array {
+extension Array {
     /// [3, 0, -5].count(\.isZero) == 1
-    func count(_ predicate: (Element) -> Bool) -> Int {
+    public func count(_ predicate: (Element) -> Bool) -> Int {
         self.filter(predicate)
             .count
     }
@@ -231,8 +247,8 @@ public extension Array {
 
 // MARK: - Function Builder initializers
 
-public extension Array {
-    init(@ArrayBuilder _ builder: () -> Self) {
+extension Array {
+    public init(@ArrayBuilder _ builder: () -> Self) {
         self = builder()
     }
     
