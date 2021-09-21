@@ -20,3 +20,46 @@ extension FileManager {
     }
     
 }
+
+@available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
+extension FileManager {
+    public enum AsyncDocumentURLEnumerationError: Error {
+        case invalidDocumentExtension
+        
+    }
+    
+    public func documentURLs(withExtension docExtension: String,
+                             withinDirectoryAt directoryURL: URL,
+                             includeDocumentsInSubdirectories: Bool = false) throws -> AsyncStream<URL> {
+        guard !docExtension.hasPrefix(".") else {
+            throw AsyncDocumentURLEnumerationError.invalidDocumentExtension
+        }
+        
+        guard let directoryEnumerator = enumerator(at: directoryURL, includingPropertiesForKeys: []) else {
+            throw CocoaError(.fileReadNoSuchFile)
+        }
+        
+        return .init(URL.self) { continuation in
+            for value in directoryEnumerator {
+                let directoryURL = value as! URL
+                
+                if directoryURL.lastPathComponent.hasSuffix(".\(docExtension)") {
+                    directoryEnumerator.skipDescendants()
+                    continuation.yield(directoryURL)
+                    
+                }
+                
+                if !includeDocumentsInSubdirectories && directoryURL.hasDirectoryPath {
+                    directoryEnumerator.skipDescendants()
+                    
+                }
+                
+            }
+            
+            continuation.finish()
+            
+        }
+    }
+    
+}
+
