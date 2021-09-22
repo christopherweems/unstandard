@@ -153,15 +153,24 @@ public extension String {
 
 // MARK: -
 
-public extension String {
-    static func joining<Join>(separator: Join.Type, @StringBuilder<Join> _ components: () -> String) -> String where Join : StringBuilderJoinSeparator {
+extension String {
+    public init<SP>(joinSeparator: String, @ProtocolTypedArrayBuilder<SP> components: () -> [SP]) where SP : StringProtocol {
+        self = components().joined(separator: joinSeparator)
+    }
+    
+ }
+
+
+extension String {
+    public static func joining<Join>(separator: Join.Type,
+    @StringBuilder<Join> _ components: () -> String) -> String where Join : StringBuilderJoinSeparator {
         components()
     }
     
 }
 
-public extension StringBuilderJoinSeparator {
-    static func joining(@StringBuilder<Self> _ components: () -> String) -> String {
+extension StringBuilderJoinSeparator {
+    public static func joining(@StringBuilder<Self> _ components: () -> String) -> String {
         components()
     }
     
