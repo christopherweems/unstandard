@@ -7,13 +7,24 @@
 
 import Foundation
 
-public extension CharacterSet {
-    static func +(_ lhs: CharacterSet, _ rhs: String) -> CharacterSet {
+extension CharacterSet {
+    public static let hyphens: CharacterSet = {
+        ["-"]
+    }()
+    
+}
+
+
+// MARK: - Operators
+
+extension CharacterSet {
+    public static func +(_ lhs: CharacterSet, _ rhs: String) -> CharacterSet {
         lhs.union(.init(charactersIn: rhs))
     }
     
-    static func -(lhs: CharacterSet, rhs: String) -> CharacterSet {
+    public static func -(lhs: CharacterSet, rhs: String) -> CharacterSet {
         let removeSet = CharacterSet(charactersIn: rhs)
         return lhs.subtracting(removeSet)
     }
+    
 }
