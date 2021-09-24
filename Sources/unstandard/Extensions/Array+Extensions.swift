@@ -112,11 +112,26 @@ extension ArraySlice {
 }
 
 
-// MARK: - Flat Map
+// MARK: - Flatten
 
 extension Array {
-    public static func flatMap(@SimpleArrayBuilder<[Element]> _ contents: () -> Array<[Element]>) -> [Element] {
+    public static func flatten(@SimpleArrayBuilder<[Element]> contents: () -> Array<[Element]>) -> [Element] {
         contents().flatMap { $0 }
+    }
+    
+    @available(*, deprecated, renamed: "flatten")
+    public static func flatMap(@SimpleArrayBuilder<[Element]> _ contents: () -> Array<[Element]>) -> [Element] {
+        self.flatten(contents: contents)
+    }
+    
+}
+
+
+// MARK: - Compact Map
+
+extension Array {
+    public static func compact(@SimpleArrayBuilder<Element?> _ contents: () -> Array<Element?>) -> [Element] {
+        contents().compactMap { $0 }
     }
     
 }
