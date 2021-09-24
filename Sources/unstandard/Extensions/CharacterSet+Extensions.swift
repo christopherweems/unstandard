@@ -18,6 +18,10 @@ extension CharacterSet {
 // MARK: - Operators
 
 extension CharacterSet {
+    public static func +(_ lhs: CharacterSet, _ rhs: CharacterSet) -> CharacterSet {
+        lhs.union(rhs)
+    }
+    
     public static func +(_ lhs: CharacterSet, _ rhs: String) -> CharacterSet {
         lhs.union(.init(charactersIn: rhs))
     }
