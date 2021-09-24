@@ -115,3 +115,14 @@ public extension StringProtocol {
     }
     
 }
+
+
+// MARK: - Suffix from index by key path
+
+extension StringProtocol {
+    public func suffix(from indexKeyPath: KeyPath<Self, Index>) -> SubSequence {
+        let index = self[keyPath: indexKeyPath]
+        return suffix(from: index)
+    }
+    
+}
