@@ -296,3 +296,20 @@ extension Collection {
     }
     
 }
+
+
+// MARK: - Higher Order Functions on String collections
+
+extension Collection where Element : StringProtocol {
+    public func map(trimmingCharactersIn trimmingSet: CharacterSet) -> [String] {
+        self.map { $0.trimmingCharacters(in: trimmingSet) }
+    }
+    
+    public func flatMap<S, E>(componentsSeparatedBy seperator: S, transform: ([String]) throws -> [E]) rethrows -> [E] where S : StringProtocol {
+        try self.flatMap { p -> [E] in
+            let components = p.components(separatedBy: seperator)
+            return try transform(components)
+        }
+    }
+    
+}
