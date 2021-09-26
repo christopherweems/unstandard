@@ -37,28 +37,6 @@ extension StringProtocol {
     
 }
 
-// MARK: - Full Range
-
-extension StringProtocol {
-    public var fullRange: Range<Self.Index> {
-        startIndex..<endIndex
-    }
-    
-}
-
-
-// MARK: - .filtered(by:)
-
-extension StringProtocol {
-    public func filtered(by filterSet: CharacterSet) -> String {
-        self.unicodeScalars
-            .filter(filterSet.contains)
-            .map { String($0) }
-            .joined()
-    }
-    
-}
-
 
 // MARK: - .leftPadding(...)
 
