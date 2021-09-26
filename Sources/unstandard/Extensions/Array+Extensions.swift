@@ -269,3 +269,10 @@ extension Array {
     
 }
 
+extension Array {
+    public init(type: Element.Type, @ProtocolTypedArrayBuilder<Element> contents: () -> Self) {
+        self = contents()
+        
+    }
+    
+}
