@@ -14,4 +14,10 @@ final class unstandardStringsTests: XCTestCase {
         
     }
     
+    func testOverlappingStrings() {
+        XCTAssertEqual("water".suffix(overlappingPrefixOf: "terp"), "ter")
+        XCTAssertEqual("eeeabcabc".suffix(overlappingPrefixOf: "abcabcfff"), "abcabc")
+        
+    }
+    
 }
