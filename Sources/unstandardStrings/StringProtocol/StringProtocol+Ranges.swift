@@ -19,9 +19,9 @@ extension StringProtocol {
 }
 
 
-// MARK: - Splitting Range
+// MARK: -
 
-extension StringProtocol where SubSequence == Substring {
+extension StringProtocol {
     public func ranges(separatedBy seperatingSet: CharacterSet) -> [Range<Index>] {
         var ranges = [Range<Index>]()
         
@@ -40,6 +40,34 @@ extension StringProtocol where SubSequence == Substring {
             
             remainingSearchString = remainingSearchString[after: endIndex]
             
+        }
+        
+        return ranges
+    }
+    
+}
+
+
+// MARK: -
+
+internal enum SubstringRangeError: Error {
+    case substringsNotSegmentOfBase
+    
+}
+
+extension StringProtocol {
+    public func ranges<S>(ofComponents components: S) throws -> [Range<Self.Index>]
+    where S : Sequence, S.Element : StringProtocol {
+        var ranges = [Range<Self.Index>]()
+        var searchRange = self.fullRange
+        
+        for component in components {
+            guard let substringRange = self.range(of: component, range: searchRange, locale: nil) else {
+                throw SubstringRangeError.substringsNotSegmentOfBase
+            }
+            
+            ranges.append(substringRange)
+            searchRange = substringRange.upperBound..<self.endIndex
         }
         
         return ranges
