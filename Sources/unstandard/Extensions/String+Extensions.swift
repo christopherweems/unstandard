@@ -52,12 +52,11 @@ public extension String {
     func split(separator: String,
                maxSplits: Int = Int.max,
                omittingEmptySubsequences: Bool = true) -> [String] {
-        precondition(maxSplits == Int.max, "missing implementation for maxSplits != Int.max")
         
         // separators
         let separatorRanges = Array {
             Range(uncheckedBounds: (startIndex, startIndex))
-            ranges(of: separator)
+            ranges(of: separator, maxSplits: maxSplits)
             Range(uncheckedBounds: (endIndex, endIndex))
             
         }
@@ -200,12 +199,13 @@ public extension String {
 // MARK: -
 
 internal extension String {
-    func ranges<SP>(of substring: SP) -> [Range<Index>] where SP : StringProtocol {
+    func ranges<SP>(of substring: SP, maxSplits: Int = Int.max) -> [Range<Index>] where SP : StringProtocol {
         var ranges = [Range<String.Index>]()
         
         var lastEndIndex = startIndex
         
-        while let nextRange = range(of: substring, range: rangeToEnd(startIndex: lastEndIndex)) {
+        while ranges.count < maxSplits,
+            let nextRange = range(of: substring, range: rangeToEnd(startIndex: lastEndIndex)) {
             ranges.append(nextRange)
             lastEndIndex = nextRange.upperBound
             
