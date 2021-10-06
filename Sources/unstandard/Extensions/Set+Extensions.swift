@@ -7,23 +7,23 @@
 
 import Foundation
 
-/*
-public extension Set {
-    init(_ elements: Element...) {
+extension Set {
+    @_disfavoredOverload
+    public init(_ elements: Element...) {
         self = .init(elements)
     }
+    
 }
-*/
 
 
 // MARK: - Removing all / Filtering in place
 
-public extension Set {
-    mutating func removeAll(where predicate: (Element) -> Bool) {
+extension Set {
+    public mutating func removeAll(where predicate: (Element) -> Bool) {
         self = self.filter { !predicate($0) }
     }
     
-    mutating func filterInPlace(_ isIncluded: (Element) -> Bool) {
+    public mutating func filterInPlace(_ isIncluded: (Element) -> Bool) {
         self = self.filter { isIncluded($0) }
     }
     
@@ -32,20 +32,33 @@ public extension Set {
 
 // MARK: - Insertion
 
-public extension Set {
-    func inserting(_ newMember: Element) -> Set {
+extension Set {
+    public func inserting(_ newMember: Element) -> Set {
         var new = self
         new.insert(newMember)
         return new
     }
+    
+}
+
+extension Set {
+    public mutating func insert<S>(contentsOf elementSequence: S) where S : Sequence, S.Element == Element {
+        elementSequence.forEach {
+            self.insert($0)
+            
+        }
+        
+    }
+    
 }
 
 
 // MARK: - Array Builder Set initializer
 
-public extension Set {
-    init(@ArrayBuilder _ elements: () -> Array<Element>) {
+extension Set {
+    public init(@ArrayBuilder _ elements: () -> Array<Element>) {
         self = elements().asSet()
+        
     }
     
 }
