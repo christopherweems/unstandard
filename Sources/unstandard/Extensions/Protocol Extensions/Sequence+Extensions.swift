@@ -49,9 +49,33 @@ extension Sequence where Element : Comparable {
 }
 
 
+// MARK: - Compacted Map
+
+extension Sequence {
+    public func compactedMap<E, Result>(_ transform: (E) -> Result) -> [Result] where Element == Optional<E> {
+        self.compactMap {
+            guard let wrapped = $0 else { return nil }
+            return transform(wrapped)
+        }
+    }
+    
+}
+
+
+// MARK: -  Compact Filter
+
+extension Sequence {
+    public func compactFilter(_ isIncluded: (Element) -> Bool?) -> [Element] {
+        self.filter { isIncluded($0) == true }
+    }
+    
+}
+
+
 // MARK: - Dividing into buckets
 
 extension Sequence {
+    // TODO: Find equivalent method in `swift-algorithms`
     /// bucket[last].count <= itemsPerBucket
     public func bucket(itemsPerBucket: Int) -> [ArraySlice<Element>] {
         var all = [ArraySlice<Element>]()
