@@ -9,7 +9,7 @@ public protocol ExpressibleByRawValue {
 }
 
 
-#if canImport(Foundation) && !os(Linux)
+#if canImport(Foundation) && !os(Linux) && !os(watchOS)
 
 import Foundation
 
