@@ -11,7 +11,7 @@ extension DateComponents {
     @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
     public static func now(_ calendarComponents: Calendar.Component..., in calendar: Calendar = .current) -> Self {
         precondition(!calendarComponents.isEmpty, "Must specify at least one calendar component")
-        return calendar.dateComponents(Set(calendarComponents), from: .now)
+        return calendar.dateComponents(Set(calendarComponents), from: .now())
     }
     
 }
