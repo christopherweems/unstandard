@@ -18,6 +18,10 @@ extension CGSize {
         return CGSize(width: size.width * multiplier, height: size.height * multiplier)
     }
     
+    public static func *<M>(_ size: Self, multiplier: M) -> CGSize where M : BinaryInteger {
+        return size * CGFloat(multiplier)
+    }
+    
 }
 
 extension CGSize {
