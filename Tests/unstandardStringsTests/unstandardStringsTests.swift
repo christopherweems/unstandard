@@ -36,4 +36,17 @@ final class unstandardStringsTests: XCTestCase {
         
     }
     
+    func testHeadTailSplit() {
+        let testString = "a bb c"
+        let testSplitFromStart = testString.headTailSplit(separator: "b", from: .start)
+        let testSplitFromEnd = testString.headTailSplit(separator: "b", from: .end)
+        
+        XCTAssertEqual(testSplitFromStart?.head, "a ")
+        XCTAssertEqual(testSplitFromStart?.tail, "b c")
+        
+        XCTAssertEqual(testSplitFromEnd?.head, "a b")
+        XCTAssertEqual(testSplitFromEnd?.tail, " c")
+        
+    }
+    
 }
