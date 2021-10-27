@@ -10,6 +10,15 @@ public extension NumberFormatter {
     
 }
 
+extension NumberFormatter {
+    @_disfavoredOverload
+    public func number<SP>(from string: SP) -> NSNumber? where SP : StringProtocol {
+        self.number(from: String(string))
+    }
+    
+}
+
+
 public extension NumberFormatter {
     convenience init(_ configuration: (NumberFormatter) -> Void) {
         self.init()
