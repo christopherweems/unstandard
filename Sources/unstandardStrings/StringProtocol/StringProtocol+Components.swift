@@ -8,11 +8,13 @@
 import Foundation
 
 extension StringProtocol {
-    public func headTailSplit(separator: Character) -> (head: SubSequence, tail: SubSequence)? {
-        let components = split(separator: separator, maxSplits: 1)
-        guard components.count == 2 else { return nil }
+    public func headTailSplit(separator: Character, from position: Position = .start) -> (head: SubSequence, tail: SubSequence)? {
+        guard let splitIndex = index(of: separator, from: position) else { return nil }
+        let tailStartIndex = index(after: splitIndex)
         
-        return (components[0], components[1])
+        guard splitIndex != startIndex && tailStartIndex != endIndex else { return nil }
+        
+        return (self[..<splitIndex], self[tailStartIndex...])
     }
     
 }
