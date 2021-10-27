@@ -16,6 +16,21 @@ extension StringProtocol {
 }
 
 
+
+extension StringProtocol {
+    public func index(of element: Character, from position: Position) -> Index? {
+        switch position {
+        case .start:
+            return firstIndex(of: element)
+            
+        case .end:
+            return lastIndex(of: element)
+        }
+    }
+    
+}
+
+
 // MARK: - Staging
 
 extension String {
