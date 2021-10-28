@@ -5,6 +5,8 @@
 //  Created by Christopher Weems on 8/25/19.
 //
 
+import Algorithms
+
 extension Sequence {
     public func mapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
         for element in self {
@@ -67,6 +69,16 @@ extension Sequence {
 extension Sequence {
     public func compactFilter(_ isIncluded: (Element) -> Bool?) -> [Element] {
         self.filter { isIncluded($0) == true }
+    }
+    
+}
+
+// MARK: - Uniqued
+
+extension Sequence where Element : Hashable {
+    @_disfavoredOverload
+    public func uniqued() -> [Element] {
+        Array(self.uniqued())
     }
     
 }
