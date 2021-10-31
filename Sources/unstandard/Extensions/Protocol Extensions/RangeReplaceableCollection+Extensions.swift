@@ -13,3 +13,29 @@ extension RangeReplaceableCollection {
     }
     
 }
+
+
+// MARK: - Appending `Substring` to `[String]`
+
+extension RangeReplaceableCollection where Element == String {
+    public mutating func append(_ substring: Substring) {
+        self.append(String(substring))
+    }
+    
+}
+
+// MARK: - Replacing Elements
+
+extension RangeReplaceableCollection {
+    public func replacing(_ elementKeyPath: KeyPath<Self, Index>, with other: Element) -> Self {
+        var new = self
+        let elementIndex = new[keyPath: elementKeyPath]
+        new.replace(itemAt: elementIndex, with: other)
+        return new
+    }
+    
+    public mutating func replace(itemAt elementIndex: Index, with other: Element) {
+        self.replaceSubrange(elementIndex..<index(after: elementIndex), with: [other])
+    }
+    
+}
