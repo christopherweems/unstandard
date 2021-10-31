@@ -61,6 +61,7 @@ public extension StringProtocol {
 // MARK: - Dropping Suffix
 
 public extension StringProtocol {
+    @_disfavoredOverload
     func droppingSuffix(_ suffixes: String...) -> String? {
         guard let suffixToRemove = suffixes.first(where: self.hasSuffix) else { return nil }
         let endIndex = index(self.endIndex, offsetBy: -suffixToRemove.count)
