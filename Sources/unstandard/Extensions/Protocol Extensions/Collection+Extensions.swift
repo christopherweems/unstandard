@@ -16,11 +16,18 @@ extension Collection {
     
 }
 
+
+// MARK: - Compact Map overrides
+
 extension Collection {
     public func _compactMap<ElementOfResult>(discardThrowing transform: (Element) throws -> ElementOfResult?) -> [ElementOfResult] {
         self.compactMap {
             try? transform($0)
         }
+    }
+    
+    public func _compactMap<T1, T2>(tupleTransform transform: (Element) -> (T1?, T2?)) -> [(T1, T2)] {
+        self.map(transform).compactMap { ($0.0 != nil && $0.1 != nil) ? ($0.0!, $0.1!) : nil }
     }
     
 }
@@ -310,6 +317,39 @@ extension Collection where Element : StringProtocol {
             let components = p.components(separatedBy: seperator)
             return try transform(components)
         }
+    }
+    
+}
+
+
+// MARK: - Collection head/tail map
+
+extension Collection {
+    // use a different transform for the first element vs the remaining elements
+    public func map<T>(head headTransform: (Element) -> T, tail tailTransform: (Element) -> T) -> [T] {
+        .init([first].compactedMap(headTransform), dropFirst().map(tailTransform))
+    }
+    
+}
+
+
+// MARK: - `Collection.suffix(after:)` for StringProtocol
+
+extension Collection where SubSequence : StringProtocol {
+    public func suffix(after index: Self.Index) -> SubSequence {
+        guard index != endIndex else { return "" }
+        let startIndex = self.index(after: index)
+        return self[startIndex...]
+    }
+    
+}
+
+
+extension Collection where SubSequence == String.UnicodeScalarView.SubSequence {
+    public func suffix(after index: Self.Index) -> SubSequence {
+        guard index != endIndex else { return "".unicodeScalars[...] }
+        let startIndex = self.index(after: index)
+        return self[startIndex...]
     }
     
 }
