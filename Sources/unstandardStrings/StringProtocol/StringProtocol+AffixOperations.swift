@@ -67,3 +67,11 @@ extension StringProtocol {
     }
     
 }
+
+extension StringProtocol {
+    public func trimmingPrefix<P>(_ prefix: P) -> SubSequence? where P : StringProtocol {
+        guard self.hasPrefix(prefix) else { return nil }
+        return self[self.index(\.startIndex, offsetBy: prefix.count)...]
+    }
+    
+}
