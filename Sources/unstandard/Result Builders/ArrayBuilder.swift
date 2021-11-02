@@ -32,16 +32,20 @@ public struct ArrayBuilder {
 }
 
 
-public extension ArrayBuilder {
-    static func buildExpression<Element>(_ subarray: [Element]) -> [Element] {
+extension ArrayBuilder {
+    public static func buildExpression<Element>(_ subarray: [Element]) -> [Element] {
         subarray
     }
     
-    static func buildExpression<Element>(_ item: Element) -> [Element] {
+    public static func buildExpression<Element>(_ components: ArraySlice<Element>) -> [Element] {
+        components.map { $0 }
+    }
+    
+    public static func buildExpression<Element>(_ item: Element) -> [Element] {
         [item]
     }
     
-    static func buildExpression<Element>(_ optional: Element?) -> [Element] {
+    public static func buildExpression<Element>(_ optional: Element?) -> [Element] {
         guard let optional = optional else { return [] }
         return [optional]
     }
