@@ -9,9 +9,9 @@ import Foundation
 
 public protocol Updatable { }
 
-public extension Updatable {
+extension Updatable {
     /// updating multiple values
-    func withUpdates(_ update: (inout Self) -> ()) -> Self {
+    public func with(_ update: (inout Self) -> ()) -> Self {
         var new = self
         update(&new)
         return new
@@ -19,9 +19,27 @@ public extension Updatable {
     
 }
 
+extension Updatable where Self : AnyObject {
+    public func with(_ updates: (Self) -> Void) -> Self {
+        updates(self)
+        return self
+    }
+        
+}
+
+extension Updatable where Self : NSCopying {
+    // Returns nil if copy result is not same type as original type
+    public func copyWith(_ updates: (Self) -> Void) -> Self! {
+        guard let new = self.copy() as? Self else { return nil }
+        updates(new)
+        return new
+    }
+    
+}
+
 public extension Updatable {
     func updating<Value>(_ keyPath: WritableKeyPath<Self, Value>, to value: Value) -> Self {
-        withUpdates {
+        self.with {
             $0[keyPath: keyPath] = value
         }
     }
@@ -34,7 +52,7 @@ public extension Updatable {
 
 public extension Updatable {
     mutating func updating<Value>(_ keyPath: WritableKeyPath<Self, Value>, byInserting options: Value) -> Self where Value: OptionSet {
-        withUpdates {
+        self.with {
             $0[keyPath: keyPath] = self[keyPath: keyPath].union(options)
         }
     }
@@ -85,3 +103,12 @@ extension CGPoint: Updatable { }
 
 #endif
 
+// MARK: - Deprecations
+
+extension Updatable {
+    @available(*, deprecated, renamed: "with(_:)")
+    public func withUpdates(_ update: (inout Self) -> ()) -> Self {
+        self.with(update)
+    }
+    
+}
