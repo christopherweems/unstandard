@@ -31,3 +31,20 @@ extension String.UnicodeScalarView {
     }
     
 }
+
+
+// MARK: - Has Prefix
+
+extension String.UnicodeScalarView {
+    public func hasPrefix<P>(_ prefix: P) -> Bool where P : StringProtocol {
+        String(self).hasPrefix(prefix)
+    }
+    
+}
+
+extension Substring.UnicodeScalarView {
+    public func hasPrefix<P>(_ prefix: P) -> Bool where P : StringProtocol {
+        String(self).hasPrefix(prefix)
+    }
+    
+}
