@@ -126,3 +126,13 @@ extension Sequence where Element: Equatable {
     }
     
 }
+
+
+// MARK: - Optionally reversing
+
+extension Sequence {
+    public func reversed(_ isReversed: Bool) -> [Element] {
+        isReversed ? self.reversed() : Array(self)
+    }
+    
+}
