@@ -1,21 +1,11 @@
 //
-//  CharacterSet+Extensions.swift
+//  CharacterSet+Operators.swift
 //  
 //
-//  Created by Christopher Weems on 5/30/20.
+//  Created by Christopher Weems on 11/4/21.
 //
 
 import Foundation
-
-extension CharacterSet {
-    public static let hyphens: CharacterSet = {
-        ["-"]
-    }()
-    
-}
-
-
-// MARK: - Operators
 
 extension CharacterSet {
     public static func +(_ lhs: CharacterSet, _ rhs: CharacterSet) -> CharacterSet {
