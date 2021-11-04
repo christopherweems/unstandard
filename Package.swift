@@ -35,16 +35,26 @@ let package = Package(
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
-                "CustomDebugTreeConvertible", "unstandardStrings"
+                "CustomDebugTreeConvertible",
+                "unstandardStrings", "unstandardCollections",
             ]),
         
         .target(
             name: "unstandardStrings",
             dependencies: [
+                "unstandardCollections",
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
             ]),
+        
+        .target(
+            name: "unstandardCollections",
+            dependencies: [
+                .product(name: "Collections", package: "swift-collections"),
+                .product(name: "Resultto", package: "Resultto"),
+            ]
+        ),
         
         .target(
             name: "CustomDebugTreeConvertible",
