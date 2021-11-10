@@ -1,6 +1,7 @@
 import XCTest
 @testable import unstandard
 @testable import unstandardStrings
+@testable import unstandardStringsFoundation
 
 final class unstandardStringsTests: XCTestCase {
     func testSeparatedRanges() throws {
