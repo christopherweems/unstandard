@@ -5,8 +5,6 @@
 //  Created by Christopher Weems on 8/25/19.
 //
 
-import Algorithms
-
 extension Sequence {
     public func mapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
         for element in self {

@@ -5,7 +5,6 @@
 //  Created by Christopher Weems on 11/10/19.
 //
 
-import Algorithms
 import Foundation
 
 extension Collection {
@@ -322,15 +321,7 @@ extension Collection where Element : StringProtocol {
 }
 
 
-// MARK: - Collection head/tail map
 
-extension Collection {
-    // use a different transform for the first element vs the remaining elements
-    public func map<T>(head headTransform: (Element) -> T, tail tailTransform: (Element) -> T) -> [T] {
-        .init([first].compactedMap(headTransform), dropFirst().map(tailTransform))
-    }
-    
-}
 
 
 // MARK: - `Collection.suffix(after:)` for StringProtocol
