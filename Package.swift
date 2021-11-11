@@ -58,13 +58,6 @@ let package = Package(
             dependencies: ["unstandard"]),
         
         .testTarget(
-            name: "unstandardStringsTests",
-            dependencies: [
-                .product(name: "unstandardStrings", package: "unstandard-strings"),
-                "unstandard"
-            ]),
-        
-        .testTarget(
             name: "CustomDebugTreeConvertibleTests",
             dependencies: ["CustomDebugTreeConvertible"]),
         
