@@ -20,7 +20,6 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.2")),
         .package(path: "../unstandard-algorithms/"),
         .package(path: "../unstandard-collections/"),
@@ -33,8 +32,6 @@ let package = Package(
         .target(
             name: "unstandard",
             dependencies: [
-//                .product(name: "Algorithms", package: "swift-algorithms"),
-                .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
                 .product(name: "unstandardAlgorithms", package: "unstandard-algorithms"),
                 .product(name: "unstandardCollections", package: "unstandard-collections"),
