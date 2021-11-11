@@ -20,7 +20,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.2")),
+        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.2.2")),
         .package(path: "../unstandard-algorithms/"),
         .package(path: "../unstandard-collections/"),
         .package(path: "../unstandard-strings/"),
