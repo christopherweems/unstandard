@@ -62,3 +62,16 @@ extension Range where Bound : Strideable, Bound.Stride : SignedInteger, Bound.St
     }
     
 }
+
+
+// MARK: -
+
+extension Range {
+    public init?(intersectionOf ranges: Self...) {
+        let lowerBound: Bound! = ranges.min(by: { $0.lowerBound < $1.lowerBound })?.lowerBound
+        let upperBound: Bound! = ranges.max(by: { $0.upperBound > $1.upperBound })?.upperBound
+        if lowerBound == nil || upperBound == nil { return nil }
+        self.init(uncheckedBounds: (lowerBound, upperBound))
+    }
+    
+}
