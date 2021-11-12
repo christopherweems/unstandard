@@ -38,3 +38,11 @@ extension BinaryInteger {
     }
     
 }
+
+extension BinaryInteger {
+    public init<V>(_ value: V, round roundingRule: FloatingPointRoundingRule)
+    where V : BinaryFloatingPoint {
+        self.init(value.rounded(roundingRule))
+    }
+    
+}
