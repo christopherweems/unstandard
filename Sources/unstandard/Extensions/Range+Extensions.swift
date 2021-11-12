@@ -66,6 +66,16 @@ extension Range where Bound : Strideable, Bound.Stride : SignedInteger, Bound.St
 
 // MARK: -
 
+extension Range where Bound : BinaryInteger {
+    public func offset(_ offset: Bound) -> Self {
+        Range(uncheckedBounds: (self.lowerBound + offset, self.upperBound + offset))
+    }
+    
+}
+
+
+// MARK: -
+
 extension Range {
     public init?(intersectionOf ranges: Self...) {
         let lowerBound: Bound! = ranges.min(by: { $0.lowerBound < $1.lowerBound })?.lowerBound
