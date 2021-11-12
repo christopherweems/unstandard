@@ -35,6 +35,13 @@ extension BinaryFloatingPoint {
 }
 
 extension BinaryFloatingPoint {
+    public func `as`<Result>(_ resultType: Result.Type) -> Result where Result : BinaryInteger {
+        Result(self)
+    }
+    
+}
+
+extension BinaryFloatingPoint {
     public mutating func bound(within range: PartialRangeFrom<Self>) {
         self.bound(within: range.lowerBound...(.infinity))
     }
