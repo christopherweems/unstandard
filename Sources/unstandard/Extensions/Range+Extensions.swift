@@ -30,3 +30,58 @@ public extension Range {
     }
     
 }
+
+
+// MARK: - `Range.enumerateRanges(anchoredAt:)`
+
+public enum RangePosition {
+    case start
+    case end
+    
+}
+
+extension Range where Bound : Strideable, Bound.Stride : SignedInteger, Bound.Stride.Stride : SignedInteger {
+    public typealias Position = RangePosition
+    
+    public func enumerateRanges(_anchoredAt position: Range.Position) -> [Self] {
+        let rangeLength = startIndex.distance(to: endIndex)
+        
+        switch position {
+        case .start:
+            return (1..<rangeLength).map {
+                let upperBound = startIndex.advanced(by: $0)
+                return (startIndex..<upperBound)
+            }
+            
+        case .end:
+            return (0..<rangeLength).map {
+                let lowerBound = startIndex.advanced(by: $0)
+                return (lowerBound..<upperBound)
+            }
+        }
+    }
+    
+}
+
+
+// MARK: -
+
+extension Range where Bound : BinaryInteger {
+    public func offset(_ offset: Bound) -> Self {
+        Range(uncheckedBounds: (self.lowerBound + offset, self.upperBound + offset))
+    }
+    
+}
+
+
+// MARK: -
+
+extension Range {
+    public init?(intersectionOf ranges: Self...) {
+        let lowerBound: Bound! = ranges.min(by: { $0.lowerBound < $1.lowerBound })?.lowerBound
+        let upperBound: Bound! = ranges.max(by: { $0.upperBound > $1.upperBound })?.upperBound
+        if lowerBound == nil || upperBound == nil { return nil }
+        self.init(uncheckedBounds: (lowerBound, upperBound))
+    }
+    
+}

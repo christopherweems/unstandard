@@ -20,10 +20,10 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.2")),
+        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.2.2")),
+        .package(url: "https://github.com/christopherweems/unstandard-algorithms.git", .branch("main")),
+        .package(url: "https://github.com/christopherweems/unstandard-collections.git", .branch("main")),
+        .package(url: "https://github.com/christopherweems/unstandard-strings.git", .branch("main")),
         
     ],
     targets: [
@@ -32,29 +32,12 @@ let package = Package(
         .target(
             name: "unstandard",
             dependencies: [
-                .product(name: "Algorithms", package: "swift-algorithms"),
-                .product(name: "Collections", package: "swift-collections"),
                 .product(name: "Resultto", package: "Resultto"),
+                .product(name: "unstandardAlgorithms", package: "unstandard-algorithms"),
+                .product(name: "unstandardCollections", package: "unstandard-collections"),
+                .product(name: "unstandardStrings", package: "unstandard-strings"),
                 "CustomDebugTreeConvertible",
-                "unstandardStrings", "unstandardCollections",
             ]),
-        
-        .target(
-            name: "unstandardStrings",
-            dependencies: [
-                "unstandardCollections",
-                .product(name: "Algorithms", package: "swift-algorithms"),
-                .product(name: "Collections", package: "swift-collections"),
-                .product(name: "Resultto", package: "Resultto"),
-            ]),
-        
-        .target(
-            name: "unstandardCollections",
-            dependencies: [
-                .product(name: "Collections", package: "swift-collections"),
-                .product(name: "Resultto", package: "Resultto"),
-            ]
-        ),
         
         .target(
             name: "CustomDebugTreeConvertible",
@@ -73,13 +56,6 @@ let package = Package(
         .testTarget(
             name: "unstandardTests",
             dependencies: ["unstandard"]),
-        
-        .testTarget(
-            name: "unstandardStringsTests",
-            dependencies: [
-                "unstandardStrings",
-                "unstandard"
-            ]),
         
         .testTarget(
             name: "CustomDebugTreeConvertibleTests",

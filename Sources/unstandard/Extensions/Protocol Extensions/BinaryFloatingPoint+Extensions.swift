@@ -23,6 +23,25 @@ extension BinaryFloatingPoint {
 }
 
 extension BinaryFloatingPoint {
+    public static func *(base: Self, sign: FloatingPointSign) -> Self {
+        let multiplier: Self = (sign == .plus) ? +1 : -1
+        return base * multiplier
+    }
+    
+    public static func *(sign: FloatingPointSign, base: Self) -> Self {
+        return base * sign
+    }
+    
+}
+
+extension BinaryFloatingPoint {
+    public func `as`<Result>(_ resultType: Result.Type) -> Result where Result : BinaryInteger {
+        Result(self)
+    }
+    
+}
+
+extension BinaryFloatingPoint {
     public mutating func bound(within range: PartialRangeFrom<Self>) {
         self.bound(within: range.lowerBound...(.infinity))
     }

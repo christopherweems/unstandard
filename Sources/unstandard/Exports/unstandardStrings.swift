@@ -1,1 +1,2 @@
 @_exported import unstandardStrings
+@_exported import unstandardStringsFoundation
