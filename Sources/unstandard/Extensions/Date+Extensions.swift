@@ -19,3 +19,9 @@ extension Date {
     
 }
 
+extension Date {
+    public static func -(lhs: Date, rhs: Date) -> TimeInterval {
+        lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+    
+}
