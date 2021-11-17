@@ -118,4 +118,17 @@ extension CGSize {
 }
 
 
+// MARK: - Creating a size
+
+extension CGSize {
+    // Returns the smallest rectangle that contains the two source rectangles.
+    public static func union(_ sizes: CGSize...) -> Self {
+        let width = sizes.reduce(0, { max($0, $1.width) })
+        let height = sizes.reduce(0, { max($0, $1.height) })
+        
+        return .init(width: width, height: height)
+    }
+    
+}
+
 #endif
