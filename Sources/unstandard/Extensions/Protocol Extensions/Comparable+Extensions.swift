@@ -10,4 +10,12 @@ extension Comparable {
         min(self, boundingRange.upperBound)
     }
     
+    public func bounded(within boundingRange: PartialRangeFrom<Self>) -> Self {
+        min(boundingRange.lowerBound, self)
+    }
+    
+    public func bounded(within boundingRange: ClosedRange<Self>) -> Self {
+        max(min(boundingRange.lowerBound, self), boundingRange.upperBound)
+    }
+    
 }
