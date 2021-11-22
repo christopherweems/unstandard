@@ -5,16 +5,15 @@
 //  Created by Christopher Weems on 8/25/19.
 //
 
+import Algorithms
+
 extension Sequence {
+    @available(*, deprecated, message: "Use `.firstNonNil(_:)` from `swift-algorithms`")
     public func mapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
-        for element in self {
-            guard let mapped = try transform(element) else { continue }
-            return mapped
-        }
-        
-        return nil
+        try self.firstNonNil(transform)
     }
     
+//    @available(*, deprecated, renamed: "lastNonNil")
     public func mapLast<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
         for element in self.reversed() {
             guard let mapped = try transform(element) else { continue }
