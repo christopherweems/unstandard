@@ -24,6 +24,25 @@ extension Decimal {
     
 }
 
+extension Decimal {
+    // (3.14).fractionPart == 0.14
+    // (-3.14).fractionPart == 0.14
+    public var fractionPart: Decimal {
+        guard self <= -1 || 1 <= self else {
+            return self
+        }
+        
+        switch self.isSignMinus {
+        case false:
+            return self - self.rounded(.down)
+            
+        case true:
+            return self + self.rounded(.up)
+            
+        }
+    }
+    
+}
 
 // MARK: - Decimal Sequence Extensions
 
