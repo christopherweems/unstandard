@@ -44,6 +44,16 @@ extension Decimal {
     
 }
 
+extension Decimal {
+    // Does not currently report overflow, fix this before removing _ from function declaration
+    public func remainderReportingOverflow(_dividingBy other: Decimal) -> (partialValue: Decimal, overflow: Bool) {
+        let divisionResult = (self / other).rounded(.plain)
+        return (self - divisionResult * other, false)
+    }
+    
+}
+
+
 // MARK: - Decimal Sequence Extensions
 
 extension Sequence where Element == Decimal {
