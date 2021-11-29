@@ -36,8 +36,13 @@ let package = Package(
                 .product(name: "unstandardAlgorithms", package: "unstandard-algorithms"),
                 .product(name: "unstandardCollections", package: "unstandard-collections"),
                 .product(name: "unstandardStrings", package: "unstandard-strings"),
+                "unstandardFoundation",
                 "CustomDebugTreeConvertible",
             ]),
+        
+        .target(
+            name: "unstandardFoundation"
+            ),
         
         .target(
             name: "CustomDebugTreeConvertible",
