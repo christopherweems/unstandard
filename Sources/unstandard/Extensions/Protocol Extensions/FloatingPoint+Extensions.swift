@@ -97,3 +97,13 @@ public func *<FP: FloatingPoint>(_ sign: FloatingPointSign, _ rhs: FP) -> FP {
         return -rhs
     }
 }
+
+
+// MARK: - FloatingPoint Sequence Extensions
+
+extension Sequence where Element : FloatingPoint {
+    func inverses() -> [Element] {
+        self.map { 1 / $0 }
+    }
+    
+}
