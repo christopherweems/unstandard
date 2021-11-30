@@ -16,30 +16,3 @@ extension Task where Success == Never, Failure == Never {
     }
     
 }
-
-@available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-extension Task where Failure == Never {
-    public static func awaitDetached(priority: TaskPriority? = nil, _operation operation: @escaping @Sendable () async -> Success) -> Success {
-        let group = DispatchGroup()
-        group.enter()
-        
-        let result = DetachedTaskResult<Success>()
-        
-        Task.detached(priority: priority) {
-            result.value = await operation()
-            group.leave()
-            return result.value
-        }
-        
-        group.wait()
-        return result.value
-    }
-    
-}
-
-
-fileprivate class DetachedTaskResult<Result> {
-    var value: Result! = nil
-    var isComplete: Bool { value != nil }
-    
-}
