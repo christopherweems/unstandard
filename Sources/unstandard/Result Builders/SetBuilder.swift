@@ -5,8 +5,6 @@
 //  Created by Christopher Weems on 8/30/20.
 //
 
-import Foundation
-
 @resultBuilder
 public struct SetBuilder<Element> where Element: Hashable {
     public static func buildBlock(_ elements: Set<Element>...) -> Set<Element> {

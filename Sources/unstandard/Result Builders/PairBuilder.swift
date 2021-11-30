@@ -5,8 +5,6 @@
 //  Created by Christopher Weems on 11/12/20.
 //
 
-import Foundation
-
 @resultBuilder
 public struct PairBuilder {
     /*

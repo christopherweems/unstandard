@@ -5,8 +5,6 @@
 //  Created by Christopher Weems on 3/21/20.
 //
 
-import Foundation
-
 @available(*, deprecated, renamed: "ProtocolTypedArrayBuilder")
 public typealias SimpleArrayBuilder = ProtocolTypedArrayBuilder
 
