@@ -25,6 +25,10 @@ extension Decimal {
 }
 
 extension Decimal {
+    public var integerPart: Decimal {
+        self.rounded(self < 0 ? .up : .down)
+    }
+    
     // (3.14).fractionPart == 0.14
     // (-3.14).fractionPart == 0.14
     public var fractionPart: Decimal {
