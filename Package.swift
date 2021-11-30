@@ -37,12 +37,20 @@ let package = Package(
                 .product(name: "unstandardCollections", package: "unstandard-collections"),
                 .product(name: "unstandardStrings", package: "unstandard-strings"),
                 "unstandardFoundation",
+                "unstandardProtocols",
                 "CustomDebugTreeConvertible",
             ]),
         
         .target(
-            name: "unstandardFoundation"
-            ),
+            name: "unstandardFoundation",
+            dependencies: [
+                "unstandardProtocols",
+            ]
+        ),
+        
+        .target(
+            name: "unstandardProtocols"
+        ),
         
         .target(
             name: "CustomDebugTreeConvertible",

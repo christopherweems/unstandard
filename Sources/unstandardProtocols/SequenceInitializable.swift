@@ -5,13 +5,11 @@
 //  Created by Christopher Weems on 1/1/21.
 //
 
-import Foundation
-
 public protocol SequenceInitializable {
     associatedtype Element
     init<S>(_ sequence: S) where S : Sequence, Self.Element == S.Element
     
 }
 
-extension Array: SequenceInitializable { }
-extension Set:   SequenceInitializable { }
+extension Array : SequenceInitializable { }
+extension Set : SequenceInitializable { }

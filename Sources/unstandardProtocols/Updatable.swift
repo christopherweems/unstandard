@@ -5,8 +5,6 @@
 //  Created by Christopher Weems on 10/7/20.
 //
 
-import Foundation
-
 public protocol Updatable { }
 
 extension Updatable {
@@ -25,16 +23,6 @@ extension Updatable where Self : AnyObject {
         return self
     }
         
-}
-
-extension Updatable where Self : NSCopying {
-    // Returns nil if copy result is not same type as original type
-    public func copyWith(_ updates: (Self) -> Void) -> Self! {
-        guard let new = self.copy() as? Self else { return nil }
-        updates(new)
-        return new
-    }
-    
 }
 
 public extension Updatable {
@@ -70,38 +58,22 @@ extension Array : Updatable { }
 extension ArraySlice : Updatable { }
 extension Bool : Updatable { }
 extension Character : Updatable { }
-extension Data: Updatable { }
-extension DateComponents: Updatable { }
 extension Dictionary : Updatable { }
 extension Double : Updatable { }
 extension Int : Updatable { }
 extension Int64 : Updatable { }
-extension NSObject : Updatable { }
 extension Optional: Updatable where Wrapped: Updatable { }
 extension Range: Updatable { }
 extension Set : Updatable { }
 extension String : Updatable { }
 extension String.Index : Updatable { }
 extension Substring : Updatable { }
-extension URL : Updatable { }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension CollectionDifference : Updatable { }
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension CollectionDifference.Change : Updatable { }
 
-#if canImport(CoreFoundation) && !os(Linux)
-extension CFMutableString: Updatable { }
-
-#endif
-
-#if canImport(CoreGraphics)
-import CoreGraphics
-
-extension CGFloat: Updatable { }
-extension CGPoint: Updatable { }
-
-#endif
 
 // MARK: - Deprecations
 
