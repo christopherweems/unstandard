@@ -15,23 +15,6 @@ extension Collection {
     
 }
 
-
-// MARK: - Compact Map overrides
-
-extension Collection {
-    public func _compactMap<ElementOfResult>(discardThrowing transform: (Element) throws -> ElementOfResult?) -> [ElementOfResult] {
-        self.compactMap {
-            try? transform($0)
-        }
-    }
-    
-    public func _compactMap<T1, T2>(tupleTransform transform: (Element) -> (T1?, T2?)) -> [(T1, T2)] {
-        self.map(transform).compactMap { ($0.0 != nil && $0.1 != nil) ? ($0.0!, $0.1!) : nil }
-    }
-    
-}
-
-
 extension Collection {
     /// usage: `foo._forEach(adjacentPair: { preceding, succeeding in ... })`
     @available(*, deprecated, message: "Use `.adjacentPairs().forEach { .. } instead`")

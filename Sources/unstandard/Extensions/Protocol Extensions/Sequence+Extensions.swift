@@ -110,6 +110,26 @@ extension Sequence {
 }
 
 
+// MARK: - Compact Map overrides
+
+extension Sequence {
+    public func _compactMap<ElementOfResult>(discardThrowing transform: (Element) throws -> ElementOfResult?) -> [ElementOfResult] {
+        self.compactMap {
+            try? transform($0)
+        }
+    }
+    
+    public func _compactMap<T1, T2>(tupleTransform transform: (Element) -> (T1?, T2?)) -> [(T1, T2)] {
+        self.map(transform).compactMap { ($0.0 != nil && $0.1 != nil) ? ($0.0!, $0.1!) : nil }
+    }
+    
+    public func _compactMap<T1, T2, T3>(tupleTransform transform: (Element) -> (T1?, T2?, T3?)) -> [(T1, T2, T3)] {
+        self.map(transform).compactMap { ($0 != nil && $1 != nil && $2 != nil) ? ($0!, $1!, $2!) : nil }
+    }
+    
+}
+
+
 // MARK: - Replacing occurrences of elements
 
 extension Sequence where Element: Hashable {
