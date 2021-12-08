@@ -55,6 +55,7 @@ extension Dictionary {
 // MARK: -
 
 extension Dictionary {
+    @available(*, deprecated) // confusing in practice
     public init(uniqueValuesWithKeys valuesWithKeys: [(Value, Key)]) {
         self.init(uniqueKeysWithValues: valuesWithKeys.map { ($0.1, $0.0) })
     }
