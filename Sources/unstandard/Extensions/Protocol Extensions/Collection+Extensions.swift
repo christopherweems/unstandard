@@ -29,12 +29,12 @@ extension Collection {
 // MARK: .divide(..)
 
 extension Collection {
-    public func divide(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
+    public func divide(on belongsInFirstGroup: (Element) -> Bool) -> [Array<Element>] {
         var trueContent = [Element]()
         var falseContent = [Element]()
         
         self.forEach {
-            if $0[keyPath: keyPath] {
+            if belongsInFirstGroup($0) {
                 trueContent.append($0)
                 
             } else {
@@ -48,7 +48,7 @@ extension Collection {
     
     @available(*, deprecated, renamed: "divide(on:)")
     public func split(on keyPath: KeyPath<Element, Bool>) -> [Array<Element>] {
-        divide(on: keyPath)
+        divide(on: { $0[keyPath: keyPath] })
     }
     
 }

@@ -83,3 +83,20 @@ final class unstandardTests: XCTestCase {
     }
     
 }
+
+fileprivate extension Int {
+    var isEven: Bool { self % 2 == 0 }
+    
+}
+
+extension unstandardTests {
+    func testCollectionDivision() {
+        let numbers = [1,2,3,4,5]
+        let evenAndOdd = numbers.divide(on: \.isEven)
+        
+        XCTAssertEqual(evenAndOdd[0], [2,4])
+        XCTAssertEqual(evenAndOdd[1], [1,3,5])
+        
+    }
+    
+}
