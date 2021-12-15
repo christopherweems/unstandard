@@ -26,6 +26,10 @@ public struct ProtocolTypedArrayBuilder<Element> {
         subarray ?? []
     }
     
+    public static func buildArray(_ components: [[Element]]) -> [Element] {
+        components.flatMap { $0 }
+    }
+    
 }
 
 extension ProtocolTypedArrayBuilder {
