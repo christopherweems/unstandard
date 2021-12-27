@@ -245,3 +245,16 @@ extension String {
     }
     
 }
+
+
+// MARK: - Operators
+
+public func ==(lhs: String?, rhs: String.SubSequence) -> Bool {
+    guard let lhs = lhs else { return false }
+    return lhs == rhs
+}
+
+public func ==(lhs: String.SubSequence, rhs: String?) -> Bool {
+    guard let rhs = rhs else { return false }
+    return lhs == rhs
+}
