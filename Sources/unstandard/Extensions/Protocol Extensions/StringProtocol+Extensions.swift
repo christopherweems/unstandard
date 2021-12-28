@@ -46,6 +46,15 @@ public extension StringProtocol {
     
 }
 
+// MARK: - Count(of:)
+
+extension StringProtocol {
+    public func count(of element: Character) -> Int {
+        self.count(where: { $0 == element })
+    }
+    
+}
+
 
 // MARK: - Non Empty
 
