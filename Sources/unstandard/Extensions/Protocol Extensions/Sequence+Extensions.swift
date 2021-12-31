@@ -28,6 +28,33 @@ extension Sequence {
     
 }
 
+extension Sequence {
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func _mapFirst<ElementOfResult>(
+        _ transform: (Self.Element) async throws -> ElementOfResult?
+    ) async rethrows -> ElementOfResult? {
+        for element in self {
+            guard let mapped = try await transform(element) else { continue }
+            return mapped
+        }
+        
+        return nil
+    }
+    
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func _mapLast<ElementOfResult>(
+        _ transform: (Self.Element) async throws -> ElementOfResult?
+    ) async rethrows -> ElementOfResult? {
+        for element in self.reversed() {
+            guard let mapped = try await transform(element) else { continue }
+            return mapped
+        }
+        
+        return nil
+    }
+    
+}
+
 
 // MARK: - Stable Sort
 
