@@ -69,12 +69,21 @@ public extension StringProtocol {
 
 // MARK: - Dropping Suffix
 
-public extension StringProtocol {
-    @_disfavoredOverload
-    func droppingSuffix(_ suffixes: String...) -> String? {
+extension StringProtocol {
+    public func droppingSuffix(any suffixes: String...) -> String? {
+        self.droppingSuffix(any: suffixes)
+    }
+    
+    public func droppingSuffix<S>(any suffixes: [S]) -> String? where S : StringProtocol {
         guard let suffixToRemove = suffixes.first(where: self.hasSuffix) else { return nil }
         let endIndex = index(self.endIndex, offsetBy: -suffixToRemove.count)
         return self.prefix(upTo: endIndex).asString()
+    }
+    
+    @available(*, deprecated, renamed: "droppingSuffix(any:)")
+    @_disfavoredOverload
+    public func droppingSuffix(_ suffixes: String...) -> String? {
+        self.droppingSuffix(any: suffixes)
     }
     
 }
