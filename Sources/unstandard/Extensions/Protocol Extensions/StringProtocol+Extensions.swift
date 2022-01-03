@@ -80,6 +80,10 @@ extension StringProtocol {
         return self.prefix(upTo: endIndex).asString()
     }
     
+    public func droppingSuffix<S>(_ suffix: S) -> String? where S : StringProtocol {
+        self.droppingSuffix(any: [suffix])
+    }
+    
     @available(*, deprecated, renamed: "droppingSuffix(any:)")
     @_disfavoredOverload
     public func droppingSuffix(_ suffixes: String...) -> String? {
