@@ -8,6 +8,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
+/*
 @available(*, deprecated)
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension ForEach where Data == Range<Int>, ID == Int, Content : View {
@@ -16,5 +17,6 @@ public extension ForEach where Data == Range<Int>, ID == Int, Content : View {
     }
     
 }
+ */
 
 #endif
