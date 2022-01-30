@@ -160,6 +160,7 @@ extension Array where Element : Hashable {
     /// - Returns: Filtered array of unique.
     ///
     /// - Complexity: O(n) where n == number of elements in array.
+    @available(*, deprecated, message: "Use `.uniqued()` from `swift-algorithms`")
     public func removingDuplicates() -> Self {
         var seen = Set<Element>()
         
