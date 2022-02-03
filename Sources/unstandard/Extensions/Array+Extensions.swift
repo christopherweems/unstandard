@@ -93,27 +93,6 @@ extension ArraySlice where Element : Hashable {
 }
 
 
-// MARK: - Last Index
-
-extension Array {
-    @available(*, deprecated, message: "Use `BidirectionalCollection.lastIndex`")
-    public var lastIndex: Index {
-        guard !isEmpty else { return startIndex }
-        return index(before: endIndex)
-    }
-    
-}
-
-extension ArraySlice {
-    @available(*, deprecated, message: "Use `BidirectionalCollection.lastIndex`")
-    public var lastIndex: Index {
-        guard !isEmpty else { return startIndex }
-        return index(before: endIndex)
-    }
-    
-}
-
-
 // MARK: - Flatten
 
 extension Array {
