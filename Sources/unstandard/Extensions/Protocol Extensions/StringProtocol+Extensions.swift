@@ -93,6 +93,22 @@ extension StringProtocol {
 }
 
 
+// MARK: - Removing Subranges
+
+extension StringProtocol {
+    public func removingSubranges<S>(_ subrangesToRemove: S) -> String
+    where S : Sequence, S.Element == Range<Self.Index> {
+        let condensedRanges = Array(subrangesToRemove)
+            .mergingOverlappingRanges()
+        
+        return condensedRanges.inverted(in: self)
+            .map { self[$0] }
+            .joined()
+    }
+    
+}
+
+
 // MARK: - .trimmingFromEnd(charactersIn:)
 
 public extension StringProtocol {
