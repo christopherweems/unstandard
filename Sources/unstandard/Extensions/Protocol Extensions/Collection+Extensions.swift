@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Algorithms
 
 extension Collection {
     @inlinable
@@ -324,6 +325,32 @@ extension Collection where SubSequence == String.UnicodeScalarView.SubSequence {
         guard index != endIndex else { return "".unicodeScalars[...] }
         let startIndex = self.index(after: index)
         return self[startIndex...]
+    }
+    
+}
+
+
+// MARK: - Inverting ranges in a collection
+
+extension Collection {
+    /// Inverts a collection of ranges such that the result is all ranges
+    /// covering elements in `base` that the original collection did not cover.
+    ///
+    /// ```swift
+    /// let coinTosses = [true, false, false, false]
+    /// let firstTwo = [(0..<coinTosses.index(coinTosses.startIndex, offsetBy: 2))]
+    /// let remainingTosses = firstTwo.inverted(in: coinTosses)
+    /// ```
+    public func inverted<Base>(in base: Base) -> [Element]
+    where Base : Collection, Element == Range<Base.Index>, Base.Index : Hashable {
+        var nonInverted = Set(self)
+        nonInverted.insert((base.startIndex..<base.startIndex))
+        nonInverted.insert((base.endIndex..<base.endIndex))
+        
+        return nonInverted
+            .sorted(on: \.lowerBound)
+            .adjacentPairs()
+            .map { ($0.upperBound..<$1.lowerBound) }
     }
     
 }
