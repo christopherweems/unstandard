@@ -354,3 +354,43 @@ extension Collection {
     }
     
 }
+
+
+// MARK: - Merging ranges that overlap
+
+extension Collection {
+    /// Merges overlapping ranges into ranges containing the entirety of the two ranges
+    ///
+    /// O(n^2)
+    public func mergingOverlappingRanges<Index>(mergeAdjoiningRanges: Bool = false) -> Set<Element>
+    where Element == Range<Index>, Index : Hashable {
+        precondition(!mergeAdjoiningRanges, "Missing implementation")
+        
+        return self.reduce([]) { (partialResult: Set<Element>, range: Element) in
+                let overlaps = partialResult.filter { $0.overlaps(range) }
+                
+                if overlaps.isEmpty {
+                    return partialResult.inserting(range)
+                    
+                } else {
+                    let partialResultWithoutOverlaps = partialResult.subtracting(overlaps)
+                    
+                    let mergedOverlap = overlaps.reduce(into: overlaps.first!) { overlap, range in
+                        if range.lowerBound < overlap.lowerBound {
+                            overlap = range.lowerBound..<overlap.upperBound
+                        }
+                        
+                        if overlap.upperBound < range.upperBound {
+                            overlap = overlap.lowerBound..<range.upperBound
+                        }
+                        
+                    }
+                    
+                    return partialResultWithoutOverlaps.inserting(mergedOverlap)
+                }
+                
+            }
+    }
+    
+}
+    
