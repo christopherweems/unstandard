@@ -204,6 +204,18 @@ extension Collection {
 }
 
 
+// MARK: - .contains(optional:)
+
+
+extension Collection where Element : Equatable {
+    public func contains(optional element: Optional<Element>) -> Bool {
+        guard let element = element else { return false }
+        return self.contains(element)
+    }
+    
+}
+
+
 // MARK: - Last Element Index
 
 extension BidirectionalCollection {
