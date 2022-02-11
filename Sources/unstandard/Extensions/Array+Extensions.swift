@@ -244,8 +244,8 @@ extension Array {
 // MARK: - Function Builder initializers
 
 extension Array {
-    public init(@ArrayBuilder _ builder: () -> Self) {
-        self = builder()
+    public init(@ProtocolTypedArrayBuilder<Element> _ elements: () -> Self) {
+        self = elements()
     }
     
 }

@@ -53,7 +53,7 @@ public extension String {
                omittingEmptySubsequences: Bool = true) -> [String] {
         
         // separators
-        let separatorRanges = Array {
+        let separatorRanges = Array<Range<String.Index>> {
             Range(uncheckedBounds: (startIndex, startIndex))
             ranges(of: separator, maxSplits: maxSplits)
             Range(uncheckedBounds: (endIndex, endIndex))
