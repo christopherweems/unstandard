@@ -12,6 +12,13 @@ public extension Range where Bound : SignedNumeric {
     
 }
 
+extension Range where Bound: Numeric {
+    public static func *(_ lhs: Self, _ rhs: Bound) -> Self {
+        (lhs.lowerBound * rhs)..<(lhs.upperBound * rhs)
+    }
+    
+}
+
 public extension Range where Bound: FloatingPoint {
     static func /(_ lhs: Self, _ rhs: Bound) -> Range {
         (lhs.lowerBound/rhs)..<(lhs.upperBound/rhs)
@@ -69,6 +76,23 @@ extension Range where Bound : Strideable, Bound.Stride : SignedInteger, Bound.St
 extension Range where Bound : BinaryInteger {
     public func offset(_ offset: Bound) -> Self {
         Range(uncheckedBounds: (self.lowerBound + offset, self.upperBound + offset))
+    }
+    
+}
+
+
+// MARK: - Bounding Ranges
+
+extension Range {
+    public func bounded(within bound: Range<Bound>) -> Self {
+        let lowerBound = Swift.max(self.lowerBound, bound.lowerBound)
+        let upperBound = Swift.min(self.upperBound, bound.upperBound)
+        return (lowerBound..<upperBound)
+    }
+    
+    public func bounded(within bound: PartialRangeThrough<Bound>) -> Self {
+        let upperBound = Swift.min(self.upperBound, bound.upperBound)
+        return (lowerBound..<upperBound)
     }
     
 }
