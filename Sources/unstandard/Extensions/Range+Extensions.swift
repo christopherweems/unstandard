@@ -91,6 +91,7 @@ extension Range {
     }
     
     public func bounded(within bound: PartialRangeThrough<Bound>) -> Self {
+        let lowerBound = Swift.min(self.lowerBound, bound.upperBound)
         let upperBound = Swift.min(self.upperBound, bound.upperBound)
         return (lowerBound..<upperBound)
     }
