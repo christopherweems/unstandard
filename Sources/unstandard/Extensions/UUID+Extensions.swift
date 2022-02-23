@@ -27,6 +27,11 @@ extension UUID {
         ]
     }
     
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 16 else { return nil }
+        self.init(uuid: bytes.asTuple16())
+    }
+    
 }
 
 /// Usage: `UUID.String` can be used in declarations to specify what kind of String the function expects
