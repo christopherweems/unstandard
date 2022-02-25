@@ -7,14 +7,16 @@
 
 import Foundation
 
-public extension String {
-    func asInt() -> Int? {
+extension StringProtocol {
+    public func asInt() -> Int? {
         Int(self)
     }
+    
 }
 
-public extension Int {
-    init?(_ character: Character) {
+extension Int {
+    public init?(_ character: Character) {
         self.init(String(character))
     }
+    
 }
