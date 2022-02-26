@@ -184,6 +184,15 @@ extension Collection {
 }
 
 
+// MARK: - Non Empty
+
+extension Collection {
+    public var nonEmpty: Self? {
+        isEmpty ? nil : self
+    }
+    
+}
+
 // MARK: - Has Elements
 
 extension Collection {

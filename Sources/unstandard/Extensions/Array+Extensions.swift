@@ -68,14 +68,6 @@ extension Array {
 }
 
 
-// MARK: - Non Empty
-
-extension Array {
-    public var nonEmpty: Array? { isEmpty ? nil : self }
-    
-}
-
-
 // MARK: - As Set
 
 extension Array where Element: Hashable {
