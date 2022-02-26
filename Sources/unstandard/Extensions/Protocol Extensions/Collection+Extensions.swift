@@ -191,6 +191,13 @@ extension Collection {
         isEmpty ? nil : self
     }
     
+    // TODO: better expressed as `.flatNonEmpty`
+    public func flatNonEmpty<T>() -> [T]? where Element == Optional<T> {
+        self.compacted()
+            .asArray()
+            .nonEmpty
+    }
+    
 }
 
 // MARK: - Has Elements
