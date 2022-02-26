@@ -15,6 +15,9 @@ extension UUID {
     
 }
 
+
+// MARK: - Bytes
+
 extension UUID {
     public var bytes: [UInt8] {
         let components = self.uuid
@@ -33,6 +36,18 @@ extension UUID {
     }
     
 }
+
+
+// MARK: -
+
+extension UUID {
+    public init?(uuidString: String?) {
+        guard let uuidString = uuidString else { return nil }
+        self.init(uuidString: uuidString)
+    }
+    
+}
+
 
 /// Usage: `UUID.String` can be used in declarations to specify what kind of String the function expects
 extension UUID {
