@@ -44,6 +44,10 @@ extension String {
         Int(self)
     }
     
+    public func `as`(_: Decimal.Type) -> Decimal? {
+        NSDecimalNumber(string: self) as Decimal
+    }
+    
 }
 
 
