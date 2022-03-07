@@ -39,6 +39,13 @@ extension String {
     
 }
 
+extension String {
+    public func `as`(_: Int.Type) -> Int? {
+        Int(self)
+    }
+    
+}
+
 
 // MARK: - `String.index(afterLastIndexOf:)`
 
