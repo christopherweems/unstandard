@@ -242,7 +242,6 @@ fileprivate extension StringProtocol {
 
 // MARK: - `String.prefix(truncatedTo:)`
 
-
 extension String {
     public func prefix(truncatedTo maxLength: Int, ellipsis: String = "...") -> String {
         guard maxLength < count else { return self }
