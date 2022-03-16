@@ -26,7 +26,8 @@ public class _ListFormatter {
             return strings[0...1].joined(separator: " & ")
             
         default:
-            return strings.prefix(upTo: strings.lastIndex).joined(separator: ", ").appending(", & \(strings.last!)")
+            let lastIndex = strings.index(before: strings.endIndex)
+            return strings.prefix(upTo: lastIndex).joined(separator: ", ").appending(", & \(strings.last!)")
         }
     }
     
