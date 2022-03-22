@@ -5,10 +5,10 @@
 //  Created by Christopher Weems on 7/30/17.
 //
 
-import Foundation
+import typealias Foundation.TimeInterval
 
-public extension TimeInterval {
-    init(minutes: Double) {
+extension TimeInterval {
+    public init(minutes: Double) {
         self.init(minutes * 60)
     }
 }
