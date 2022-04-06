@@ -109,9 +109,6 @@ let package = Package(
         
         .target(
             name: "GraphModule",
-            dependencies: [
-                .product(name: "Resultto", package: "Resultto"),
-            ],
             path: "Sources/Swift Collections Additions/GraphModule/"
         ),
         
