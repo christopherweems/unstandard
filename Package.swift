@@ -69,6 +69,8 @@ let package = Package(
         .target(
             name: "unstandardCollectionsFoundation",
             dependencies: [
+                "unstandardCollections",
+                "BitArrayModule", "GraphModule",
                 .product(name: "Collections", package: "swift-collections"),
             ]
         ),
