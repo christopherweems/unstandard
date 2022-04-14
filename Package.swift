@@ -1,5 +1,4 @@
 // swift-tools-version:5.6
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
@@ -8,7 +7,11 @@ let package = Package(
     products: [
         .library(
             name: "unstandard",
-            targets: ["unstandard", "unstandardStrings"]),
+            targets: ["unstandard"]),
+        
+        .library(
+            name: "unstandardStrings",
+            targets: ["unstandardStrings"]),
         
         .library(name: "operation",
                  targets: ["operation"]),
