@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "unstandard",
-            targets: ["unstandard"]),
+            targets: ["unstandard", "unstandardStrings"]),
         
         .library(name: "operation",
                  targets: ["operation"]),
