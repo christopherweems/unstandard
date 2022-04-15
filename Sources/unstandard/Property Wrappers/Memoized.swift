@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 11/1/20.
 //
 
+@available(*, deprecated)
 @propertyWrapper
 public class Memoized<V> {
     private var builder: (() -> V)?
@@ -27,6 +28,7 @@ public class Memoized<V> {
     
 }
 
+@available(*, deprecated)
 public extension Memoized {
     func child<P>(_ keyPath: KeyPath<V, P>) -> Memoized<P> {
         Memoized<P>(builder: { self.wrappedValue[keyPath: keyPath] })
@@ -34,6 +36,7 @@ public extension Memoized {
     
 }
 
+@available(*, deprecated)
 public extension Memoized {
     func asOptional() -> Memoized<V?> {
         Memoized<V?>(builder: { Optional(self.wrappedValue) })
