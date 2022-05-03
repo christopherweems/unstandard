@@ -58,9 +58,7 @@ extension StringProtocol {
     @available(*, unavailable)
     @discardableResult
     public mutating func dropSuffix(_ suffix: String) -> Bool {
-        guard self.hasSuffix(suffix) else { return false }
-        _ = self.dropLast(suffix.count)
-        return true
+        fatalError()
     }
     
 }
