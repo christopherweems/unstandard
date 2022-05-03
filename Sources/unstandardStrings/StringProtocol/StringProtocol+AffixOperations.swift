@@ -57,7 +57,6 @@ extension StringProtocol {
 extension StringProtocol {
     @available(*, unavailable)
     @_disfavoredOverload
-    @discardableResult
     public mutating func dropSuffix(_ suffix: String) -> Bool {
         fatalError()
     }
