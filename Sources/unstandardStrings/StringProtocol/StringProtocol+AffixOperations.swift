@@ -50,15 +50,3 @@ extension StringProtocol {
     }
     
 }
-
-
-// MARK: - Deprecated API
-
-extension StringProtocol {
-    @available(*, unavailable)
-    @_disfavoredOverload
-    public mutating func dropSuffix(_ suffix: String) -> Bool {
-        fatalError()
-    }
-    
-}
