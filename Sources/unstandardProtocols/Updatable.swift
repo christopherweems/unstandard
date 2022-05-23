@@ -9,17 +9,17 @@ public protocol Updatable { }
 
 extension Updatable {
     /// updating multiple values
-    public func with(_ update: (inout Self) -> ()) -> Self {
+    public func with(_ update: (inout Self) throws -> ()) rethrows -> Self {
         var new = self
-        update(&new)
+        try update(&new)
         return new
     }
     
 }
 
 extension Updatable where Self : AnyObject {
-    public func with(_ updates: (Self) -> Void) -> Self {
-        updates(self)
+    public func with(_ updates: (Self) throws -> Void) rethrows -> Self {
+        try updates(self)
         return self
     }
         
