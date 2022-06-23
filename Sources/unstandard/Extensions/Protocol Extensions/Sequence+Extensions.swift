@@ -183,3 +183,21 @@ extension Sequence {
     }
     
 }
+
+
+// MARK: - Collecting element values by type
+
+extension Sequence {
+    public var valuesByType: [ObjectIdentifier: [Element]] {
+        var values = [ObjectIdentifier: [Element]]()
+        
+        for value in self {
+            values[ObjectIdentifier(type(of: value)), default: []].append(value)
+        }
+        
+        return values
+    }
+    
+}
+
+
