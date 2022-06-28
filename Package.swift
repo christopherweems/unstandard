@@ -1,6 +1,15 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 
 import PackageDescription
+
+extension Array where Element == SwiftSetting {
+    static let prereleaseTools: [SwiftSetting] = [
+        .unsafeFlags(["-Xfrontend", "-disable-availability-checking"]),
+    ]
+    
+    static let unstandard = prereleaseTools
+    
+}
 
 let package = Package(
     name: "unstandard",
@@ -45,20 +54,24 @@ let package = Package(
                 "unstandardStringsFoundation",
                 
                 "CustomDebugTreeConvertible",
-            ]),
+            ],
+            swiftSettings: .unstandard
+        ),
         
         .target(
             name: "unstandardFoundation",
             dependencies: [
                 "unstandardProtocols",
-            ]
+            ],
+            swiftSettings: .unstandard
         ),
         
         .target(
             name: "unstandardAlgorithms",
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
-            ]
+            ],
+            swiftSettings: .unstandard
         ),
         
         .target(
@@ -66,7 +79,8 @@ let package = Package(
             dependencies: [
                 "BitArrayModule", "GraphModule",
                 .product(name: "Collections", package: "swift-collections"),
-            ]
+            ],
+            swiftSettings: .unstandard
         ),
     
         .target(
@@ -75,7 +89,8 @@ let package = Package(
                 "unstandardCollections",
                 "BitArrayModule", "GraphModule",
                 .product(name: "Collections", package: "swift-collections"),
-            ]
+            ],
+            swiftSettings: .unstandard
         ),
         
         .target(
@@ -83,7 +98,9 @@ let package = Package(
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 
-            ]),
+            ],
+            swiftSettings: .unstandard
+        ),
         
         .target(
             name: "unstandardStringsFoundation",
@@ -92,11 +109,13 @@ let package = Package(
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "lc-locale", package: "lc-locale"),
                 
-            ]
+            ],
+            swiftSettings: .unstandard
         ),
         
         .target(
-            name: "unstandardProtocols"
+            name: "unstandardProtocols",
+            swiftSettings: .unstandard
         ),
         
         /* sub modules */
