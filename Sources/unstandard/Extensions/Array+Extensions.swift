@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 5/22/17.
 //
 
+import Algorithms
 import Foundation
 
 extension Array {
@@ -113,13 +114,11 @@ extension Array {
 // MARK: - Intereleave
 
 extension Array {
+    @available(*, deprecated, message: "Use `.interspersed(with:)` from `swift-algorithms`")
     public func interleave(_ element: Element) -> Self {
-        self.map { [$0, element] }
-            .flatMap { $0 }
-            .dropLast()
-            .wrap { Array($0) }
+        Array(self.interspersed(with: element))
     }
-
+    
 }
 
 
