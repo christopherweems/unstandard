@@ -9,53 +9,45 @@
 import struct CoreGraphics.CGFloat
 import func CoreGraphics.pow
 
-public extension CGFloat {
-    func asDouble() -> Double {
+extension CGFloat {
+    public func asDouble() -> Double {
         .init(self)
     }
+    
 }
 
 
 // MARK: - Rounding
 
-public extension CGFloat {
-    mutating func round(scale: CGFloat) {
+extension CGFloat {
+    public mutating func round(scale: CGFloat) {
         self = rounded(scale: scale)
     }
     
-    func rounded(scale: CGFloat) -> CGFloat {
+    public func rounded(scale: CGFloat) -> CGFloat {
         return (self * scale).rounded() / scale
     }
+    
 }
 
 
 // MARK: - Optional<CGFloat> `+=` * `-=`
 
-public extension Optional where Wrapped == CGFloat {
-    static func +=(_ lhs: inout Self, _ rhs: Wrapped) {
-        switch lhs {
-        case .some(let wrapped):
-            lhs = wrapped + rhs
-        
-        case .none:
-            return
-        }
+extension Optional where Wrapped == CGFloat {
+    public static func +=(_ lhs: inout Self, _ rhs: CGFloat) {
+        guard let currentValue = lhs else { return }
+        lhs = Optional(currentValue + rhs)
     }
-    
-    static func -=(_ lhs: inout Self, _ rhs: Wrapped) {
-        switch lhs {
-        case .some(let wrapped):
-            lhs = wrapped - rhs
-        
-        case .none:
-            return
-        }
+
+    public static func -=(_ lhs: inout Self, _ rhs: Wrapped) {
+        guard let currentValue = lhs else { return }
+        lhs = Optional(currentValue + rhs)
     }
     
 }
 
-public extension CGFloat {
-    static func **<EXP>(base: CGFloat, exponent: EXP) -> CGFloat where EXP : BinaryInteger {
+extension CGFloat {
+    public static func **(base: CGFloat, exponent: some BinaryInteger) -> CGFloat {
         pow(base, CGFloat(exponent))
     }
     
