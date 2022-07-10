@@ -260,9 +260,13 @@ extension Collection {
 // MARK: - `Collection.sorted(on:)`
 
 extension Collection {
-    public func sorted<V: Comparable>(on keyPath: KeyPath<Element, V>,
-                                      comparison: (V, V) -> Bool = { $0 < $1 }) -> [Element] {
-        self.sorted { comparison($0[keyPath: keyPath], $1[keyPath: keyPath]) }
+    public func sorted<V: Comparable>(
+        on sortProperty: (Element) -> V,
+        comparison: (V, V) -> Bool = { $0 < $1 }
+    ) -> [Element] {
+        self.map { (sortProperty($0), $0) }
+            .sorted(by: { comparison($0.0, $1.0) })
+            .map { $1 }
     }
     
 }

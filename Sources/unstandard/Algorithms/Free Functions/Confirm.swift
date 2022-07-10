@@ -7,7 +7,10 @@
 
 import Resultto
 
-public func confirm<E: Error>(throwing failureError: E, @SingleResult predicate: () -> Bool) throws {
+public func confirm<E: Error>(
+    throwing failureError: E,
+    @SingleResult predicate: () -> Bool
+) throws {
     switch predicate() {
     case true:
         break

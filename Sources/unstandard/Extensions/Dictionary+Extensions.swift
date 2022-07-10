@@ -21,8 +21,11 @@ extension Dictionary {
 // MARK: - Sorting values by key or value
 
 extension Dictionary {
-    public func sortedValues<V>(on sortKeyPath: KeyPath<Element, V>, reversed: Bool = false) -> [Value] where V : Comparable {
-        self.sorted(on: sortKeyPath, comparison: { reversed ? $1 < $0 : $0 < $1 })
+    public func sortedValues<V: Comparable>(
+        on sortValue: (Element) -> V,
+        reversed: Bool = false)
+    -> [Value] {
+        self.sorted(on: sortValue, comparison: { reversed ? $1 < $0 : $0 < $1 })
             .map(\.value)
     }
     
