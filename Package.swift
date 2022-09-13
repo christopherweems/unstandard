@@ -3,9 +3,7 @@
 import PackageDescription
 
 extension Array where Element == SwiftSetting {
-    static let prereleaseTools: [SwiftSetting] = [
-        .unsafeFlags(["-Xfrontend", "-disable-availability-checking"]),
-    ]
+    static let prereleaseTools: [SwiftSetting] = []
     
     static let unstandard = prereleaseTools
     
@@ -25,14 +23,15 @@ let package = Package(
         .library(name: "operation",
                  targets: ["operation"]),
         
+        .library(name: "Resultto",
+                 targets: ["Resultto"]),
+        
         .library(name: "transfer",
                  targets: ["transfer"]),
         
     ],
     dependencies: [
-        .package(url: "https://github.com/christopherweems/Resultto.git", from: "0.2.2"),
         .package(url: "https://github.com/gitmcfly/lc-locale.git", from: "0.3.0"),
-        
         .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-collections.git", from: "1.0.2"),
         
@@ -41,7 +40,6 @@ let package = Package(
         .target(
             name: "unstandard",
             dependencies: [
-                .product(name: "Resultto", package: "Resultto"),
                 "unstandardProtocols",
                 "unstandardFoundation",
                 
@@ -54,6 +52,8 @@ let package = Package(
                 "unstandardStringsFoundation",
                 
                 "CustomDebugTreeConvertible",
+                "Resultto",
+                
             ],
             swiftSettings: .unstandard
         ),
@@ -132,6 +132,11 @@ let package = Package(
         .target(
             name: "GraphModule",
             path: "Sources/Swift Collections Additions/GraphModule/"
+        ),
+        
+        .target(
+            name: "Resultto",
+            dependencies: []
         ),
         
         .target(
