@@ -17,4 +17,4 @@ should be fixed quickly.
 
 The code is MIT-licensed, so feel free to use it as you see fit.
 
-Pull requests are appriciated!
+Pull requests are appreciated!
