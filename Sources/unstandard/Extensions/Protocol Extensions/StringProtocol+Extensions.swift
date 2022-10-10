@@ -74,20 +74,10 @@ extension StringProtocol {
         self.droppingSuffix(any: suffixes)
     }
     
-    public func droppingSuffix<S>(any suffixes: [S]) -> String? where S : StringProtocol {
+    public func droppingSuffix(any suffixes: some Sequence<some StringProtocol>) -> String? {
         guard let suffixToRemove = suffixes.first(where: self.hasSuffix) else { return nil }
         let endIndex = index(self.endIndex, offsetBy: -suffixToRemove.count)
         return self.prefix(upTo: endIndex).asString()
-    }
-    
-    public func droppingSuffix<S>(_ suffix: S) -> String? where S : StringProtocol {
-        self.droppingSuffix(any: [suffix])
-    }
-    
-    @available(*, deprecated, renamed: "droppingSuffix(any:)")
-    @_disfavoredOverload
-    public func droppingSuffix(_ suffixes: String...) -> String? {
-        self.droppingSuffix(any: suffixes)
     }
     
 }
