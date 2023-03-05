@@ -6,18 +6,11 @@
 //
 
 extension SetAlgebra {
-    public func contains<O>(
-        any other: O
-    ) -> Bool where O : Sequence, O.Element == Element {
-        for otherElement in other {
-            guard self.contains(otherElement) else { continue }
-            return true
-        }
-        
-        return false
+    public func contains(any other: some Sequence<Element>) -> Bool {
+        other.contains(where: self.contains)
     }
     
-    public func contains<O>(any other: O) -> Bool where O : Sequence {
+    public func contains(any other: some Sequence) -> Bool {
         for otherElement in other {
             guard self.contains(optional: (otherElement as? Element)) else { continue }
             return true
@@ -29,8 +22,8 @@ extension SetAlgebra {
 }
 
 extension SetAlgebra {
-    public func contains(optional member: Optional<Element>) -> Bool {
-        guard let member = member else { return false }
+    public func contains(optional member: Element?) -> Bool {
+        guard let member else { return false }
         return self.contains(member)
     }
     
