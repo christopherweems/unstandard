@@ -10,15 +10,6 @@ extension SetAlgebra {
         other.contains(where: self.contains)
     }
     
-    public func contains(any other: some Sequence) -> Bool {
-        for otherElement in other {
-            guard self.contains(optional: (otherElement as? Element)) else { continue }
-            return true
-        }
-        
-        return false
-    }
-    
 }
 
 extension SetAlgebra {
