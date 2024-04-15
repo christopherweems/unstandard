@@ -14,7 +14,7 @@ let package = Package(
     products: [
         .library(
             name: "unstandard",
-            targets: ["unstandard"]),
+            targets: ["unstandard", "_UAParserSwift"]),
         
         .library(
             name: "unstandardStrings",
@@ -142,6 +142,13 @@ let package = Package(
         .target(
             name: "operation",
             dependencies: []
+        ),
+        
+        /* guest targets */
+        
+        .target(
+            name: "_UAParserSwift",
+            path: "Sources/UAParserSwift"
         ),
 
         /* tests */
