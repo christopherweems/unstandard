@@ -7,16 +7,20 @@
 
 import Foundation
 
-public extension URL {
-    static var documentsURL: URL {
+extension URL {
+    public static var documentsURL: URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
     }
+    
 }
 
-extension URL: ExpressibleByStringLiteral {
+extension URL: @retroactive ExpressibleByExtendedGraphemeClusterLiteral {}
+extension URL: @retroactive ExpressibleByUnicodeScalarLiteral {}
+extension URL: @retroactive ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
         self = URL(string: value) ?? URL("")
     }
+    
 }
 
 
