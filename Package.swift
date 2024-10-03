@@ -1,5 +1,4 @@
-// swift-tools-version:5.7
-
+// swift-tools-version:5.11
 import PackageDescription
 
 extension Array where Element == SwiftSetting {
@@ -11,6 +10,13 @@ extension Array where Element == SwiftSetting {
 
 let package = Package(
     name: "unstandard",
+    platforms: [
+        .macOS(.v13),
+        .iOS(.v16),
+        .tvOS(.v16),
+        .watchOS(.v9),
+        
+    ],
     products: [
         .library(
             name: "unstandard",
@@ -29,11 +35,20 @@ let package = Package(
         .library(name: "transfer",
                  targets: ["transfer"]),
         
+        .library(
+            name: "DirectoryPath",
+            targets: [
+                "DirectoryPath",
+                "DirectoryPathExtras"
+            ]
+        ),
+        
     ],
     dependencies: [
         .package(url: "https://github.com/gitmcfly/lc-locale.git", from: "0.3.0"),
         .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-collections.git", from: "1.0.2"),
+        .package(url: "https://github.com/apple/swift-system.git", from: "1.3.2"),
         
     ],
     targets: [
@@ -116,6 +131,25 @@ let package = Package(
         .target(
             name: "unstandardProtocols",
             swiftSettings: .unstandard
+        ),
+        
+        .target(
+            name: "DirectoryPath",
+            dependencies: [
+                .product(name: "SystemPackage", package: "swift-system"),
+                
+            ],
+            path: "Sources/DirectoryPath/DirectoryPath"
+        ),
+        
+        .target(
+            name: "DirectoryPathExtras",
+            dependencies: [
+                "DirectoryPath",
+                .product(name: "SystemPackage", package: "swift-system"),
+                
+            ],
+            path: "Sources/DirectoryPath/DirectoryPathExtras"
         ),
         
         /* sub modules */
