@@ -107,7 +107,7 @@ extension FileManager {
 extension FileManager {
     public func removeItems(in directoryPath: DirectoryPath) throws {
         for item in try self.contentsOfDirectory(directoryPath) {
-            try self.removeItem(at: URL(filePath: item, isDirectory: false))
+            try self.removeItem(at: URL(path: item, isDirectory: false))
         }
     }
     
@@ -202,4 +202,4 @@ extension FileManager {
     
 }
 
-extension FileManager: @unchecked Sendable { }
+extension FileManager: @unchecked @retroactive Sendable { }
