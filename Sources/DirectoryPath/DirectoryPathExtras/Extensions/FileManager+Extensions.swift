@@ -75,7 +75,8 @@ extension FileManager {
     
     // TODO: Refactor to use `enumerator(at:includingPropertiesForKeys:)`
     public func contentsOfDirectory(
-        _ directory: DirectoryPath, withExtension extensionSuffix: String,
+        _ directory: DirectoryPath,
+        withExtension extensionSuffix: String,
         includingResultsFromSubdirectories: Bool = false
     ) throws -> [FilePath] {
         let allContents = try self.contentsOfDirectory(directory)
