@@ -7,6 +7,7 @@
 
 infix operator ?=: AssignmentPrecedence
 
+@available(*, deprecated, message: "a quick challenge for you, `?=` is going away")
 public func ?=<F>(lhs: inout F, rhs: Optional<F>) {
     guard let rhs = rhs else { return }
     lhs = rhs
