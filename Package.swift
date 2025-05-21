@@ -43,6 +43,10 @@ let package = Package(
             ]
         ),
         
+        .library(
+            name: "_UAParserSwift",
+            targets: ["_UAParserSwift"]),
+        
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.2.0"),
